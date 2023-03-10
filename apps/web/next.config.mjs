@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { withSentryConfig } from '@sentry/nextjs'
+// import { withSentryConfig } from '@sentry/nextjs'
 import { withAxiom } from 'next-axiom'
 import BundleAnalyzer from '@next/bundle-analyzer'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
@@ -12,22 +12,22 @@ const withBundleAnalyzer = BundleAnalyzer({
 
 const withVanillaExtract = createVanillaExtractPlugin()
 
-const sentryWebpackPluginOptions =
-  process.env.VERCEL_ENV === 'production'
-    ? {
-        // Additional config options for the Sentry Webpack plugin. Keep in mind that
-        // the following options are set automatically, and overriding them is not
-        // recommended:
-        //   release, url, org, project, authToken, configFile, stripPrefix,
-        //   urlPrefix, include, ignore
-        silent: false, // Logging when deploying to check if there is any problem
-        validate: true,
-        // https://github.com/getsentry/sentry-webpack-plugin#options.
-      }
-    : {
-        silent: true, // Suppresses all logs
-        dryRun: !process.env.SENTRY_AUTH_TOKEN,
-      }
+// const sentryWebpackPluginOptions =
+//   process.env.VERCEL_ENV === 'production'
+//     ? {
+//         // Additional config options for the Sentry Webpack plugin. Keep in mind that
+//         // the following options are set automatically, and overriding them is not
+//         // recommended:
+//         //   release, url, org, project, authToken, configFile, stripPrefix,
+//         //   urlPrefix, include, ignore
+//         silent: false, // Logging when deploying to check if there is any problem
+//         validate: true,
+//         // https://github.com/getsentry/sentry-webpack-plugin#options.
+//       }
+//     : {
+//         silent: true, // Suppresses all logs
+//         dryRun: !process.env.SENTRY_AUTH_TOKEN,
+//       }
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -175,4 +175,5 @@ const config = {
   },
 }
 
-export default withBundleAnalyzer(withVanillaExtract(withSentryConfig(withAxiom(config), sentryWebpackPluginOptions)))
+// export default withBundleAnalyzer(withVanillaExtract(withSentryConfig(withAxiom(config))))
+export default withBundleAnalyzer(withVanillaExtract(withAxiom(config)))
