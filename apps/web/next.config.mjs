@@ -55,7 +55,7 @@ const config = {
     ],
   },
   reactStrictMode: true,
-  distDir: 'next/build',
+  // distDir: 'next/build',
   swcMinify: true,
   images: {
     remotePatterns: [
