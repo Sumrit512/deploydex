@@ -333,6 +333,7 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
         }
         rfqId={mmRFQTrade?.rfqId}
       /> */}
+
       <CurrencyInputHeader
         title={t('Swap')}
         subtitle={t('Trade tokens in an instant')}

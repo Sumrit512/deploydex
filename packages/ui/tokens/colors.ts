@@ -27,7 +27,8 @@ export const lightColors = {
   ...additionalColors,
   secondary: '#7645D9',
   secondary80: '#7645D980',
-  background: '#FAF9FA',
+  background: '#FFFFFF',
+  // background: '#FAF9FA',
   backgroundDisabled: '#E9EAEB',
   backgroundAlt: '#FFFFFF',
   backgroundAlt2: 'rgba(255, 255, 255, 0.7)',
@@ -44,7 +45,8 @@ export const lightColors = {
   textDisabled: '#BDC2C4',
   textSubtle: '#7A6EAA',
   disabled: '#E9EAEB',
-  gradientBubblegum: 'linear-gradient(139.73deg, #E5FDFF 0%, #F3EFFF 100%)',
+  gradientBubblegum: 'linear-gradient(139.73deg, #fff 0%, #fff 100%)',
+  // gradientBubblegum: 'linear-gradient(139.73deg, #E5FDFF 0%, #F3EFFF 100%)',
   gradientInverseBubblegum: 'linear-gradient(139.73deg, #F3EFFF 0%, #E5FDFF 100%)',
   gradientCardHeader: 'linear-gradient(111.68deg, #F2ECF2 0%, #E8F2F6 100%)',
   gradientBlue: 'linear-gradient(180deg, #A7E8F1 0%, #94E1F2 100%)',
@@ -77,7 +79,8 @@ export const darkColors = {
   textDisabled: '#666171',
   textSubtle: '#B8ADD2',
   disabled: '#524B63',
-  gradientBubblegum: 'linear-gradient(139.73deg, #313D5C 0%, #3D2A54 100%)',
+  // gradientBubblegum: 'linear-gradient(139.73deg, #fff 0%, #fff 100%)',
+   gradientBubblegum: 'linear-gradient(139.73deg, #313D5C 0%, #3D2A54 100%)',
   gradientInverseBubblegum: 'linear-gradient(139.73deg, #3D2A54 0%, #313D5C 100%)',
   gradientCardHeader: 'linear-gradient(166.77deg, #3B4155 0%, #3A3045 100%)',
   gradientBlue: 'linear-gradient(180deg, #00707F 0%, #19778C 100%)',
@@ -86,3 +89,5 @@ export const darkColors = {
   gradientGold: 'linear-gradient(180deg, #FFD800 0%, #FDAB32 100%)',
   gradientBold: 'linear-gradient(#53DEE9, #9A6AFF)',
 }
+
+
