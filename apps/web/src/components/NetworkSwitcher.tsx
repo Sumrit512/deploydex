@@ -44,8 +44,10 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
       {
       chains
         .filter((chain) =>
-        //  !chain.testnet || // for ethereum chain option just uncomment it
-        chain.id === chainId)
+        chain.id === 97 || // 97 chain id for bsc testnet and 56 for bsc mainnet
+        //  !chain.testnet ||
+         // for ethereum chain option just uncomment it
+        chain.id === 56)
         .map((chain) => (
           
           <UserMenuItem
