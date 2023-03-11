@@ -33,6 +33,7 @@ const AptosChain = {
 
 const NetworkSelect = ({ switchNetwork, chainId }) => {
   const { t } = useTranslation()
+  // console.log(chains)
 
   return (
     <>
@@ -40,21 +41,26 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
         <Text color="textSubtle">{t('Select a Network')}</Text>
       </Box>
       <UserMenuDivider />
-      {chains
-        .filter((chain) => !chain.testnet || chain.id === chainId)
+      {
+      chains
+        .filter((chain) =>
+        //  !chain.testnet || // for ethereum chain option just uncomment it
+        chain.id === chainId)
         .map((chain) => (
+          
           <UserMenuItem
             key={chain.id}
             style={{ justifyContent: 'flex-start' }}
             onClick={() => chain.id !== chainId && switchNetwork(chain.id)}
           >
+         
             <ChainLogo chainId={chain.id} />
             <Text color={chain.id === chainId ? 'secondary' : 'text'} bold={chain.id === chainId} pl="12px">
               {chain.name}
             </Text>
           </UserMenuItem>
         ))}
-      <UserMenuItem
+      {/* <UserMenuItem
         key={`aptos-${AptosChain.id}`}
         style={{ justifyContent: 'flex-start' }}
         as="a"
@@ -71,7 +77,7 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
         <Text color="text" pl="12px">
           {AptosChain.name}
         </Text>
-      </UserMenuItem>
+      </UserMenuItem> */}
     </>
   )
 }
@@ -180,7 +186,8 @@ export const NetworkSwitcher = () => {
           )
         }
       >
-        {() =>
+        {
+        () =>
           isNotMatched ? (
             <WrongNetworkSelect switchNetwork={switchNetworkAsync} chainId={chainId} />
           ) : (
