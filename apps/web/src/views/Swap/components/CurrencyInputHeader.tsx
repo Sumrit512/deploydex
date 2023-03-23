@@ -104,7 +104,9 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
   const { isChartSupported, isChartDisplayed, setIsChartDisplayed } = useContext(SwapFeaturesContext)
   const [expertMode] = useExpertModeManager()
   const toggleChartDisplayed = () => {
-    setIsChartDisplayed((currentIsChartDisplayed) => !currentIsChartDisplayed)
+    setIsChartDisplayed(
+      (currentIsChartDisplayed) => !currentIsChartDisplayed
+    )
   }
   const [onPresentTransactionsModal] = useModal(<TransactionsModal />)
   const handleOnClick = useCallback(() => onRefreshPrice?.(), [onRefreshPrice])
@@ -166,7 +168,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
           </ColoredIconButton>
           {campaignTooltipVisible && campaignTooltip}
         </> */}
-{/* 
+
         {isChartSupported && setIsChartDisplayed && (
           <ColoredIconButton
             onClick={() => {
@@ -180,7 +182,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
           >
             {isChartDisplayed ? <ChartDisableIcon color="textSubtle" /> : <ChartIcon width="24px" color="textSubtle" />}
           </ColoredIconButton>
-        )} */}
+        )}
         {/* <ColoredIconButton
           variant="text"
           scale="sm"

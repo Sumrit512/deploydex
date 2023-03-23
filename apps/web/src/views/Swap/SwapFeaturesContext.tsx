@@ -13,16 +13,16 @@ export const SwapFeaturesContext = createContext<{
   setIsChartExpanded: React.Dispatch<React.SetStateAction<boolean>>
   setIsChartDisplayed: React.Dispatch<React.SetStateAction<boolean>>
 }>({
-  isChartSupported: false,
+  isChartSupported: true,
   isStableSupported: false,
   isAccessTokenSupported: false,
   isChartExpanded: false,
-  isChartDisplayed: false,
+  isChartDisplayed: true,
   setIsChartExpanded: null,
   setIsChartDisplayed: null,
 })
 
-const CHART_SUPPORT_CHAIN_IDS = [ChainId.BSC]
+const CHART_SUPPORT_CHAIN_IDS = [ChainId.BSC_TESTNET,,ChainId.BSC]
 const ACCESS_TOKEN_SUPPORT_CHAIN_IDS = [ChainId.BSC]
 const STABLE_SUPPORT_CHAIN_IDS = [ChainId.BSC_TESTNET, ChainId.BSC]
 
@@ -30,7 +30,7 @@ export const SwapFeaturesProvider: React.FC<React.PropsWithChildren> = ({ childr
   const { isMobile } = useMatchBreakpoints()
   const { chainId } = useActiveChainId()
   const [userChartPreference, setUserChartPreference] = useExchangeChartManager(isMobile)
-  const [isChartDisplayed, setIsChartDisplayed] = useState(userChartPreference)
+  const [isChartDisplayed, setIsChartDisplayed] = useState(true)
   const [isChartExpanded, setIsChartExpanded] = useState(false)
 
   const isChartSupported = useMemo(

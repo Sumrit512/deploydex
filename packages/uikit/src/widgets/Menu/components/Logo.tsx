@@ -47,7 +47,7 @@ const Logo: React.FC<React.PropsWithChildren<Props>> = ({ href }) => {
   const innerLogo = (
     <>
       {/* <p className="mobile-icon" > DEX </p> */}
-       <p className="desktop-icon" > UniExcahnge</p>
+       <p className="desktop-icon" > Uni Exchange</p>
       {/* <LogoIcon className="mobile-icon" /> */}
       {/* <LogoWithTextIcon className="desktop-icon" /> */}
     </>
