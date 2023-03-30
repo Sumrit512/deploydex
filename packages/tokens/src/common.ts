@@ -11,10 +11,13 @@ export const CAKE_MAINNET = new ERC20Token(
 
 export const CAKE_TESTNET = new ERC20Token(
   ChainId.BSC_TESTNET,
-  '0xFa60D973F7642B748046464e165A65B7323b0DEE',
+  // '0xFa60D973F7642B748046464e165A65B7323b0DEE',
+  // MNB token's address
+  '0xa00a26A0873542d459721A0a5Ee18D2791D891AA', 
   18,
-  'CAKE',
-  'PancakeSwap Token',
+  'MNB',
+  // 'CAKE',
+  'MNB Token',
   'https://pancakeswap.finance/',
 )
 

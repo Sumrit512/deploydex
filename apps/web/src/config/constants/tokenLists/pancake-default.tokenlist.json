@@ -115,9 +115,9 @@
       "logoURI": "https://pancakeswap.finance/images/tokens/0xA7f552078dcC247C2684336020c03648500C6d9F.png"
     },
     {
-      "name": "PancakeSwap Token",
-      "symbol": "CAKE",
-      "address": "0xFa60D973F7642B748046464e165A65B7323b0DEE",
+      "name": "MNB Token",
+      "symbol": "MNB",
+      "address": "0xa00a26A0873542d459721A0a5Ee18D2791D891AA",
       "chainId": 97,
       "decimals": 18,
       "logoURI": "https://pancakeswap.finance/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.png"

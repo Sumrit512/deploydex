@@ -3,10 +3,11 @@
  */
 const tokens = {
   cake: {
-    symbol: "CAKE",
+    symbol: "MNB",
     address: {
       56: "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
-      97: "0xFa60D973F7642B748046464e165A65B7323b0DEE",
+      97: "0xa00a26A0873542d459721A0a5Ee18D2791D891AA",
+      // 97: "0xFa60D973F7642B748046464e165A65B7323b0DEE",
     },
     decimals: 18,
     projectLink: "https://pancakeswap.finance/",

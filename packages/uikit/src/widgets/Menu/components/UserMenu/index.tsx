@@ -9,9 +9,9 @@ import { UserMenuItem } from "./styles";
 
 export const StyledUserMenu = styled(Flex)`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.tertiary};
+
   border-radius: 16px;
-  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
+
   cursor: pointer;
   display: inline-flex;
   height: 32px;
@@ -21,6 +21,7 @@ export const StyledUserMenu = styled(Flex)`
 
   &:hover {
     opacity: 0.65;
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
   }
 `;
 

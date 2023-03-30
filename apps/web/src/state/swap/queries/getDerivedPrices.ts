@@ -9,7 +9,7 @@ export const getDerivedPrices = (tokenAddress: string, blocks: Block[]) =>
       }
     `,
   )
-
+ 
 export const getDerivedPricesQueryConstructor = (subqueries: string[]) => {
   return gql`
       query derivedTokenPriceData {

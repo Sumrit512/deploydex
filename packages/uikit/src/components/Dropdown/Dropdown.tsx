@@ -46,7 +46,10 @@ const Container = styled.div<{ $scrolling: boolean }>`
     css`
       &:hover ${DropdownContent}, &:focus-within ${DropdownContent} {
         opacity: 1;
+        border: 1px solid black;
         max-height: 400px;
+      margin-top: 10px;
+        border-radius: 6px;
         overflow-y: auto;
         transition: max-height 0s 0s, opacity 0.3s ease-in-out;
         pointer-events: auto;
