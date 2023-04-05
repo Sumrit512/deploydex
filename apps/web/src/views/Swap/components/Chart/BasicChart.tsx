@@ -47,7 +47,11 @@ const BasicChart = ({
     minute: '2-digit',
   })
 
-  // Sometimes we might receive array full of zeros for obscure tokens while trying to derive data
+  const trial = () => {
+console.log(pairPrices)
+  }
+
+    // Sometimes we might receive array full of zeros for obscure tokens while trying to derive data
   // In that case chart is not useful to users
   const isBadData =
     pairPrices &&
@@ -69,6 +73,7 @@ const BasicChart = ({
 
   return (
     <>
+    
       <Flex
         flexDirection={['column', null, null, null, null, null, 'row']}
         alignItems={['flex-start', null, null, null, null, null, 'center']}
@@ -108,7 +113,9 @@ const BasicChart = ({
           isChartExpanded={isChartExpanded}
           timeWindow={timeWindow}
         />
+        
       </Box>
+    
     </>
   )
 }
