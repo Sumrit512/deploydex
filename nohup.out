@@ -1,0 +1,72 @@
+
+> pancake-frontend@0.1.0 start
+> turbo run start --filter=web
+
+• Packages in scope: web
+• Running start in 1 packages
+• Remote caching disabled
+web:start: cache bypass, force executing f04246f230f6f1a8
+web:start: yarn run v1.22.19
+web:start: $ next start
+web:start: ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+web:start: info  - Loaded env from D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web\.env.production
+web:start: info  - Loaded env from D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web\.env
+web:start: warn  - You have enabled experimental features (scrollRestoration, transpilePackages) in next.config.mjs.
+web:start: warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+web:start: 
+web:start: error Command failed with exit code 143.
+web:start: info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+web:start: ERROR: command finished with error: command (D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web) yarn run start exited (143)
+command (D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web) yarn run start exited (143)
+
+ Tasks:    0 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    9m25.015s 
+
+ ERROR  run failed: command  exited (143)
+t:1937:7)
+web:start:     at process.processTicksAndRejections (node:internal/process/task_queues:83:21) {
+web:start:   code: 'EADDRINUSE',
+web:start:   errno: -4091,
+web:start:   syscall: 'listen',
+web:start:   address: '0.0.0.0',
+web:start:   port: 3000
+web:start: }
+web:start: error Command failed with exit code 1.
+web:start: info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+web:start: ERROR: command finished with error: command (D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web) yarn run start exited (1)
+command (D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web) yarn run start exited (1)
+
+ Tasks:    0 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    6.685s 
+
+ ERROR  run failed: command  exited (1)
+Terminated
+
+> pancake-frontend@0.1.0 start
+> turbo run start --filter=web
+
+• Packages in scope: web
+• Running start in 1 packages
+• Remote caching disabled
+web:start: cache bypass, force executing f04246f230f6f1a8
+web:start: yarn run v1.22.19
+web:start: $ next start
+web:start: ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+web:start: info  - Loaded env from D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web\.env.production
+web:start: info  - Loaded env from D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web\.env
+web:start: warn  - You have enabled experimental features (scrollRestoration, transpilePackages) in next.config.mjs.
+web:start: warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+web:start: 
+web:start: error Command failed with exit code 143.
+web:start: info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+web:start: ERROR: command finished with error: command (D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web) yarn run start exited (143)
+command (D:\Work -Sumrit\UniExchangeDEX\deploydex\apps\web) yarn run start exited (143)
+
+ Tasks:    0 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    11m34.921s 
+
+ ERROR  run failed: command  exited (143)
+Terminated

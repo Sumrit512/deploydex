@@ -58,6 +58,8 @@ const config = {
   // distDir: 'next/build',
   // swcMinify: true,
   images: {
+    unoptimized: true,
+
     remotePatterns: [
       {
         protocol: 'https',
