@@ -3,7 +3,8 @@
  */
 const tokens = {
   cake: {
-    symbol: "CAKE",
+    symbol: "MNB",
+    // symbol: "CAKE",
     address: {
       56: "0x25b237599c57cdbd3d667132f56fcbb4980c05e4",
       // 56: "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82", //CAKE TOKEN
@@ -11,7 +12,7 @@ const tokens = {
       // 97: "0xFa60D973F7642B748046464e165A65B7323b0DEE",
     },
     decimals: 18,
-    projectLink: "https://pancakeswap.finance/",
+    projectLink: "https://uniexchange.io/",
   },
   txl: {
     symbol: "TXL",
