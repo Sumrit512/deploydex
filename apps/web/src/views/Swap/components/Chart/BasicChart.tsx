@@ -71,6 +71,9 @@ console.log(pairPrices)
     )
   }
 
+  // const call = () =>{
+  //   console.log(pairPrices)
+  // }
   return (
     <>
     
@@ -113,6 +116,7 @@ console.log(pairPrices)
           isChartExpanded={isChartExpanded}
           timeWindow={timeWindow}
         />
+       {/* <Text onClick={call}>click</Text> */}
         
       </Box>
     
