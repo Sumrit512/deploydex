@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
+import Image from 'next/image'
 import styled, { keyframes } from "styled-components";
 import Flex from "../../../components/Box/Flex";
 import { LogoIcon, LogoWithTextIcon } from "../../../components/Svg";
 import { MenuContext } from "../context";
-import Image from 'next/image'
+
 
 interface Props {
   href: string;

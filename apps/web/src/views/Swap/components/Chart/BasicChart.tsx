@@ -47,9 +47,7 @@ const BasicChart = ({
     minute: '2-digit',
   })
 
-  const trial = () => {
-console.log(pairPrices)
-  }
+
 
     // Sometimes we might receive array full of zeros for obscure tokens while trying to derive data
   // In that case chart is not useful to users
