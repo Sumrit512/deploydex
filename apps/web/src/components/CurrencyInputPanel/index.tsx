@@ -257,7 +257,7 @@ export default function CurrencyInputPanel({
               <Flex maxWidth="200px">
                 {Number.isFinite(amountInDollar) ? (
                   <Text fontSize="12px" color="textSubtle">
-                    ~{formatNumber(amountInDollar)} USD
+                    ~{formatNumber(amountInDollar)} INR
                   </Text>
                 ) : (
                   <Box height="18px" />
