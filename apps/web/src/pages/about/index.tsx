@@ -73,7 +73,7 @@ const About = () => {
             An order book is a list of buy and sell orders placed by traders that allow buyers and sellers to connect and trade.
             An AMM, on the other hand, uses a mathematical algorithm to determine the price of an asset based on the supply and demand ratio.
             While order books provide traders with more control and flexibility, AMMs are known for their simplicity and lower fees.
-            Finally, the choice between order books and AMMs is determined by the individual trader's needs and preferences.
+            Finally, the choice between order books and AMMs is determined by the individual traders needs and preferences.
         </p>
         <h3 style={{ 'color': '#7d54ff',
                  'fontSize': '21px',
