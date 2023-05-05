@@ -3,7 +3,7 @@ import React from "react";
 const Sell = () => {
 
     return(
-        <div>
+        <div className="color-white">
             sell mnb
         </div>
     )
