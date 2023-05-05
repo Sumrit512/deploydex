@@ -36,14 +36,15 @@ const About = () => {
         }}>
         <h3 style={{
              'color': '#7d54ff',
-                 'fontSize': '21px',
+                 'fontSize': '22px',
               'padding': '10px'
         }}>UNIEXCHANGE PROTOCOL</h3>
 
         <p
            style={{
             'color': '#5f5586',
-            'fontSize': '15px'
+            'fontSize': '15px',
+            'lineHeight' : '24px'
 }}
         >Swap on the leading decentralized crypto trading protocol.</p>
 
@@ -51,12 +52,13 @@ const About = () => {
              'color': '#5239a2',
                           'fontSize': '19px',
                           'fontWeight': '500 !important',
-                          'padding': '10px'
+                          'padding': '20px 0 10px '
         }}>The Uniexchange Protocol</h4>
         <p
            style={{
             'color': '#5f5586',
-            'fontSize': '15px'
+            'fontSize': '15px',
+            'lineHeight' : '24px'
 }}
         >
             A set of long-lasting, unmodifiable smart contracts that work together to create an automated market maker system, a protocol that simplifies direct market making and swapping of BEP-20 tokens on the Binance blockchain.
@@ -65,12 +67,13 @@ const About = () => {
              'color': '#5239a2',
                           'fontSize': '19px',
                           'fontWeight': '500 !important',
-                          'padding': '10px'
+                          'padding': '20px 0 10px '
         }}>How does the Uniexchange protocol compare to a typical market?</h4>
         <p
            style={{
             'color': '#5f5586',
-            'fontSize': '15px'
+            'fontSize': '15px',
+            'lineHeight' : '24px'
 }}
  >
             Uniexchange is a unique cryptocurrency trading platform that departs from traditional exchanges in two significant ways. It uses an Automated Market Maker design and is a permissionless system, allowing anyone to participate without requiring approval from a central authority.
@@ -81,13 +84,14 @@ const About = () => {
              'color': '#5239a2',
                           'fontSize': '19px',
                           'fontWeight': '500 !important',
-                          'padding': '10px'
+                          'padding': '20px 0 10px '
         }}>Order Book VS AMM</h4>
 
         <p
          style={{
                     'color': '#5f5586',
-                    'fontSize': '15px'
+                    'fontSize': '15px',
+            'lineHeight' : '24px'
         }}
         >
             Order books and automated market makers (AMMs) are two common trading mechanisms in the cryptocurrency market.
@@ -97,7 +101,7 @@ const About = () => {
             Finally, the choice between order books and AMMs is determined by the individual traders needs and preferences.
         </p>
         <h3 style={{ 'color': '#7d54ff',
-                 'fontSize': '21px',
+                 'fontSize': '22px',
                  'padding': '10px'
 
         }}> Swap</h3>
@@ -105,13 +109,14 @@ const About = () => {
              'color': '#5239a2',
                           'fontSize': '19px',
                           'fontWeight': '500 !important',
-                          'padding': '10px'
+                          'padding': '20px 0 10px '
         }}> Introduction</h4>
 
         <p 
            style={{
             'color': '#5f5586',
-            'fontSize': '15px'
+            'fontSize': '15px',
+            'lineHeight' : '24px'
 }}
         >
             Uniexchange is a permissionless decentralized exchange protocol that allows users to swap BEP-20 tokens.
