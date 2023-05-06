@@ -307,10 +307,10 @@ export default function SwapCommitButton({
         }}
         id="swap-button"
         width="100%"
-        disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError || !approved}
+        disabled={!isValid || (priceImpactSeverity > 3 && isExpertMode) || !!swapCallbackError || !approved}
       >
         {swapInputError ||
-          (priceImpactSeverity > 3 && !isExpertMode
+          (priceImpactSeverity > 3 && isExpertMode
             ? t('Price Impact Too High')
             : priceImpactSeverity > 2
             ? t('Swap Anyway')
