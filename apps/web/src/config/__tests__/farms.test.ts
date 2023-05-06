@@ -56,9 +56,9 @@ describe.concurrent('Config farms', () => {
   // The first pid using the new factory
   // BSC
   const START_PID = 2
-  const FACTORY_ADDRESS = '0x4Befe25f20ba5B2Fd877C5103C2a8f2a7fBE847a'
+  // const FACTORY_ADDRESS = '0x4Befe25f20ba5B2Fd877C5103C2a8f2a7fBE847a'
 // real pancake factory address
-  // const FACTORY_ADDRESS = '0xca143ce32fe78f1f7019d7d551a6402fc5350c73'
+   const FACTORY_ADDRESS = '0xca143ce32fe78f1f7019d7d551a6402fc5350c73'
   const newFarmsToTest = farmsToTest.filter((farmSet) => farmSet[0] >= START_PID)
 
   it.each(newFarmsToTest)('farm %d is using correct factory address', async (pid, farm) => {

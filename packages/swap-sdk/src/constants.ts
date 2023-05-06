@@ -11,9 +11,9 @@ export enum ChainId {
 export const ZERO_PERCENT = new Percent('0')
 export const ONE_HUNDRED_PERCENT = new Percent('1')
 
-export const FACTORY_ADDRESS = '0x4Befe25f20ba5B2Fd877C5103C2a8f2a7fBE847a'
+// export const FACTORY_ADDRESS = '0x4Befe25f20ba5B2Fd877C5103C2a8f2a7fBE847a'
 // real pancake factory address
-// export const FACTORY_ADDRESS = '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73'
+ export const FACTORY_ADDRESS = '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73'
 
 const FACTORY_ADDRESS_ETH = '0x1097053Fd2ea711dad45caCcc45EfF7548fCB362'
 
