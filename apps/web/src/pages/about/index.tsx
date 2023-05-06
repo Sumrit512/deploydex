@@ -31,7 +31,8 @@ const About = () => {
                    'margin': '0 auto',
                   'marginTop': '50px',
                      'fontFamily': "'Kanit', sans-serif",
-                     'padding': '20px'
+                     'padding': '20px',
+                      'paddingBottom' : '50px'
             
         }}>
         <h3 style={{
