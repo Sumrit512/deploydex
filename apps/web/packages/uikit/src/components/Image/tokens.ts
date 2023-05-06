@@ -6,8 +6,8 @@ const tokens = {
     symbol: "MNB",
     // symbol: "CAKE",
     address: {
-   //   56: "0x25b237599c57cdbd3d667132f56fcbb4980c05e4", //CAKE TOKEN
-       56: "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82", 
+      56: "0x89214191f4A9632f4dcd09b20404A443f5E287fd", 
+    //   56: "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",  // CAKE TOKEN
       97: "0xa00a26A0873542d459721A0a5Ee18D2791D891AA",
       // 97: "0xFa60D973F7642B748046464e165A65B7323b0DEE",
     },

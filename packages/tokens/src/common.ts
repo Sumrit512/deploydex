@@ -2,8 +2,8 @@ import { ChainId, ERC20Token } from '@pancakeswap/sdk'
 
 export const CAKE_MAINNET = new ERC20Token(
   ChainId.BSC,
- // '0x25b237599c57cdbd3d667132f56fcbb4980c05e4',  //CAKE TOKEN
-   '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
+  '0x89214191f4A9632f4dcd09b20404A443f5E287fd',  
+ //  '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',  //CAKE Token
   18,
   'MNB',
   'MNB token',
