@@ -58,6 +58,8 @@
     "node": "16.18.0"
   },
   "dependencies": {
+    "react-hot-toast": "^2.4.1",
+    "react-loader-spinner": "^5.3.4",
     "recharts": "^2.5.0"
   }
 }

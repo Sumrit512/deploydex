@@ -1,10 +1,13 @@
 import React, {useState} from "react";
+import { ProgressBar } from "react-loader-spinner";
+import { Toaster,toast } from "react-hot-toast";
 
 const Sell = () => {
 
 
 
-
+    const [isLoading, setIsLoading] = useState(false)
+    const [isDisable, setIsDisable] = useState(false)
     const [txHash, setTxHash] = useState('0')
     const [account, setAccount] = useState('')
     const [bank, setBank] = useState('')
@@ -22,6 +25,13 @@ const Sell = () => {
 
     const sendDetails = async() => {
         console.log(txHash, account, bank, ifsc)
+    toast.success('Transaction sent!', {
+        duration: 2000,
+      })
+        // toast('Good Job!', {
+        //     icon: '👏',
+        //   });
+          
     }
 
     return(
@@ -33,13 +43,14 @@ const Sell = () => {
             'gap' : '40px',
             'justifyContent' : 'center',
             'alignItems' : 'center',
-            'marginBottom': '20px'
+            'marginBottom': '10%'
 
         }}>
             <p> NOTE: To sell MNB tokens, first transfer the MNB tokens to the Wallet Address mentioned below, and after that enter the transaction hash
                 and then enter your Bank details. And then click on Confirm button, after confirming the transaction
                 we will transfer the INR into your entered Bank account number.
             </p>
+            <Toaster/>
             <div style={{
                 'border': 'black solid 1px', 
                 borderRadius: '16px',
@@ -56,6 +67,7 @@ const Sell = () => {
     onChange={(e) => setTxHash(e.target.value)}
     placeholder="Transaction Hash of the Transaction done by you?"
     style={{
+        'padding' : '5px',
          'width': '23vw',
          'marginLeft' : '10px',
          'borderRadius' :'8px',
@@ -71,6 +83,7 @@ const Sell = () => {
   onChange={(e)=>setAccount(e.target.value)}
   placeholder="Your Account Number"
      style={{
+        'padding' : '5px',
         'width': '21vw',
         'marginLeft' : '10px',
         'borderRadius' :'8px',
@@ -84,6 +97,7 @@ const Sell = () => {
   <input onChange={(e) => setBank(e.target.value)} type="text" id="bank" name="address"
   placeholder="Bank's name"
      style={{
+        'padding' : '5px',
         'width': '20.5vw',
         'marginLeft' : '10px',
         'borderRadius' :'8px',
@@ -96,6 +110,7 @@ const Sell = () => {
   <input onChange={(e) => setIfsc(e.target.value)} type="text" id="ifsc" name="address"
   placeholder="IFSC code"
      style={{
+        'padding' : '5px',
         'width': '22vw',
         'marginLeft' : '10px',
         'borderRadius' :'8px',
@@ -109,20 +124,39 @@ const Sell = () => {
 
   {/*  eslint-disable-next-line react/button-has-type */}
   <button onClick={sendDetails}
-
+disabled={isDisable}
    style={{
 'borderRadius': '8px',
-'backgroundColor' : hover? '#7645D980': '#7645D9',
-'cursor' : hover? 'pointer' : 'arrow',
+'backgroundColor' : isDisable? 'gray': (hover? '#7645D980' : '#7645D9') ,
+'cursor' : isDisable? 'not-allowed' : (hover?  'pointer' : 'arrow') ,
 'border': '1px solid white',
-'color' : hover? 'black' : 'white'
+'color' : hover? 'black' : 'white',
+
   }}
 
   onMouseEnter={handleMouseEnter}
 
   onMouseLeave={handleMouseLeave}
 
-  >Confirm</button>
+  >
+  {
+    isLoading?  (
+
+        <ProgressBar
+          height="38"
+          width="100"
+        //   ariaLabel="progress-bar-loading"
+          wrapperStyle={{  }}
+        //   wrapperClass="progress-bar-wrapper"
+          borderColor = 'black'
+          barColor = 'white'
+        />
+            ) : 'Confirm' 
+   
+  }  
+    
+  
+  </button>
 
             </div>
 
