@@ -88,6 +88,7 @@ const Buy = () => {
     />
   </label>
 
+  {/*  eslint-disable-next-line react/button-has-type */}
   <button onClick={sendDetails}
    style={{
 'borderRadius': '8px',
