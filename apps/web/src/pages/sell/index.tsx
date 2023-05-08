@@ -32,10 +32,14 @@ const Sell = () => {
    setAccount('')
    setBank('')
    setIfsc('')
-   document.getElementById("txHash").value = ""
-   document.getElementById("account").value = ""
-   document.getElementById("bank").value = ""
-   document.getElementById("ifsc").value = ""
+   const txHashInput = document.getElementById("txHash") as HTMLInputElement | null;
+   const accountInput = document.getElementById("account") as HTMLInputElement | null;
+ const bankInput = document.getElementById("bank") as HTMLInputElement | null
+  const ifscInput = document.getElementById("ifsc") as HTMLInputElement | null
+  txHashInput.value = ''
+  accountInput.value = ''
+  bankInput.value = ''
+  ifscInput.value = ''
 
 
         // toast('Good Job!', {

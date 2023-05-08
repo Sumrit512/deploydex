@@ -29,6 +29,14 @@ const Buy = () => {
         setUtr('')
         setAddress('')
         setAmount('')
+
+        const utrInput = document.getElementById("utr") as HTMLInputElement | null
+        const addressInput = document.getElementById("address") as HTMLInputElement | null
+        const amountInput = document.getElementById("amount") as HTMLInputElement | null
+        utrInput.value = ''
+        addressInput.value = ''
+        amountInput.value = ''
+
     }
 
     return(
