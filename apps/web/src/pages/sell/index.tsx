@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { ProgressBar } from "react-loader-spinner";
 import { Toaster,toast } from "react-hot-toast";
+import ethers from '@typechain/ethers-v5'
+
 
 const Sell = () => {
 
@@ -25,9 +27,14 @@ const Sell = () => {
 
     const sendDetails = async() => {
         console.log(txHash, account, bank, ifsc)
-    toast.success('Transaction sent!', {
+    
+      
+    
+        toast.success('Transaction sent!', {
         duration: 2000,
       })
+
+
    setTxHash('')
    setAccount('')
    setBank('')

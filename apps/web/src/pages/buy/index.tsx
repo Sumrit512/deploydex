@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputField from "components/InputFields/InputFields";
 import toast, {Toaster} from 'react-hot-toast'
 import { ProgressBar } from "react-loader-spinner";
+import axios from 'axios'
 
 const Buy = () => {
 
@@ -23,6 +24,22 @@ const Buy = () => {
 
     const sendDetails = async() => {
         console.log(amount, address, utr)
+
+        const input = {
+          utr,
+          "walletAddress" : address,
+         amount
+      }
+       let data = await fetch('https://dexbackend.onrender.com/txDetails', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(input)
+       })
+       data = await data.json()
+       console.log(data)
         toast.success('Transaction sent!',{
           duration: 2000
         })
