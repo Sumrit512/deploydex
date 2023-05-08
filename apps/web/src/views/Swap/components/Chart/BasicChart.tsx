@@ -3,7 +3,7 @@ import { useTranslation } from '@pancakeswap/localization'
 import { useState, memo } from 'react'
 import { useFetchPairPrices } from 'state/swap/hooks'
 import dynamic from 'next/dynamic'
-import {ResponsiveContainer, LineChart, Line, XAxis, YAxis, linearGradient,CartesianGrid, Legend, Tooltip, Area, AreaChart, Bar, BarChart} from 'recharts'
+import {ResponsiveContainer, LineChart, Line, XAxis, YAxis ,CartesianGrid, Legend, Tooltip, Area, AreaChart, Bar, BarChart} from 'recharts'
 import { PairDataTimeWindowEnum } from 'state/swap/types'
 import NoChartAvailable from './NoChartAvailable'
 import PairPriceDisplay from '../../../../components/PairPriceDisplay'
@@ -268,22 +268,22 @@ const data = [
         }}aspect={3}>
             <AreaChart width={730} height={250} data={data}
   margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-  <defs>
-    {/* <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+  {/* <defs>
+    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
       <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
       <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-    </linearGradient> */}
+    </linearGradient>
     <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
       <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
       <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
     </linearGradient>
-  </defs>
+  </defs> */}
   <XAxis dataKey="name" />
   <YAxis />
   <CartesianGrid strokeDasharray="3 3" />
   <Tooltip />
   {/* <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" /> */}
-  <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+  <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="#82ca9d" />
 </AreaChart>
         </ResponsiveContainer>
        <Text onClick={call}>click</Text>
