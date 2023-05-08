@@ -6,6 +6,7 @@ import { ProgressBar } from "react-loader-spinner";
 const Buy = () => {
 
     const [isLoading, setIsLoading] = useState(false)
+    const [isDisable, setIsDisable] = useState(false)
      const [amount, setAmount] = useState('0')
     const [address, setAddress] = useState('')
     const [utr, setUtr] = useState('')
@@ -37,13 +38,12 @@ const Buy = () => {
             'justifyContent' : 'center',
             'alignItems' : 'center',
             'marginBottom': '10%'
-
         }}>
             <p> NOTE: To buy MNB tokens, first transfer the INR to the Account no. mentioned below, and after that enter the utr transaction number
                 and then enter your wallet address and the amount of MNB tokens you want to receive. And then click on Confirm button, after confirming the transaction
                 we will transfer the MNB tokens into your entered Wallet address.
             </p>
-            <Toaster/>
+         
             <div style={{
                 'border': 'black solid 1px', 
                 borderRadius: '16px',
@@ -100,10 +100,11 @@ const Buy = () => {
 
   {/*  eslint-disable-next-line react/button-has-type */}
   <button onClick={sendDetails}
+  disabled={isDisable}
    style={{
     'borderRadius': '8px',
-    'backgroundColor' : hover? '#7645D980': '#7645D9',
-    'cursor' : hover? 'pointer' : 'arrow',
+    'backgroundColor' : isDisable? 'gray' : (hover ? '#7645D980': '#7645D9') ,
+    'cursor' : isDisable? 'not-allowed' : (hover? 'pointer' : 'arrow'),
     'border': '1px solid white',
     'color' : hover? 'black' : 'white',
    

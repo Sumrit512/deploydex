@@ -7,7 +7,7 @@ const Sell = () => {
 
 
     const [isLoading, setIsLoading] = useState(false)
-    const [isDisable, setIsDisable] = useState(false)
+    const [isDisable, setIsDisable] = useState(true)
     const [txHash, setTxHash] = useState('0')
     const [account, setAccount] = useState('')
     const [bank, setBank] = useState('')
@@ -50,7 +50,7 @@ const Sell = () => {
                 and then enter your Bank details. And then click on Confirm button, after confirming the transaction
                 we will transfer the INR into your entered Bank account number.
             </p>
-            <Toaster/>
+          
             <div style={{
                 'border': 'black solid 1px', 
                 borderRadius: '16px',
