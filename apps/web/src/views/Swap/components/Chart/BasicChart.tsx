@@ -33,148 +33,148 @@ const BasicChart = ({
   })
   const fixePrices = [
     {
-        "time": "2023-05-05T13:00:00.000Z",
+        "time": new Date("2023-05-05T13:00:00.000Z"),
         "value": 129.56053707629485
     },
     {
-        "time": "2023-05-05T14:00:00.000Z",
+        "time": new Date("2023-05-05T14:00:00.000Z"),
         "value": 129.9965325927258
     },
     {
-        "time": "2023-05-05T15:00:00.000Z",
+        "time": new Date("2023-05-05T15:00:00.000Z"),
         "value": 129.96422338682936
     },
     {
-        "time": "2023-05-05T16:00:00.000Z",
+        "time": new Date("2023-05-05T16:00:00.000Z"),
         "value": 130.60756408107264
     },
     {
-        "time": "2023-05-05T17:00:00.000Z",
+        "time": new Date("2023-05-05T17:00:00.000Z"),
         "value": 130.9074529638641
     },
     {
-        "time": "2023-05-05T18:00:00.000Z",
+        "time": new Date("2023-05-05T18:00:00.000Z"),
         "value": 131.31067438148918
     },
     {
-        "time": "2023-05-05T19:00:00.000Z",
+        "time": new Date("2023-05-05T19:00:00.000Z"),
         "value": 131.43060314926828
     },
     {
-        "time": "2023-05-05T20:00:00.000Z",
+        "time": new Date("2023-05-05T20:00:00.000Z"),
         "value": 131.80342755268902
     },
     {
-        "time": "2023-05-05T21:00:00.000Z",
+        "time": new Date("2023-05-05T21:00:00.000Z"),
         "value": 132.01599672384927
     },
     {
-        "time": "2023-05-05T22:00:00.000Z",
+        "time": new Date("2023-05-05T22:00:00.000Z"),
         "value": 132.38041590782328
     },
     {
-        "time": "2023-05-05T23:00:00.000Z",
+        "time": new Date("2023-05-05T23:00:00.000Z"),
         "value": 133.84191465065868
     },
     {
-        "time": "2023-05-06T00:00:00.000Z",
+        "time": new Date("2023-05-06T00:00:00.000Z"),
         "value": 134.62849055224416
     },
     {
-        "time": "2023-05-06T01:00:00.000Z",
+        "time": new Date("2023-05-06T01:00:00.000Z"),
         "value": 134.62440479345463
     },
     {
-        "time": "2023-05-06T02:00:00.000Z",
+        "time": new Date("2023-05-06T02:00:00.000Z"),
         "value": 135.36048373517445
     },
     {
-        "time": "2023-05-06T03:00:00.000Z",
+        "time": new Date("2023-05-06T03:00:00.000Z"),
         "value": 136.8391694568544
     },
     {
-        "time": "2023-05-06T04:00:00.000Z",
+        "time": new Date("2023-05-06T04:00:00.000Z"),
         "value": 140.01755619443273
     },
     {
-        "time": "2023-05-06T05:00:00.000Z",
+        "time": new Date("2023-05-06T05:00:00.000Z"),
         "value": 140.05816181322396
     },
     {
-        "time": "2023-05-06T06:00:00.000Z",
+        "time": new Date("2023-05-06T06:00:00.000Z"),
         "value": 142.23766481466726
     },
     {
-        "time": "2023-05-06T07:00:00.000Z",
+        "time": new Date("2023-05-06T07:00:00.000Z"),
         "value": 141.9769380549096
     },
     {
-        "time": "2023-05-06T08:00:00.000Z",
+        "time": new Date("2023-05-06T08:00:00.000Z"),
         "value": 142.3133586600082
     },
     {
-        "time": "2023-05-06T09:00:00.000Z",
+        "time": new Date("2023-05-06T09:00:00.000Z"),
         "value": 142.26389973356837
     },
     {
-        "time": "2023-05-06T10:00:00.000Z",
+        "time": new Date("2023-05-06T10:00:00.000Z"),
         "value": 142.1622959389426
     },
     {
-        "time": "2023-05-06T11:00:00.000Z",
+        "time": new Date("2023-05-06T11:00:00.000Z"),
         "value": 142.12987895994533
     },
     {
-        "time": "2023-05-06T12:00:00.000Z",
+        "time": new Date("2023-05-06T12:00:00.000Z"),
         "value": 142.07652667451234
     },
     {
-        "time": "2023-05-06T12:53:15.594Z",
+        "time": new Date("2023-05-06T12:53:15.594Z"),
         "value": 141.722
     }
 ]
 const data = [
   {
-    name: 'Page A',
+    name: '11:00',
     uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    price: 140,
+    amt: 50,
   },
   {
-    name: 'Page B',
+    name: '11:30',
     uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    price: 85,
+    amt: 70,
   },
   {
-    name: 'Page C',
+    name: '12:00',
     uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    price: 152,
+    amt: 90,
   },
   {
-    name: 'Page D',
+    name: '12:30',
     uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    price: 167,
+    amt: 110,
   },
   {
-    name: 'Page E',
+    name: '13:00',
     uv: 1890,
-    pv: 4800,
-    amt: 2181,
+    price: 157,
+    amt: 130,
   },
   {
-    name: 'Page F',
+    name: '13:30',
     uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    price: 144,
+    amt: 150,
   },
   {
-    name: 'Page G',
+    name: '14:00',
     uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    price: 165,
+    amt: 170,
   },
 ];
 
@@ -219,8 +219,9 @@ const data = [
   // }
 
   const call = () =>{
-    console.log(fixePrices)
+    console.log(   Math.floor(fixePrices[0].time.getTime() / 1000) )
   }
+
   return (
     <>
     
@@ -248,9 +249,9 @@ const data = [
         <Box>
           <ButtonMenu activeIndex={timeWindow} onItemClick={setTimeWindow} scale="sm">
             <ButtonMenuItem>{t('24H')}</ButtonMenuItem>
-            <ButtonMenuItem>{t('1W')}</ButtonMenuItem>
-            <ButtonMenuItem>{t('1M')}</ButtonMenuItem>
-            <ButtonMenuItem>{t('1Y')}</ButtonMenuItem>
+            <ButtonMenuItem>{t('')}</ButtonMenuItem>
+            <ButtonMenuItem>{t('')}</ButtonMenuItem>
+            <ButtonMenuItem>{t('')}</ButtonMenuItem>
           </ButtonMenu>
         </Box>
       </Flex>
@@ -262,9 +263,9 @@ const data = [
           isChangePositive={isChangePositive}
           isChartExpanded={isChartExpanded}
           timeWindow={timeWindow}
-        /> */}
-
-        <ResponsiveContainer 
+        />
+       <Text onClick={call}>click</Text> */}
+         <ResponsiveContainer 
         // width='100%'
         //  margin={{
         //     top: 5, right: 300
@@ -284,14 +285,13 @@ const data = [
     </linearGradient>
   </defs> */}
   <XAxis dataKey="name" />
-  <YAxis />
+  <YAxis dataKey="amt"/>
   <CartesianGrid strokeDasharray="3 3" />
   <Tooltip />
   {/* <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" /> */}
-  <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="#82ca9d" />
+  <Area type="monotone" dataKey="price" stroke="#82ca9d" fillOpacity={1} fill="#82ca9d" />
 </AreaChart>
         </ResponsiveContainer>
-       <Text onClick={call}>click</Text>
         
       </Box>
     

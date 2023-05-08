@@ -42,6 +42,7 @@ const SwapLineChart = ({
   const transformedData = useMemo(() => {
     return (
       data?.map(({ time, value }) => {
+     
         return { time: Math.floor(time.getTime() / 1000) as UTCTimestamp, value }
       }) || []
     )

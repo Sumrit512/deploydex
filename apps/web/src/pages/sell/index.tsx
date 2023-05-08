@@ -38,7 +38,7 @@ const Sell = () => {
         }}>
             <p> NOTE: To sell MNB tokens, first transfer the MNB tokens to the Wallet Address mentioned below, and after that enter the transaction hash
                 and then enter your Bank details. And then click on Confirm button, after confirming the transaction
-                we will transfer the INR into your entered Wallet address.
+                we will transfer the INR into your entered Bank account number.
             </p>
             <div style={{
                 'border': 'black solid 1px', 
