@@ -263,9 +263,14 @@ const data = [
           isChartExpanded={isChartExpanded}
           timeWindow={timeWindow}
         /> */}
-        <ResponsiveContainer width='100%' margin={{
-            top: 5, right: 300
-        }}aspect={3}>
+
+        <ResponsiveContainer 
+        // width='100%'
+        //  margin={{
+        //     top: 5, right: 300
+        // }}
+        // aspect={3}
+        >
             <AreaChart width={730} height={250} data={data}
   margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
   {/* <defs>
