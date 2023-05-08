@@ -7,7 +7,7 @@ const Sell = () => {
 
 
     const [isLoading, setIsLoading] = useState(false)
-    const [isDisable, setIsDisable] = useState(true)
+    const [isDisable, setIsDisable] = useState(false)
     const [txHash, setTxHash] = useState('0')
     const [account, setAccount] = useState('')
     const [bank, setBank] = useState('')
@@ -28,6 +28,16 @@ const Sell = () => {
     toast.success('Transaction sent!', {
         duration: 2000,
       })
+   setTxHash('')
+   setAccount('')
+   setBank('')
+   setIfsc('')
+   document.getElementById("txHash").value = ""
+   document.getElementById("account").value = ""
+   document.getElementById("bank").value = ""
+   document.getElementById("ifsc").value = ""
+
+
         // toast('Good Job!', {
         //     icon: '👏',
         //   });

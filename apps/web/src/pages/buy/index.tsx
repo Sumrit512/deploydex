@@ -26,6 +26,9 @@ const Buy = () => {
         toast.success('Transaction sent!',{
           duration: 2000
         })
+        setUtr('')
+        setAddress('')
+        setAmount('')
     }
 
     return(
