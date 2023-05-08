@@ -54,7 +54,7 @@ const Sell = () => {
       <label htmlFor="txHash" >Tx Hash : 
     <input type='text' id="txHash" name="amount" 
     onChange={(e) => setTxHash(e.target.value)}
-    placeholder="How much MNB tokens?"
+    placeholder="Transaction Hash of the Transaction done by you?"
     style={{
          'width': '23vw',
          'marginLeft' : '10px',
@@ -69,7 +69,7 @@ const Sell = () => {
 
   <input type="text" id="account" name="utr"
   onChange={(e)=>setAccount(e.target.value)}
-  placeholder=" Account Number"
+  placeholder="Your Account Number"
      style={{
         'width': '21vw',
         'marginLeft' : '10px',
@@ -82,7 +82,7 @@ const Sell = () => {
 
   <label htmlFor="bank">Bank&apos;s Name :
   <input onChange={(e) => setBank(e.target.value)} type="text" id="bank" name="address"
-  placeholder="To what address should we send MNB to?"
+  placeholder="Bank's name"
      style={{
         'width': '20.5vw',
         'marginLeft' : '10px',
@@ -94,7 +94,7 @@ const Sell = () => {
   </label>
   <label htmlFor="ifsc">IFSC Code :
   <input onChange={(e) => setIfsc(e.target.value)} type="text" id="ifsc" name="address"
-  placeholder="To what address should we send MNB to?"
+  placeholder="IFSC code"
      style={{
         'width': '22vw',
         'marginLeft' : '10px',
