@@ -180,8 +180,8 @@ const data = [
 
   const [hoverValue, setHoverValue] = useState<number | undefined>()
   const [hoverDate, setHoverDate] = useState<string | undefined>()
-  const valueToDisplay = hoverValue || pairPrices[pairPrices.length - 1]?.value
-  const { changePercentage, changeValue } = getTimeWindowChange(pairPrices)
+  const valueToDisplay = hoverValue || fixePrices[fixePrices.length - 1]?.value
+  const { changePercentage, changeValue } = getTimeWindowChange(fixePrices)
   const isChangePositive = changeValue >= 0
   const chartHeight = isChartExpanded ? 'calc(100vh - 220px)' : '320px'
   const {
@@ -207,16 +207,16 @@ const data = [
       (price) => !price.value || price.value === 0 || price.value === Infinity || Number.isNaN(price.value),
     )
 
-  // if (isBadData) {
-  //   return (
-  //     <NoChartAvailable
-  //       token0Address={token0Address}
-  //       token1Address={token1Address}
-  //       pairAddress={pairId}
-  //       isMobile={isMobile}
-  //     />
-  //   )
-  // }
+  if (isBadData) {
+    return (
+      <NoChartAvailable
+        token0Address={token0Address}
+        token1Address={token1Address}
+        pairAddress={pairId}
+        isMobile={isMobile}
+      />
+    )
+  }
 
   const call = () =>{
     console.log(   Math.floor(fixePrices[0].time.getTime() / 1000) )
@@ -234,7 +234,7 @@ const data = [
       >
         <Flex flexDirection="column" pt="12px">
           <PairPriceDisplay
-            value={pairPrices?.length > 0 && valueToDisplay}
+            value={fixePrices?.length > 0 && valueToDisplay}
             inputSymbol={inputCurrency?.symbol}
             outputSymbol={outputCurrency?.symbol}
           >
