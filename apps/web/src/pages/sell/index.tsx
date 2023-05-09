@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import { ProgressBar } from "react-loader-spinner";
 import { Toaster,toast } from "react-hot-toast";
-import ethers from '@typechain/ethers-v5'
+import { LeftWrapper } from "views/Home/components/Banners/Styled";
+
 
 
 const Sell = () => {
@@ -13,6 +14,7 @@ const Sell = () => {
     const [txHash, setTxHash] = useState('0')
     const [account, setAccount] = useState('')
     const [bank, setBank] = useState('')
+    const [mailId, setMailId] = useState('')
     const [ifsc, setIfsc] = useState('')
     const [hover, setHover] = useState(false);
 
@@ -24,12 +26,25 @@ const Sell = () => {
       setHover(false);
     };
   
-
+const input = {
+  txHash: "jdfhjsdfh",
+  accountNo: "hfasdjhsjd",
+  bankName: "sdfhjs", 
+  ifscCode: "kdahfjks", 
+  mailId: "sahjdasj"
+}
     const sendDetails = async() => {
         console.log(txHash, account, bank, ifsc)
-    
-      
-    
+        let data = await fetch("http://localhost:3007/txDetailsSell", {
+         method: 'POST',
+         headers: {
+          "Content-type" : "application/json"
+         } ,
+         body: JSON.stringify(input)
+        })
+          data = await data.json()
+          console.log(data)
+
         toast.success('Transaction sent!', {
         duration: 2000,
       })
@@ -39,14 +54,17 @@ const Sell = () => {
    setAccount('')
    setBank('')
    setIfsc('')
+   setMailId('')
    const txHashInput = document.getElementById("txHash") as HTMLInputElement | null;
    const accountInput = document.getElementById("account") as HTMLInputElement | null;
- const bankInput = document.getElementById("bank") as HTMLInputElement | null
-  const ifscInput = document.getElementById("ifsc") as HTMLInputElement | null
+ const bankInput = document.getElementById("bank") as HTMLInputElement | null;
+  const ifscInput = document.getElementById("ifsc") as HTMLInputElement | null;
+  const mailIdInput = document.getElementById("mailId") as HTMLInputElement | null;
   txHashInput.value = ''
   accountInput.value = ''
   bankInput.value = ''
   ifscInput.value = ''
+  mailIdInput.value = ''
 
 
         // toast('Good Job!', {
@@ -133,6 +151,19 @@ const Sell = () => {
      style={{
         'padding' : '5px',
         'width': '22vw',
+        'marginLeft' : '10px',
+        'borderRadius' :'8px',
+        'border' : '1px solid gray'
+   }}
+  />
+
+  </label>
+  <label htmlFor="ifsc">Email Id :
+  <input onChange={(e) => setMailId(e.target.value)} type="email" id="mailId" name="mailId"
+  placeholder="Email"
+     style={{
+        'padding' : '5px',
+        'width': '75%',
         'marginLeft' : '10px',
         'borderRadius' :'8px',
         'border' : '1px solid gray'

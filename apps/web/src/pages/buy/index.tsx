@@ -11,6 +11,7 @@ const Buy = () => {
      const [amount, setAmount] = useState('0')
     const [address, setAddress] = useState('')
     const [utr, setUtr] = useState('')
+    const [mailId, setMailId] = useState('')
     const [hover, setHover] = useState(false);
 
     const handleMouseEnter = () => {
@@ -28,9 +29,10 @@ const Buy = () => {
         const input = {
           utr,
           "walletAddress" : address,
-         amount
+         amount, 
+         mailId
       }
-       let data = await fetch('https://dexbackend.onrender.com/txDetails', {
+       let data = await fetch('http://localhost:3007/txDetails', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -46,13 +48,15 @@ const Buy = () => {
         setUtr('')
         setAddress('')
         setAmount('')
-
+        setMailId('')
         const utrInput = document.getElementById("utr") as HTMLInputElement | null
         const addressInput = document.getElementById("address") as HTMLInputElement | null
         const amountInput = document.getElementById("amount") as HTMLInputElement | null
+        const mailIdInput = document.getElementById("mailId") as HTMLInputElement | null
         utrInput.value = ''
         addressInput.value = ''
         amountInput.value = ''
+        mailIdInput.value = ''
 
     }
 
@@ -116,6 +120,19 @@ const Buy = () => {
     <input type='text' id="amount" name="amount" 
     onChange={(e) => setAmount(e.target.value)}
     placeholder="How much MNB tokens?"
+    style={{
+      'padding' : '5px',
+         'width': '20vw',
+         'marginLeft' : '10px',
+         'borderRadius' :'8px',
+         'border' : '1px solid gray'
+    }}
+    />
+  </label>
+  <label htmlFor="mailId" >Email Id : 
+    <input type='email' id="mailId" name="mailId" 
+    onChange={(e) => setMailId(e.target.value)}
+    placeholder="Email Id"
     style={{
       'padding' : '5px',
          'width': '20vw',
