@@ -3,6 +3,7 @@ import InputField from "components/InputFields/InputFields";
 import toast, {Toaster} from 'react-hot-toast'
 import { ProgressBar } from "react-loader-spinner";
 import axios from 'axios'
+import validator from 'validator';
 
 const Buy = () => {
 
@@ -37,6 +38,22 @@ const Buy = () => {
           mailIdInput.value === ''
         ) {
           toast.error('Please fill all the fields')
+          if(validator.isEmail(mailIdInput.value))
+          {
+            toast.success('yes')
+          }
+          else{
+            toast.error('Please enter a valid email')
+          }
+          // if(Number.isFinite(Number(amountInput.value)))
+          // {
+          //   toast.success('yes')
+          // }
+          // else{
+          //   toast.error('Please enter a valid amount')
+          // }
+      //  return
+          
         }
         else{
           setIsLoading(true)
