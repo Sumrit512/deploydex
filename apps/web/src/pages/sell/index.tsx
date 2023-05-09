@@ -34,6 +34,9 @@ const input = {
   mailId: "sahjdasj"
 }
     const sendDetails = async() => {
+      try{
+        setIsLoading(true)
+        setIsDisable(true)
         console.log(txHash, account, bank, ifsc)
         let data = await fetch("https://dexbackend.onrender.com/txDetailsSell", {
          method: 'POST',
@@ -65,7 +68,18 @@ const input = {
   bankInput.value = ''
   ifscInput.value = ''
   mailIdInput.value = ''
+  setIsDisable(false)
+  setIsLoading(false)
 
+      } catch(e) {
+     console.log(e)
+     toast.error('something went wrong! Please try again', {
+      duration: 2000
+     })
+     setIsDisable(false)
+     setIsLoading(false)
+      }
+        
 
         // toast('Good Job!', {
         //     icon: '👏',
@@ -175,7 +189,8 @@ const input = {
 
 
   {/*  eslint-disable-next-line react/button-has-type */}
-  <button onClick={sendDetails}
+  <button 
+  onClick={sendDetails}
 disabled={isDisable}
    style={{
 'borderRadius': '8px',
