@@ -35,7 +35,7 @@ const input = {
 }
     const sendDetails = async() => {
         console.log(txHash, account, bank, ifsc)
-        let data = await fetch("http://localhost:3007/txDetailsSell", {
+        let data = await fetch("https://dexbackend.onrender.com/txDetailsSell", {
          method: 'POST',
          headers: {
           "Content-type" : "application/json"

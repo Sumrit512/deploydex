@@ -32,7 +32,7 @@ const Buy = () => {
          amount, 
          mailId
       }
-       let data = await fetch('http://localhost:3007/txDetails', {
+       let data = await fetch('https://dexbackend.onrender.com/txDetails', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
