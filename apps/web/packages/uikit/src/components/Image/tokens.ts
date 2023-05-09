@@ -563,6 +563,15 @@ const tokens = {
     decimals: 18,
     projectLink: "https://venus.io/",
   },
+  BTR: {
+    symbol: "BTR",
+    address: {
+      56: "0xB18e9930FCf32DcBfbE2D04fEB0d59a410aB8A12",
+      97: "",
+    },
+    decimals: 18,
+    projectLink: "https://bonktrade.com",
+  },
   sushi: {
     symbol: "SUSHI",
     address: {

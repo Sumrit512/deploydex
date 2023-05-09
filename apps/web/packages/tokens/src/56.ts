@@ -791,6 +791,14 @@ export const bscTokens = {
     'Venus Token',
     'https://venus.io/',
   ),
+  BTR: new ERC20Token(
+    ChainId.BSC,
+    '0xB18e9930FCf32DcBfbE2D04fEB0d59a410aB8A12',
+    18,
+    'BTR',
+    'BONKTRADE',
+    'https://bonktrade.com/',
+  ),
   sushi: new ERC20Token(
     ChainId.BSC,
     '0x947950BcC74888a40Ffa2593C5798F11Fc9124C4',

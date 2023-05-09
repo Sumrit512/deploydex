@@ -7,7 +7,7 @@
     "patch": 0
   },
   "tags": {},
-  "logoURI": "https://pancakeswap.finance/logo.png",
+  "logoURI": "https://mnb3d.com/MNB_logo.png",
   "keywords": ["pancake", "default"],
   "tokens": [
     {
@@ -57,6 +57,14 @@
       "chainId": 56,
       "decimals": 18,
       "logoURI": "https://mnb3d.com/MNB_logo.png"
+    },
+    {
+      "name": "BONKTRADE",
+      "symbol": "BTR",
+      "address": "0xB18e9930FCf32DcBfbE2D04fEB0d59a410aB8A12",
+      "chainId": 56,
+      "decimals": 18,
+      "logoURI": "https://bonktrade.com/images/coin.png"
     },
     {
       "name": "Venus",
