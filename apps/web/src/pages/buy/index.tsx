@@ -25,49 +25,63 @@ const Buy = () => {
 
     const sendDetails = async() => {
       try{
-        setIsLoading(true)
-        setIsDisable(true)
-          console.log(amount, address, utr)
-  
-          const input = {
-            utr,
-            "walletAddress" : address,
-           amount, 
-           mailId
-        }
-         let data = await fetch('https://dexbackend.onrender.com/txDetails', {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: JSON.stringify(input)
-         })
-         data = await data.json()
-         console.log(data)
-          toast.success('Transaction sent!',{
-            duration: 2000
-          })
-          setUtr('')
-          setAddress('')
-          setAmount('')
-          setMailId('')
-          const utrInput = document.getElementById("utr") as HTMLInputElement | null
-          const addressInput = document.getElementById("address") as HTMLInputElement | null
-          const amountInput = document.getElementById("amount") as HTMLInputElement | null
-          const mailIdInput = document.getElementById("mailId") as HTMLInputElement | null
-          utrInput.value = ''
-          addressInput.value = ''
-          amountInput.value = ''
-          mailIdInput.value = ''
-          setIsDisable(false)
-          setIsLoading(false)
+        const utrInput = document.getElementById("utr") as HTMLInputElement | null
+        const addressInput = document.getElementById("address") as HTMLInputElement | null
+        const amountInput = document.getElementById("amount") as HTMLInputElement | null
+        const mailIdInput = document.getElementById("mailId") as HTMLInputElement | null
 
+        if(
+          utrInput.value === '' ||
+          addressInput.value === '' ||
+          amountInput.value === '' ||
+          mailIdInput.value === ''
+        ) {
+          toast.error('Please fill all the fields')
+        }
+        else{
+          setIsLoading(true)
+          setIsDisable(true)
+            console.log(amount, address, utr)
+    
+            const input = {
+              utr,
+              "walletAddress" : address,
+             amount, 
+             mailId
+          }
+           let data = await fetch('https://dexbackend.onrender.com/txDetails', {
+            method: 'POST',
+            headers: {
+              "Content-Type": "application/json",
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(input)
+           })
+           data = await data.json()
+           console.log(data)
+            toast.success('Transaction sent!',{
+              duration: 2000
+            })
+            setUtr('')
+            setAddress('')
+            setAmount('')
+            setMailId('')
+  
+            utrInput.value = ''
+            addressInput.value = ''
+            amountInput.value = ''
+            mailIdInput.value = ''
+            setIsDisable(false)
+            setIsLoading(false)
+            setHover(false)
+        }
+        
       }catch(e){
         console.log(e)
         toast.error("something went wrong! Please try again")
-        setIsDisable(true)
-        setIsLoading(true)
+        setIsDisable(false)
+        setIsLoading(false)
+        setHover(false)
       }
     
 
