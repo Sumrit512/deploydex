@@ -164,7 +164,7 @@ const calling = async () => {
  price.result = price.result.toFixed(0)
   setPriceDollarToInr(price.result) 
 
- //console.log(priceDollarToInr)  
+ // console.log(priceDollarToInr)  
  
 } 
 
