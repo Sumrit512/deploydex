@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useCallback, useEffect } from 'react'
 import { Currency, Pair, Token, Percent, CurrencyAmount } from '@pancakeswap/sdk'
 import { Button, ChevronDownIcon, Text, useModal, Flex, Box, NumericalInput, CopyButton } from '@pancakeswap/uikit'
 import styled, { css } from 'styled-components'
@@ -131,7 +131,7 @@ export default function CurrencyInputPanel({
   const { address: account } = useAccount()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
   const { t } = useTranslation()
-
+const [priceDollarToInr, setPriceDollarToInr] = useState(0)
   const token = pair ? pair.liquidityToken : currency?.isToken ? currency : null
   const tokenAddress = token ? isAddress(token.address) : null
 
@@ -139,6 +139,38 @@ export default function CurrencyInputPanel({
     showUSDPrice ? currency : undefined,
     Number.isFinite(+value) ? +value : undefined,
   )
+
+ 
+  // const callF = async () => {
+  //   let price = await fetch('https://api.exchangerate.host/convert?from=USD&to=INR')
+  //   price = await price.json()
+  //   priceDollarToInr = price.result
+  //   priceDollarToInr = priceDollarToInr.toFixed(0)
+  // // console.log(priceDollarToInr)    
+  //  }
+  
+useEffect( () => {
+ 
+  calling()
+  console.log(priceDollarToInr)  
+
+
+ 
+},[])
+ 
+const calling = async () => {
+  let price = await fetch('https://api.exchangerate.host/convert?from=USD&to=INR')
+  price = await price.json()
+ price.result = price.result.toFixed(0)
+  setPriceDollarToInr(price.result) 
+
+ //console.log(priceDollarToInr)  
+ 
+} 
+
+
+
+
 
   const [onPresentCurrencyModal] = useModal(
     <CurrencySearchModal
@@ -257,7 +289,8 @@ export default function CurrencyInputPanel({
               <Flex maxWidth="200px">
                 {Number.isFinite(amountInDollar) ? (
                   <Text fontSize="12px" color="textSubtle">
-                    ~{formatNumber(amountInDollar)} INR
+                    ~{formatNumber(amountInDollar*Number(priceDollarToInr))} INR
+                
                   </Text>
                 ) : (
                   <Box height="18px" />
