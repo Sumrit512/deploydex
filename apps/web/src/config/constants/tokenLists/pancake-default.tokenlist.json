@@ -67,6 +67,14 @@
       "logoURI": "https://bonktrade.com/images/coin.png"
     },
     {
+      "name": "NAFA",
+      "symbol": "NAFA",
+      "address": "0x45E001e56C138E466D2eE764FE3ba699F3131546",
+      "chainId": 56,
+      "decimals": 18,
+      "logoURI": "https://bonktrade.com/nafa.png"
+    },
+    {
       "name": "Venus",
       "symbol": "XVS",
       "address": "0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63",
