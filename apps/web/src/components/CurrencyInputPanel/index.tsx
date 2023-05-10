@@ -159,12 +159,13 @@ useEffect( () => {
 },[])
  
 const calling = async () => {
-  let price = await fetch('https://api.exchangerate.host/convert?from=USD&to=INR')
-  price = await price.json()
- price.result = price.result.toFixed(0)
-  setPriceDollarToInr(price.result) 
+  const price = await fetch('https://api.exchangerate.host/convert?from=USD&to=INR')
+  const result = await price.json()
+ 
+  result.result = result.result.toFixed(0)
+  setPriceDollarToInr(result.result) 
 
- // console.log(priceDollarToInr)  
+  // console.log(result.result)  
  
 } 
 
