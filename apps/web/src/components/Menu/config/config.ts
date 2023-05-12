@@ -265,6 +265,16 @@ const config: (
         // },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
+    {
+      label: t('Staking'),
+      icon: SwapIcon,
+      fillIcon: SwapFillIcon,
+      href: '/stakeMnb',
+      showItemsOnMobile: false,
+      items: [
+       
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
     // {
     //   label: t('Earn'),
     //   href: '/farms',

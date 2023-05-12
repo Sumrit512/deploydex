@@ -1,6 +1,6 @@
 import { useMemo, useState, useCallback, useEffect } from 'react'
 import { Currency, Pair, Token, Percent, CurrencyAmount } from '@pancakeswap/sdk'
-import { Button, ChevronDownIcon, Text, useModal, Flex, Box, NumericalInput, CopyButton } from '@pancakeswap/uikit'
+import { Button, ChevronDownIcon, Text, useModal, Flex, Box, NumericalInput, CopyButton, useMatchBreakpoints } from '@pancakeswap/uikit'
 import styled, { css } from 'styled-components'
 import { isAddress } from 'utils'
 import { useTranslation } from '@pancakeswap/localization'
@@ -139,7 +139,7 @@ const [priceDollarToInr, setPriceDollarToInr] = useState(0)
     showUSDPrice ? currency : undefined,
     Number.isFinite(+value) ? +value : undefined,
   )
-
+  const { isDesktop } = useMatchBreakpoints()
  
   // const callF = async () => {
   //   let price = await fetch('https://api.exchangerate.host/convert?from=USD&to=INR')
