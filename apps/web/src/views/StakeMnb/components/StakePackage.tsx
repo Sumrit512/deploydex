@@ -7,6 +7,7 @@ export interface StakePackageInterface {
     duration: number;
     type: string;
     maxCap: number;
+    onSelect?: () => void;
 }
 
 const StakePackage: React.FC<StakePackageInterface> = ({
@@ -14,8 +15,10 @@ const StakePackage: React.FC<StakePackageInterface> = ({
     apr,
     duration, 
     type,
-    maxCap
+    maxCap,
+    onSelect
 }) =>{
+
  
     return(
         <>
@@ -49,7 +52,7 @@ const StakePackage: React.FC<StakePackageInterface> = ({
                                 </Flex>
                                     
                             </Flex>
-                            <Button width="100%"> STAKE NOW</Button>
+                            <Button width="100%" onClick={onSelect}> STAKE NOW</Button>
                         </CardBody>
                     </Card>
                 </Flex>
