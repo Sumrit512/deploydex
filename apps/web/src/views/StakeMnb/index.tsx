@@ -20,10 +20,12 @@ const StakeMnbView = () => {
              showStake()
     return (
         <>
-         <Page >
+         <Page style={{
+            marginBottom:`${isDesktop? '0px': '40px'}`
+         }}>
          
             <Flex width="100%" justifyContent="center" alignItems="center" flexDirection="column" >
-                <Flex width="70%" justifyContent="space-between" marginTop="20px">
+                <Flex width="70%" justifyContent="space-between" marginTop="20px" >
 
                
               <StakeCard
