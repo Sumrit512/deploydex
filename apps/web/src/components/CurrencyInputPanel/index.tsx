@@ -290,7 +290,7 @@ const calling = async () => {
               <Flex maxWidth="200px">
                 {Number.isFinite(amountInDollar) ? (
                   <Text fontSize="12px" color="textSubtle">
-                    ~{formatNumber(amountInDollar*Number(priceDollarToInr))} INR
+                    ~{formatNumber(amountInDollar)} USD
                 
                   </Text>
                 ) : (
