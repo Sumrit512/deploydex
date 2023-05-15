@@ -67,6 +67,14 @@
       "logoURI": "https://bonktrade.com/images/coin.png"
     },
     {
+      "name": "Opensea Network",
+      "symbol": "OSN",
+      "address": "0xa682EAB0cEeA5c05e7ca778611f3AeB7C85e1292",
+      "chainId": 56,
+      "decimals": 18,
+      "logoURI": "https://bonktrade.com/osnetwork.png"
+    },
+    {
       "name": "NAFA",
       "symbol": "NAFA",
       "address": "0x45E001e56C138E466D2eE764FE3ba699F3131546",

@@ -40,7 +40,7 @@ const LabelRow = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.newText};
   font-size: 0.75rem;
   line-height: 1rem;
   padding: 0.75rem 1rem 0 1rem;
@@ -276,7 +276,7 @@ const calling = async () => {
             <NumericalInput
               error={error}
               disabled={disabled}
-              className="token-amount-input"
+              // className="token-amount-input"
               value={value}
               onBlur={onInputBlur}
               onUserInput={(val) => {

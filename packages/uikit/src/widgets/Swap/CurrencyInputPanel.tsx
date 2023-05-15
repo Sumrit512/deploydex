@@ -54,7 +54,7 @@ export function CurrencyInputPanel({
             display="flex"
             flexDirection="row"
             flexWrap="nowrap"
-            color="text"
+            color="newText"
             fontSize="12px"
             lineHeight="16px"
             px="16px"
@@ -63,7 +63,7 @@ export function CurrencyInputPanel({
             <NumericalInput
               error={error}
               disabled={disabled}
-              className="token-amount-input"
+              // className="token-amount-input"
               value={value}
               onBlur={onInputBlur}
               onUserInput={(val) => {

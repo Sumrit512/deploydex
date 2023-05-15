@@ -76,7 +76,7 @@ export default function Swap() {
             currentSwapPrice={singleTokenPrice}
           />
         )}
-        {!isDesktop && isChartSupported && (
+        {/* {!isDesktop && isChartSupported && (
           <BottomDrawer
             content={
               <PriceChartContainer
@@ -95,7 +95,7 @@ export default function Swap() {
             isOpen={isChartDisplayed}
             setIsOpen={setIsChartDisplayed}
           />
-        )}
+        )} */}
         {/* {isDesktop && isSwapHotTokenDisplay && <HotTokenList handleOutputSelect={handleOutputSelect} />} */}
         {/* <ModalV2 isOpen={!isDesktop && isSwapHotTokenDisplay} onDismiss={() => setIsSwapHotTokenDisplay(false)}>
           <Modal

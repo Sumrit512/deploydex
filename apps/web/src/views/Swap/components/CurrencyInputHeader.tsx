@@ -14,6 +14,7 @@ import {
   TrophyGoldIcon,
   useModal,
   useTooltip,
+  useMatchBreakpoints
 } from '@pancakeswap/uikit'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
 import GlobalSettings from 'components/Menu/GlobalSettings'
@@ -83,6 +84,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
   title,
 }) => {
   const { t } = useTranslation()
+  const {isDesktop} = useMatchBreakpoints()
   const [mobileTooltipShowOnce, setMobileTooltipShowOnce] = useAtom(mobileShowOnceTokenHighlightAtom)
   const [mobileTooltipShow, setMobileTooltipShow] = useState(false)
   const [mobileCampaignTooltipShow, setMobileCampaignTooltipShow] = useState(false)
@@ -169,7 +171,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = ({
           {campaignTooltipVisible && campaignTooltip}
         </> */}
 
-        {isChartSupported && setIsChartDisplayed && (
+        {isChartSupported && isDesktop && setIsChartDisplayed && (
           <ColoredIconButton
             onClick={() => {
               if (!isChartDisplayed && isSwapHotTokenDisplay) {
