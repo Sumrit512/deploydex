@@ -42,7 +42,9 @@ const StakePackage: React.FC<StakePackageInterface> = ({
                         width: "100%",
                         marginLeft: "10px"
                     }}>
-                        <CardHeader>
+                        <CardHeader style={{
+                            "background" : `${packageName === 'Gold'? 'gold' : 'silver'}`
+                        }}>
                           
                         <Heading textTransform="uppercase">{packageName} </Heading>
                         </CardHeader>
