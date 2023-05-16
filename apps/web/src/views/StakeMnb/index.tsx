@@ -68,17 +68,8 @@ const StakeMnbView = () => {
                     }}
                     />
                </Flex>
-
-               {/* <Flex width="70%" marginTop="20px">
-                  <Flex flex={1}/>
-                  <Flex flex={1}>
-                        <StakeAction
-                        availableAmount={10000}
-                        pSelected={stakePackage}
-                        
-                        />
-                  </Flex>
-               </Flex> */}
+      
+              
             </Flex>
          </Page>
         </>

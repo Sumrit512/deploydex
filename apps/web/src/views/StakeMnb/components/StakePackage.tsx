@@ -1,5 +1,7 @@
-import { Flex, Card, CardBody, Heading, Text, CardHeader, Button } from "@pancakeswap/uikit"
-import React from "react";
+import { Flex, Card, CardBody, Heading, Text, CardHeader, Button, useModal, Modal, ModalProps, Input } from "@pancakeswap/uikit"
+import React, { useCallback, useState } from "react";
+import StakeAction from "./StakeAction";
+import { STAKE_PACKAGE } from "./type"
 
 export interface StakePackageInterface {
     packageName: string;
@@ -18,7 +20,20 @@ const StakePackage: React.FC<StakePackageInterface> = ({
     maxCap,
     onSelect
 }) =>{
+    const [stakePackage, setStakePackage] = useState<STAKE_PACKAGE>()
+    const CustomModal: React.FC<React.PropsWithChildren<ModalProps>> = ({ title, onDismiss, ...props }) => (
+        <Modal title={title} onDismiss={onDismiss} {...props}>
+        
+                        <StakeAction
+                        availableAmount={10000}
+                        pSelected={stakePackage}
+                        
+                        />
+                
+        </Modal>
+      );
 
+    const [onPresent1] = useModal(<CustomModal title={packageName} />);
  
     return(
         <>
@@ -52,7 +67,12 @@ const StakePackage: React.FC<StakePackageInterface> = ({
                                 </Flex>
                                     
                             </Flex>
-                            <Button width="100%" onClick={onSelect}> STAKE NOW</Button>
+                            <Button width="100%" onClick={
+                               () => { onPresent1()}
+                             
+                              
+                            }> STAKE NOW</Button>
+                           
                         </CardBody>
                     </Card>
                 </Flex>
