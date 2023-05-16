@@ -23,8 +23,8 @@ const StakeAction: React.FC<StakeActionProps> = ({
 
 const [value, setValue] = React.useState<number>(0)
 const {account} = useWeb3React()
-const [approved, setApporved] = useState<boolean>(true)
-const [confirmed, setConfirmed] = useState<boolean>(true)
+const [approved, setApporved] = useState<boolean>(false)
+const [confirmed, setConfirmed] = useState<boolean>(false)
 const [warning, setWarning] = useState<boolean>(false)
 const tokenContract = useTokenContract("0x89214191f4A9632f4dcd09b20404A443f5E287fd", true)
 const [balance, setBalance] = useState<number>(0)
@@ -62,23 +62,17 @@ console.log('hi')
        
           
         <>
-          <Heading><Flex justifyContent="space-between" flexDirection="column" alignItems="center" >
-                <Flex justifyContent="space-between" flexDirection="row" alignItems="center" marginBottom="5px">
-                <Text pb="2px" bold>Available Pool Limit : </Text>
-                <Text bold pl="100px">${availableAmount}</Text>
+          <Heading><Flex justifyContent="space-between" flexDirection="column" alignItems="center" marginBottom="20px" >
+                <Flex justifyContent="space-between" flexDirection="column" alignItems="center" marginBottom="5px">
+                <Text pb="2px" bold>Available Pool Limit : &emsp; ${availableAmount}</Text>
+                <Text pb="2px" bold>Maximum Stake Token :  &emsp; 2000 </Text>
+                <Text pb="2px" bold>MNB token Balance : &emsp; {balance}</Text>
+                <Text pb="2px" bold>MNB Staked Balance :  &emsp; {balance} </Text>
+                
                 </Flex>
-                <Flex justifyContent="space-between" flexDirection="row" alignItems="center" marginBottom="5px">
-                <Text pb="2px" bold>Maximum Stake Token : </Text>
-                <Text bold pl="100px">2000</Text>
-                </Flex>
-                <Flex justifyContent="space-between" flexDirection="row" alignItems="center" marginBottom="5px">
-                <Text pb="2px" bold> MNB token Balance : </Text>
-                <Text bold pl="100px">{balance}</Text>
-                </Flex>
-                <Flex justifyContent="space-between" flexDirection="row" alignItems="center" marginBottom="5px">
-                <Text pb="2px" bold>MNB Staked Balance : </Text>
-                <Text bold pl="100px">{balance}</Text>
-                </Flex>
+                
+            
+               
               
                 
              </Flex></Heading>
@@ -94,7 +88,7 @@ console.log('hi')
                  }
                 
             }}/>
-               <Button width="100%" disabled={false} onClick={async () => checkBalance()} variant="subtle" marginTop="20px" >Approve</Button>
+               <Button width="100%" disabled={approved} onClick={async () => checkBalance()} variant="subtle" marginTop="20px" >Approve</Button>
                <Button width="100%" disabled={confirmed} variant="danger" marginTop="20px" >Confirm</Button>
                </>
        
