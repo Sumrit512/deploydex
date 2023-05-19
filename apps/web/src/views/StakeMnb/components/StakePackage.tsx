@@ -63,7 +63,7 @@ const StakePackage: React.FC<StakePackageInterface> = ({
     },[account])
     const CustomModal: React.FC<React.PropsWithChildren<ModalProps>> = ({ title, onDismiss, ...props }) => (
         <Modal title={title} style={{
-        "background": `${title==='Gold' ? 'gold' : 'silver'}`
+        
         }} onDismiss={onDismiss} {...props}>
         
                         <StakeAction

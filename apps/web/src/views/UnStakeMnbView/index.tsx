@@ -24,6 +24,7 @@ const {isDesktop, isMobile, isTablet} = useMatchBreakpoints()
                       <Text bold>MY STAKINGS</Text>  
                     </CardHeader>
                 <div style={{
+                    zIndex: '5',
                     margin: '20px'
                 }}>
                 
