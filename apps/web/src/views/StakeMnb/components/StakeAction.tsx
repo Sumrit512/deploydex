@@ -13,6 +13,7 @@ import { useContract, useTokenContract } from 'hooks/useContract';
 import { TransactionResponse } from '@ethersproject/providers'
 import { ethers } from 'ethers';
 import { useTokenBalance } from '../hooks/useTokenBalance';
+import { STAKE_CONTRACT_ADDRESS, STAKE_TOKEN_ADDRESS } from '../config/constants/stakeContractAddress';
 import FloppyContract from '../helpers/FloppyContract';
 import FloppyStakeContract from '../helpers/FloppyStakeContract';
 import { STAKE_PACKAGE } from './type';
@@ -31,7 +32,7 @@ export enum ApprovalState {
 
 export interface StakeActionProps {
     availableAmount: number;
-    pSelected: STAKE_PACKAGE;
+    pSelected: string;
 }
 
 const StakeAction: React.FC<StakeActionProps> = ({
@@ -47,18 +48,18 @@ const [isConfirmed, setisConfirmed] = useState<boolean>(false)
 const [warning, setWarning] = useState<boolean>(false)
 const addTransaction = useTransactionAdder()
 const tokenAddress= "0xa00a26A0873542d459721A0a5Ee18D2791D891AA"
-const dummyTokenAddress = '0xB39B25e78392Da52A1a4B21c0342C9d35917445e'
+const dummyTokenAddress = STAKE_TOKEN_ADDRESS
 const tokenContract = useTokenContract(dummyTokenAddress, true)
 
 const [balance, setBalance] = useState<number>(0)
 const [isTokenApproved, setIsTokenApproved] = useState(false)
 const [isTokenStaked, setIsTokenStaked] = useState(true)
 const { callWithGasPrice } = useCallWithGasPrice()
-const stakeContractAddress = "0xE82F2C17c69910149faC9Ca717578C274Fefc01B";
+const stakeContractAddress = STAKE_CONTRACT_ADDRESS;
 const stakeContract = useContract(stakeContractAddress, abi, true) 
 const {t} = useTranslation()
 const { toastError } = useToast()
-const spender = "0xE82F2C17c69910149faC9Ca717578C274Fefc01B";
+const spender = STAKE_CONTRACT_ADDRESS;
 const token1 = useTokenBalance()
 const [userStakedBalance, setUserStakedBalance] = useState<number>(0)
 const pendingApproval = useHasPendingApproval(tokenAddress, spender)
@@ -280,6 +281,93 @@ const confirmTokenStakedummy = async() => {
 
 
 }
+const confirmTwoWeekTokenStakedummy = async() => {
+    console.log("it's here")
+
+    setisConfirmed(true)
+
+    if(value !== maxTokenCanBeStaked){
+        
+        toast.error('Staked token amount must be 2000', {duration: 2000})
+        setisConfirmed(false)
+    } else{
+
+        const checkAllowance = await tokenContract.allowance(account, stakeContractAddress)
+        console.log( Number(Number(ethers.utils.formatEther(checkAllowance._hex)).toFixed(0)))
+        const formattedAllowance = Number(Number(ethers.utils.formatEther(checkAllowance._hex)).toFixed(0))
+        if(formattedAllowance < maxTokenCanBeStaked){
+            toast.error(`Approved token quantity is less than ${maxTokenCanBeStaked}`, {
+                duration: 2000
+            })
+            setisConfirmed(false)
+        } else{
+
+        
+  
+        const getStaketwoWeekStakeGas = await stakeContract.estimateGas.twoWeekStake(ethers.utils.parseEther(maxTokenCanBeStaked.toString())).catch(() => {
+   
+            return stakeContract.estimateGas.twoWeekStake(ethers.utils.parseEther(value.toString())).catch(() => {
+                console.log('estimate gas failure')
+                toast.error(`${t('Unexpected error. Could not estimate gas for the stake.')}`)
+                // toastError(t('Error'), t('Unexpected error. Could not estimate gas for the approve.'))
+                return null
+            })
+        })
+        
+        
+           
+           console.log(getStaketwoWeekStakeGas)
+        
+        
+           
+        const txResult: any = await
+           callWithGasPrice(
+            stakeContract,
+            'twoWeekStake',
+            [ethers.utils.parseEther(maxTokenCanBeStaked.toString())],
+            {
+              gasLimit: calculateGasMargin(getStaketwoWeekStakeGas),
+            },
+          )
+            .then((response: any) => {
+                 console.log(response)
+                 toast.success("Token Staked", {
+                    duration: 2000
+                })
+                return response
+                
+            //   addTransaction(response, {
+            //     summary: `Approve MNB`,
+            //     translatableSummary: { text: 'Approve MNB' },
+            //     approval: { tokenAddress, spender  },
+            //     type: 'approve',
+            //   })
+            })
+            .catch((error: any) => {
+              
+              console.log('Failed to stake token', error)
+              toast.error(`${t('Failed to stake token')}`, {
+                duration:2000
+              })
+              setisConfirmed(false)
+              if (error?.code !== 4001) {
+                toast.error(`${error.message}`, {duration: 2000})
+                setisConfirmed(false)
+                // toastError(t('Error'), error.message)
+              }
+              throw error
+            })
+        
+        
+           console.log(txResult)
+        }
+
+    }
+
+
+
+
+}
 
 const approveToken = async() => {
   
@@ -291,10 +379,10 @@ const approveToken = async() => {
     setIsTokenStaked(false)
 
 }
-
+console.log({pSelected, account})
 const handleStake = () => {
 
-console.log({pSelected, account})
+
 if(account) {
 console.log(account)
 } else{
@@ -351,7 +439,14 @@ toast.success('Token Staked', {
             }  
             {
                 !isTokenStaked && 
-                <Button width="100%" disabled={isConfirmed} onClick={async() => confirmTokenStakedummy()} variant="danger" marginTop="20px" >Confirm</Button>
+                <Button width="100%" disabled={isConfirmed} onClick={async() => {
+                    if(pSelected === 'Gold'){
+                        confirmTokenStakedummy()
+                    }
+                    else{
+                        confirmTwoWeekTokenStakedummy()
+                    }
+                    }} variant="danger" marginTop="20px" >Confirm</Button>
             }
 
          

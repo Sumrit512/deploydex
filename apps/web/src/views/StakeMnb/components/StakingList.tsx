@@ -5,6 +5,7 @@ import abi from 'config/abi/stakingContractDummy.json'
 import styled from "styled-components";
 import { ethers } from "ethers";
 import { useWeb3React } from "@pancakeswap/wagmi";
+import { STAKE_CONTRACT_ADDRESS } from "../config/constants/stakeContractAddress";
 
 interface StakingListProps{
     pSelected?: string;
@@ -28,7 +29,7 @@ const StakingList: React.FC<StakingListProps> = ({
     pSelected
 }) => {
 
-    const stakeContractAddress = "0x6d707d2D372501f9229aCD546148f6D6C94E1A82";
+    const stakeContractAddress = STAKE_CONTRACT_ADDRESS;
 const stakeContract = useContract(stakeContractAddress, abi, true )
 const {account}  = useWeb3React()
 const userStakingDetailsObject = {}
@@ -111,39 +112,47 @@ const userStakingDetailsArrayTwoWeekTemp = []
  
         // console.log(ethers.utils.formatUnits(tx._hex, '0'))
         return ethers.utils.formatUnits(tx._hex, '0')
+    }).catch((e)=>{
+        console.log(e)
     })
 //   console.log(totalStakingByTheUser)
 
   for(let i = 0, j=0, k=0 ; i< totalStakingByTheUser; i++){
-    // eslint-disable-next-line no-await-in-loop
-    const userStakingInfoForEachStake = await stakeContract.getStakeInfo(account, i).then((tx) => {
-    tempObject.amount = ethers.utils.formatUnits(tx[0]._hex, '18') 
-    tempObject.duration = new Date(Number(ethers.utils.formatUnits(tx[1]._hex, '0')) * 1000)
-    tempObject.isRelease = tx[2]
-    tempObject.reward = Number(ethers.utils.formatUnits(tx[3]._hex, '18')).toFixed(2)
-    tempObject.termOption ='30'
-  
-    userStakingDetailsArrayOneMonthTemp[j].amount = tempObject.amount
-    userStakingDetailsArrayOneMonthTemp[j].duration = tempObject.duration
-    userStakingDetailsArrayOneMonthTemp[j].isRelease = tempObject.isRelease
-    userStakingDetailsArrayOneMonthTemp[j].reward = tempObject.reward
-    userStakingDetailsArrayOneMonthTemp[j].termOption = tempObject.termOption
-    // console.log(userStakingDetailsArrayOneMonthTemp[j])
-    console.log(tempObject.duration.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })) 
-     j++
-    
 
-    // tempObject = 
-// if(tempObject.termOption === '30'){
-//     userStakingDetailsArrayOneMonthTemp[j] = tempObject
-//     j++ 
-// } else{
-//     userStakingDetailsArrayTwoWeekTemp[k] = tempObject
-//     k++
-// }
-    }).catch((e) => {
-        console.log(e)
-    })
+    if(account) {
+            // eslint-disable-next-line no-await-in-loop
+        const userStakingInfoForEachStake = await stakeContract.getStakeInfo(account, i).then((tx) => {
+            tempObject.amount = ethers.utils.formatUnits(tx[0]._hex, '18') 
+            tempObject.duration = new Date(Number(ethers.utils.formatUnits(tx[1]._hex, '0')) * 1000)
+            tempObject.isRelease = tx[2]
+            tempObject.reward = Number(ethers.utils.formatUnits(tx[3]._hex, '18')).toFixed(2)
+            tempObject.termOption ='30'
+          
+            userStakingDetailsArrayOneMonthTemp[j].amount = tempObject.amount
+            userStakingDetailsArrayOneMonthTemp[j].duration = tempObject.duration
+            userStakingDetailsArrayOneMonthTemp[j].isRelease = tempObject.isRelease
+            userStakingDetailsArrayOneMonthTemp[j].reward = tempObject.reward
+            userStakingDetailsArrayOneMonthTemp[j].termOption = tempObject.termOption
+            // console.log(userStakingDetailsArrayOneMonthTemp[j])
+            console.log(tempObject.duration.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })) 
+             j++
+            
+        
+            // tempObject = 
+        // if(tempObject.termOption === '30'){
+        //     userStakingDetailsArrayOneMonthTemp[j] = tempObject
+        //     j++ 
+        // } else{
+        //     userStakingDetailsArrayTwoWeekTemp[k] = tempObject
+        //     k++
+        // }
+            }).catch((e) => {
+                console.log(e)
+            })
+    }
+else{
+    console.log('account not connected')
+}
 
     
   }

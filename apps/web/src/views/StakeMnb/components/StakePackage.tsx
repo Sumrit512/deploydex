@@ -7,6 +7,7 @@ import abi from 'config/abi/floppyStaking.json'
 import StakeAction from "./StakeAction";
 import { STAKE_PACKAGE } from "./type"
 import UnStakeAction from "./UnStakeAction";
+import { STAKE_CONTRACT_ADDRESS } from "../config/constants/stakeContractAddress";
 
 
 export interface StakePackageInterface {
@@ -30,9 +31,9 @@ const StakePackage: React.FC<StakePackageInterface> = ({
 }) =>{
 
     const router = useRouter()
-    const [stakePackage, setStakePackage] = useState<STAKE_PACKAGE>()
+    const [stakePackage, setStakePackage] = useState<string>()
     const [isStaker, setIsStaker] = useState<boolean>(false)
-    const stakingContractAddress = '0xE82F2C17c69910149faC9Ca717578C274Fefc01B'
+    const stakingContractAddress = STAKE_CONTRACT_ADDRESS
     const stakeContract = useContract(stakingContractAddress,abi, true )
     const {account} = useWeb3React()
     const checkUserStaking = async () => {
@@ -59,8 +60,9 @@ const StakePackage: React.FC<StakePackageInterface> = ({
 
     useEffect(() => {
 // console.log(account)
+setStakePackage(packageName)
  checkUserStaking()
-    },[account])
+    },[account, packageName])
     const CustomModal: React.FC<React.PropsWithChildren<ModalProps>> = ({ title, onDismiss, ...props }) => (
         <Modal title={title} style={{
         

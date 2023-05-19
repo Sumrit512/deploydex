@@ -4,12 +4,13 @@ import { useContract } from "hooks/useContract";
 
 import CardHeading from "views/Farms/components/FarmCard/CardHeading";
 import React, { useEffect, useState } from "react";
-
+import { STAKE_CONTRACT_ADDRESS } from "views/StakeMnb/config/constants/stakeContractAddress";
 import abi from 'config/abi/stakingContractDummy.json'
 import styled from "styled-components";
 import { ethers } from "ethers";
 import { useWeb3React } from "@pancakeswap/wagmi";
 import Timer from "./Timer";
+
 
 
 interface StakingListProps{
@@ -73,7 +74,7 @@ const StakingList: React.FC<StakingListProps> = ({
     
     
 
-    const stakeContractAddress = "0x6d707d2D372501f9229aCD546148f6D6C94E1A82";
+    const stakeContractAddress = STAKE_CONTRACT_ADDRESS;
 const stakeContract = useContract(stakeContractAddress, abi, true )
 const {account}  = useWeb3React()
 const userStakingDetailsObject = {}
@@ -155,6 +156,27 @@ const userStakingDetailsArrayOneMonthTemp = [
         termOption: '0'
     },
     {
+        amount: '0',
+        duration: '',
+        isRelease: false,
+        reward: '0',
+        termOption: '0'
+    }
+    ,{
+        amount: '0',
+        duration: '',
+        isRelease: false,
+        reward: '0',
+        termOption: '0'
+    }
+    ,{
+        amount: '0',
+        duration: '',
+        isRelease: false,
+        reward: '0',
+        termOption: '0'
+    }
+    ,{
         amount: '0',
         duration: '',
         isRelease: false,
@@ -266,6 +288,9 @@ useEffect(() => {
                 const formattedDate = `${day < 10 ? `0${  day}` : day}/${month < 10 ? `0${  month}` : month}/${year}`;
                 console.log(formattedDate);
                let buttonDisable = true
+               if(Number(data.amount) <= 0){
+                return null
+               }
                 if(currentTimestamp > Number(data.duration))
                 {
                     buttonDisable = false
@@ -277,10 +302,10 @@ useEffect(() => {
                         <CardHeader >
                             <Flex flexDirection="row" justifyContent="space-between" alignItems="center">
                             <Flex flexDirection="column">
-                            <Text> <b> AMOUNT : </b>{data.amount}</Text>
+                            <Text> <b> AMOUNT : </b>{data.amount} MNB</Text>
                             <Text> <b>STAKED ON : </b>{formattedDate}</Text>
-                            <Text><b> DURATION : </b>{data.termOption} </Text>
-                            <Text><b> RETURNS : </b> {data.reward}</Text>
+                            <Text><b> DURATION : </b>{data.termOption} days </Text>
+                            <Text color="#2de12e"><b> RETURNS : </b> +{data.reward}</Text>
                             </Flex>
                             <Flex>
                             <Button disabled={buttonDisable}>
@@ -328,6 +353,9 @@ useEffect(() => {
                 console.log(formattedDate);
                
                 let buttonDisable = true
+                if(Number(data.amount) <= 0){
+                    return null
+                   }
                 if(currentTimestamp > Number(data.duration))
                 {
                     buttonDisable = false
@@ -342,7 +370,7 @@ useEffect(() => {
                             <Text> <b> AMOUNT : </b>{data.amount}</Text>
                             <Text> <b>STAKED ON : </b>{formattedDate}</Text>
                             <Text><b> DURATION : </b>{data.termOption} days </Text>
-                            <Text><b> RETURNS : </b> {data.reward}</Text>
+                            <Text color="#2de12e"><b> RETURNS : </b> +{data.reward}</Text>
                             </Flex>
                             <Flex pt={2}>
                             <Button disabled={buttonDisable} width="100%" >
