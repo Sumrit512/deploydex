@@ -71,6 +71,7 @@ const StakeMnbView = () => {
       
               
             </Flex>
+            
          </Page>
         </>
     )

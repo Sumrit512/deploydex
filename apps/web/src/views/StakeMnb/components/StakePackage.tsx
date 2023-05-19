@@ -1,7 +1,13 @@
 import { Flex, Card, CardBody, Heading, Text, CardHeader, Button, useModal, Modal, ModalProps, Input } from "@pancakeswap/uikit"
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import {useRouter} from 'next/router'
+import { useContract } from "hooks/useContract";
+import { useWeb3React } from "@pancakeswap/wagmi";
+import abi from 'config/abi/floppyStaking.json'
 import StakeAction from "./StakeAction";
 import { STAKE_PACKAGE } from "./type"
+import UnStakeAction from "./UnStakeAction";
+
 
 export interface StakePackageInterface {
     packageName: string;
@@ -10,6 +16,7 @@ export interface StakePackageInterface {
     type: string;
     maxCap: number;
     onSelect?: () => void;
+    onUnstake?: () => void;
 }
 
 const StakePackage: React.FC<StakePackageInterface> = ({
@@ -18,9 +25,42 @@ const StakePackage: React.FC<StakePackageInterface> = ({
     duration, 
     type,
     maxCap,
-    onSelect
+    onSelect, 
+    onUnstake
 }) =>{
+
+    const router = useRouter()
     const [stakePackage, setStakePackage] = useState<STAKE_PACKAGE>()
+    const [isStaker, setIsStaker] = useState<boolean>(false)
+    const stakingContractAddress = '0xE82F2C17c69910149faC9Ca717578C274Fefc01B'
+    const stakeContract = useContract(stakingContractAddress,abi, true )
+    const {account} = useWeb3React()
+    const checkUserStaking = async () => {
+       
+    const goToStaking = () => {
+        router.push('/unstakeMnb')
+    }
+
+    const getStakerInfo = await stakeContract.stakers(account,0).then( (tx) =>
+    {
+        setIsStaker(true)
+       return tx
+    })
+    .catch ( (e: any) => {
+       console.log(e)
+       setIsStaker(false)
+          return console.log('no staking')
+        
+        
+    })
+    console.log(getStakerInfo)
+
+    }
+
+    useEffect(() => {
+// console.log(account)
+ checkUserStaking()
+    },[account])
     const CustomModal: React.FC<React.PropsWithChildren<ModalProps>> = ({ title, onDismiss, ...props }) => (
         <Modal title={title} style={{
         "background": `${title==='Gold' ? 'gold' : 'silver'}`
@@ -34,9 +74,25 @@ const StakePackage: React.FC<StakePackageInterface> = ({
                 
         </Modal>
       );
+    const CustomModal2: React.FC<React.PropsWithChildren<ModalProps>> = ({ title, onDismiss, ...props }) => (
+        <Modal title={title} style={{
+        "background": `${title==='Gold' ? 'gold' : 'silver'}`
+        }} onDismiss={onDismiss} {...props}>
+        
+                       <UnStakeAction
+                       pSelected={packageName}/>
+                
+        </Modal>
+      );
 
     const [onPresent1] = useModal(<CustomModal title={packageName} />);
+
+    const [onPresent2] = useModal(<CustomModal2 title={packageName} />);
  
+    const goToStaking = () => {
+        router.push('/unstakeMnb')
+    }
+
     return(
         <>
               <Flex width="100%" flex={1}>
@@ -72,14 +128,16 @@ const StakePackage: React.FC<StakePackageInterface> = ({
                                     
                             </Flex>
                             <Button width="100%" onClick={
-                               () => { onPresent1()}
-                             
-                              
-                            }> STAKE NOW</Button>
+                               () => { onPresent1()
+                            }
+                            }>{isStaker?'STAKE MORE': 'STAKE NOW'}</Button>
+                         {  isStaker &&  <Button width="100%" mt={2} onClick={goToStaking}>VIEW MY STAKINGS</Button>}
+                            
                            
                         </CardBody>
                     </Card>
                 </Flex>
+                
         </>
     )
 }

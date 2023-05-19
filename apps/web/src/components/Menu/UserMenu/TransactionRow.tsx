@@ -61,7 +61,8 @@ const TransactionRow: React.FC<React.PropsWithChildren<TransactionRowProps>> = (
       onDismiss()
       dispatch(pickFarmTransactionTx({ tx: txn.hash, chainId }))
     } else {
-      const url = getBlockExploreLink(txn.hash, 'transaction', chainId)
+      const url = 'https://testnet.bscscan.com/tx/0x806df2524c7357d1410c8eb5a826ac79d64c68351e8bb400e469890a9b8a9976'
+      // getBlockExploreLink(txn.hash, 'transaction', chainId)
       window.open(url, '_blank', 'noopener noreferrer')
     }
   }

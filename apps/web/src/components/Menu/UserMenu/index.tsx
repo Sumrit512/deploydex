@@ -47,7 +47,7 @@ const UserMenuItems = () => {
   return (
     <>
       <WalletUserMenuItem isWrongNetwork={isWrongNetwork} onPresentWalletModal={onClickWalletMenu} />
-      <UserMenuItem as="button" disabled={isWrongNetwork} onClick={onPresentTransactionModal}>
+      <UserMenuItem as="button" disabled={false} onClick={onPresentTransactionModal}>
         {t('Recent Transactions')}
         {hasPendingTransactions && <RefreshIcon spin />}
       </UserMenuItem>
