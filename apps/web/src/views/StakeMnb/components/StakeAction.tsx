@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useTransactionAdder, useHasPendingApproval } from 'state/transactions/hooks';
 import { calculateGasMargin } from 'utils';
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice';
-
+import { Vortex } from 'react-loader-spinner';
 import { useTranslation } from '@pancakeswap/localization'
 import { toast } from 'react-hot-toast';
 import abi from 'config/abi/testStakeContract.json'
@@ -40,6 +40,7 @@ const StakeAction: React.FC<StakeActionProps> = ({
     pSelected
 }) => {
 
+const [isLoading, setIsLoading] = useState(false)
 const maxTokenCanBeStaked = 2000
 const [value, setValue] = React.useState<number>(0)
 const {account} = useWeb3React()
@@ -118,6 +119,7 @@ useEffect(() => {
 }, [account])
 
 const approveTokenOriginal = async () => {
+    
     setIsApporved(true)
 if(Number(value) !== maxTokenCanBeStaked){
 
@@ -137,6 +139,7 @@ console.log(formattedAllowance)
             setIsTokenApproved(true)
             setIsTokenStaked(false)
          } else{
+            setIsLoading(true)
             const estimatedGas = await tokenContract.estimateGas.approve(spender, MaxUint256).catch(() => {
                 // general fallback for tokens who restrict approval amounts
         
@@ -170,6 +173,7 @@ console.log(formattedAllowance)
                 //     approval: { tokenAddress, spender  },
                 //     type: 'approve',
                 //   })
+                setIsLoading(false)
                 })
                 .catch((error: any) => {
                     setIsApporved(true)
@@ -179,8 +183,11 @@ console.log(formattedAllowance)
                     toast.error(`${error.message}`)
                     // toastError(t('Error'), error.message)
                   }
+                  setIsLoading(false)
                   throw error
+                 
                 })
+                
          }         
        
 
@@ -195,6 +202,7 @@ console.log(formattedAllowance)
 
 
 const confirmTokenStakedummy = async() => {
+    setIsLoading(true)
     console.log("it's here")
 
     setisConfirmed(true)
@@ -268,6 +276,7 @@ const confirmTokenStakedummy = async() => {
                 setisConfirmed(false)
                 // toastError(t('Error'), error.message)
               }
+              setIsLoading(false)
               throw error
             })
         
@@ -278,10 +287,11 @@ const confirmTokenStakedummy = async() => {
     }
 
 
-
+setIsLoading(false)
 
 }
 const confirmTwoWeekTokenStakedummy = async() => {
+    setIsLoading(true)
     console.log("it's here")
 
     setisConfirmed(true)
@@ -355,6 +365,7 @@ const confirmTwoWeekTokenStakedummy = async() => {
                 setisConfirmed(false)
                 // toastError(t('Error'), error.message)
               }
+              setIsLoading(false)
               throw error
             })
         
@@ -365,7 +376,7 @@ const confirmTwoWeekTokenStakedummy = async() => {
     }
 
 
-
+setIsLoading(false)
 
 }
 
@@ -431,11 +442,36 @@ toast.success('Token Staked', {
                  }
                 
             }}/>
-               
-             { 
-             !isTokenApproved &&
+               {/* {isLoading && 
+               <Vortex
+  visible={isLoading}
+  height="80"
+  width="80"
+  ariaLabel="vortex-loading"
+  wrapperStyle={{}}
+  wrapperClass="vortex-wrapper"
+  colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+/>} */}
 
-                 <Button width="100%" disabled={approved} onClick={async () => approveTokenOriginal()} variant="subtle" marginTop="20px" >Approve</Button>
+             { 
+              !isTokenApproved &&
+
+                 <Button width="100%" disabled={approved} onClick={async () => approveTokenOriginal()} variant="subtle" marginTop="20px" >
+                          
+                          {
+isLoading? (
+    <Vortex
+  visible={isLoading}
+  height="50"
+  width="50"
+  ariaLabel="vortex-loading"
+  wrapperStyle={{}}
+  wrapperClass="vortex-wrapper"
+  colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+/>
+) : 'Approve'
+                          } 
+                 </Button>
             }  
             {
                 !isTokenStaked && 
@@ -446,7 +482,22 @@ toast.success('Token Staked', {
                     else{
                         confirmTwoWeekTokenStakedummy()
                     }
-                    }} variant="danger" marginTop="20px" >Confirm</Button>
+                    }} variant="danger" marginTop="20px" >
+                        
+                        {isLoading? (
+    <Vortex
+    visible={isLoading}
+    height="50"
+    width="50"
+    ariaLabel="vortex-loading"
+    wrapperStyle={{}}
+    wrapperClass="vortex-wrapper"
+    colors={['red', 'green', 'blue', 'yellow', 'orange', 'purple']}
+  />
+
+                        ): 'Confirm'}
+                        
+                        </Button>
             }
 
          
