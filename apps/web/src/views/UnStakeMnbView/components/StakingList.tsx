@@ -358,7 +358,7 @@ useEffect(() => {
     // console.log(userStakingDetailsArrayOneMonth)
 
 
-}, [account, packageId, userPackageSelected])
+}, [account, packageId, userPackageSelected, fetchUserStaking])
 
 
 

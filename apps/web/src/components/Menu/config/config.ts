@@ -117,6 +117,51 @@ const config: (
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
+      label: t('Trade'),
+      icon: SwapIcon,
+      fillIcon: SwapFillIcon,
+      href: '/swap',
+      showItemsOnMobile: false,
+      items: [
+        {
+          label: t('Swap'),
+          href: '/swap',
+        },
+        {
+          label: t('Liquidity'),
+          href: '/liquidity',
+        },
+        {
+          label: t('Staking'),
+          href: '/stakeMnb',
+        },
+        // {
+        //   label: t('Limit'),
+        //   href: '/limit-orders',
+        //   supportChainIds: SUPPORT_ONLY_BSC,
+        //   image: '/images/decorations/3d-coin.png',
+        // },
+        // {
+        //   label: t('Liquidity'),
+        //   href: '/liquidity',
+        // },
+        // {
+        //   label: t('Perpetual'),
+        //   href: getPerpetualUrl({
+        //     chainId,
+        //     languageCode,
+        //     isDark,
+        //   }),
+        //   type: DropdownMenuItemType.EXTERNAL_LINK,
+        // },
+        // {
+        //   label: t('Bridge'),
+        //   href: 'https://bridge.pancakeswap.finance/',
+        //   type: DropdownMenuItemType.EXTERNAL_LINK,
+        // },
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    {
       label: t('Sell MNB'),
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
@@ -191,90 +236,54 @@ const config: (
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
    
-    {
-      label: t('Swap'),
-      icon: SwapIcon,
-      fillIcon: SwapFillIcon,
-      href: '/swap',
-      showItemsOnMobile: false,
-      items: [
-        // {
-        //   label: t('Swap'),
-        //   href: '/swap',
-        // },
-        // {
-        //   label: t('Limit'),
-        //   href: '/limit-orders',
-        //   supportChainIds: SUPPORT_ONLY_BSC,
-        //   image: '/images/decorations/3d-coin.png',
-        // },
-        // {
-        //   label: t('Liquidity'),
-        //   href: '/liquidity',
-        // },
-        // {
-        //   label: t('Perpetual'),
-        //   href: getPerpetualUrl({
-        //     chainId,
-        //     languageCode,
-        //     isDark,
-        //   }),
-        //   type: DropdownMenuItemType.EXTERNAL_LINK,
-        // },
-        // {
-        //   label: t('Bridge'),
-        //   href: 'https://bridge.pancakeswap.finance/',
-        //   type: DropdownMenuItemType.EXTERNAL_LINK,
-        // },
-      ].map((item) => addMenuItemSupported(item, chainId)),
-    },
-    {
-      label: t('Liquidity'),
-      icon: SwapIcon,
-      fillIcon: SwapFillIcon,
-      href: '/liquidity',
-      showItemsOnMobile: false,
-      items: [
-        // {
-        //   label: t('Swap'),
-        //   href: '/swap',
-        // },
-        // {
-        //   label: t('Limit'),
-        //   href: '/limit-orders',
-        //   supportChainIds: SUPPORT_ONLY_BSC,
-        //   image: '/images/decorations/3d-coin.png',
-        // },
-        // {
-        //   label: t('Liquidity'),
-        //   href: '/liquidity',
-        // },
-        // {
-        //   label: t('Perpetual'),
-        //   href: getPerpetualUrl({
-        //     chainId,
-        //     languageCode,
-        //     isDark,
-        //   }),
-        //   type: DropdownMenuItemType.EXTERNAL_LINK,
-        // },
-        // {
-        //   label: t('Bridge'),
-        //   href: 'https://bridge.pancakeswap.finance/',
-        //   type: DropdownMenuItemType.EXTERNAL_LINK,
-        // },
-      ].map((item) => addMenuItemSupported(item, chainId)),
-    },
-    {
-      label: t('Staking'),
-      icon: SwapIcon,
-      fillIcon: SwapFillIcon,
-      href: '/stakeMnb',
-      showItemsOnMobile: false,
-      items: [
+    
+    // {
+    //   label: t('Liquidity'),
+    //   icon: SwapIcon,
+    //   fillIcon: SwapFillIcon,
+    //   href: '/liquidity',
+    //   showItemsOnMobile: false,
+    //   items: [
+    //     // {
+    //     //   label: t('Swap'),
+    //     //   href: '/swap',
+    //     // },
+    //     // {
+    //     //   label: t('Limit'),
+    //     //   href: '/limit-orders',
+    //     //   supportChainIds: SUPPORT_ONLY_BSC,
+    //     //   image: '/images/decorations/3d-coin.png',
+    //     // },
+    //     // {
+    //     //   label: t('Liquidity'),
+    //     //   href: '/liquidity',
+    //     // },
+    //     // {
+    //     //   label: t('Perpetual'),
+    //     //   href: getPerpetualUrl({
+    //     //     chainId,
+    //     //     languageCode,
+    //     //     isDark,
+    //     //   }),
+    //     //   type: DropdownMenuItemType.EXTERNAL_LINK,
+    //     // },
+    //     // {
+    //     //   label: t('Bridge'),
+    //     //   href: 'https://bridge.pancakeswap.finance/',
+    //     //   type: DropdownMenuItemType.EXTERNAL_LINK,
+    //     // },
+    //   ].map((item) => addMenuItemSupported(item, chainId)),
+    // },
+    // {
+    //   label: t('Staking'),
+    //   icon: SwapIcon,
+    //   fillIcon: SwapFillIcon,
+    //   href: '/stakeMnb',
+    //   showItemsOnMobile: false,
+    //   items: [
        
-      ].map((item) => addMenuItemSupported(item, chainId)),
-    },
+    //   ].map((item) => addMenuItemSupported(item, chainId)),
+    // },
     // {
     //   label: t('Earn'),
     //   href: '/farms',
