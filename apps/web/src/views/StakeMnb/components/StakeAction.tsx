@@ -119,15 +119,15 @@ useEffect(() => {
 }, [account])
 
 const approveTokenOriginal = async () => {
-    
+    setIsLoading(true)
     setIsApporved(true)
 if(Number(value) !== maxTokenCanBeStaked){
 
 toast.error('Staked token amount must be 2000', {duration: 2000})
-
+setIsLoading(false)
 } else{
 
-
+    
     const allowance = await tokenContract.allowance(account, stakeContractAddress)
     const formattedAllowance = Number(Number(ethers.utils.formatEther(allowance._hex)).toFixed(0))
 console.log(formattedAllowance)
@@ -138,8 +138,9 @@ console.log(formattedAllowance)
             setIsApporved(true)
             setIsTokenApproved(true)
             setIsTokenStaked(false)
+            setIsLoading(false)
          } else{
-            setIsLoading(true)
+          
             const estimatedGas = await tokenContract.estimateGas.approve(spender, MaxUint256).catch(() => {
                 // general fallback for tokens who restrict approval amounts
         
@@ -148,6 +149,7 @@ console.log(formattedAllowance)
                   toast.error(`${t('Unexpected error. Could not estimate gas for the approve.')}`)
                 //   toastError(t('Error'), t('Unexpected error. Could not estimate gas for the approve.'))
                   return null
+                  setIsLoading(false)
                 })
               })
               console.log( ethers.utils.formatEther(estimatedGas._hex))
@@ -161,19 +163,25 @@ console.log(formattedAllowance)
                   gasLimit: calculateGasMargin(estimatedGas),
                 },
               )
-                .then((response: TransactionResponse) => {
+                .then(async (response: TransactionResponse) => {
                     console.log(response)
-                    toast.success('Token Approved')
-                    setIsApporved(true)
-                    setIsTokenApproved(true)
-                    setIsTokenStaked(false)
+                  
                 //   addTransaction(response, {
                 //     summary: `Approve MNB`,
                 //     translatableSummary: { text: 'Approve MNB' },
                 //     approval: { tokenAddress, spender  },
                 //     type: 'approve',
                 //   })
+                await waitForMe(5000)
                 setIsLoading(false)
+                toast.success('Token Approved')
+                setIsApporved(true)
+                setIsTokenApproved(true)
+                setIsTokenStaked(false)
+                return response
+            
+                
+                
                 })
                 .catch((error: any) => {
                     setIsApporved(true)
@@ -197,9 +205,19 @@ console.log(formattedAllowance)
     
     
        }
-
+      
+  
+    
     }
 
+    const waitForMe = async (ms) => {
+        return new Promise<void>((resolve, reject) => {
+          setTimeout(() => {
+            resolve();
+          }, ms);
+        });
+      };
+      
 
 const confirmTokenStakedummy = async() => {
     setIsLoading(true)
@@ -211,6 +229,7 @@ const confirmTokenStakedummy = async() => {
         
         toast.error('Staked token amount must be 2000', {duration: 2000})
         setisConfirmed(false)
+        setIsLoading(false)
     } else{
 
         const checkAllowance = await tokenContract.allowance(account, stakeContractAddress)
@@ -221,6 +240,7 @@ const confirmTokenStakedummy = async() => {
                 duration: 2000
             })
             setisConfirmed(false)
+            setIsLoading(false)
         } else{
 
         
@@ -229,9 +249,12 @@ const confirmTokenStakedummy = async() => {
    
             return stakeContract.estimateGas.oneMonthStake(ethers.utils.parseEther(value.toString())).catch(() => {
                 console.log('estimate gas failure')
+                
                 toast.error(`${t('Unexpected error. Could not estimate gas for the stake.')}`)
+                setIsLoading(false)
                 // toastError(t('Error'), t('Unexpected error. Could not estimate gas for the approve.'))
                 return null
+                
             })
         })
         
@@ -250,9 +273,13 @@ const confirmTokenStakedummy = async() => {
               gasLimit: calculateGasMargin(getStakeoneMonthStakeGas),
             },
           )
-            .then((response: any) => {
+            .then(async (response: any) => {
                  console.log(response)
-                 toast.success("Token Staked", {
+              
+                await waitForMe(5000)
+            
+                setIsLoading(false)
+                toast.success("Token Staked", {
                     duration: 2000
                 })
                 return response
@@ -287,7 +314,6 @@ const confirmTokenStakedummy = async() => {
     }
 
 
-setIsLoading(false)
 
 }
 const confirmTwoWeekTokenStakedummy = async() => {
@@ -300,6 +326,7 @@ const confirmTwoWeekTokenStakedummy = async() => {
         
         toast.error('Staked token amount must be 2000', {duration: 2000})
         setisConfirmed(false)
+        setIsLoading(false)
     } else{
 
         const checkAllowance = await tokenContract.allowance(account, stakeContractAddress)
@@ -310,17 +337,21 @@ const confirmTwoWeekTokenStakedummy = async() => {
                 duration: 2000
             })
             setisConfirmed(false)
+            setIsLoading(false)
+
         } else{
 
         
-  
+       
         const getStaketwoWeekStakeGas = await stakeContract.estimateGas.twoWeekStake(ethers.utils.parseEther(maxTokenCanBeStaked.toString())).catch(() => {
    
             return stakeContract.estimateGas.twoWeekStake(ethers.utils.parseEther(value.toString())).catch(() => {
                 console.log('estimate gas failure')
                 toast.error(`${t('Unexpected error. Could not estimate gas for the stake.')}`)
                 // toastError(t('Error'), t('Unexpected error. Could not estimate gas for the approve.'))
+                setIsLoading(false)
                 return null
+        
             })
         })
         
@@ -339,11 +370,13 @@ const confirmTwoWeekTokenStakedummy = async() => {
               gasLimit: calculateGasMargin(getStaketwoWeekStakeGas),
             },
           )
-            .then((response: any) => {
+            .then(async (response: any) => {
                  console.log(response)
                  toast.success("Token Staked", {
                     duration: 2000
                 })
+                await waitForMe(5000)
+setIsLoading(false)
                 return response
                 
             //   addTransaction(response, {
@@ -368,7 +401,7 @@ const confirmTwoWeekTokenStakedummy = async() => {
               setIsLoading(false)
               throw error
             })
-        
+            
         
            console.log(txResult)
         }
@@ -376,7 +409,6 @@ const confirmTwoWeekTokenStakedummy = async() => {
     }
 
 
-setIsLoading(false)
 
 }
 

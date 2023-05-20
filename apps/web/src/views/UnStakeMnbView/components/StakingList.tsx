@@ -276,6 +276,51 @@ const fetchUserStaking = useCallback(async() =>{
             termOption: '0',
             packageSelected: 'Gold'
         }
+        ,{
+            id: 0,
+            amount: '0',
+            duration: '',
+            isRelease: false,
+            reward: '0',
+            termOption: '0',
+            packageSelected: 'Gold'
+        }
+        ,{
+            id: 0,
+            amount: '0',
+            duration: '',
+            isRelease: false,
+            reward: '0',
+            termOption: '0',
+            packageSelected: 'Gold'
+        }
+        ,{
+            id: 0,
+            amount: '0',
+            duration: '',
+            isRelease: false,
+            reward: '0',
+            termOption: '0',
+            packageSelected: 'Gold'
+        }
+        ,{
+            id: 0,
+            amount: '0',
+            duration: '',
+            isRelease: false,
+            reward: '0',
+            termOption: '0',
+            packageSelected: 'Gold'
+        }
+        ,{
+            id: 0,
+            amount: '0',
+            duration: '',
+            isRelease: false,
+            reward: '0',
+            termOption: '0',
+            packageSelected: 'Gold'
+        }
     ]
     const userStakingDetailsArrayTwoWeekTemp = []
         const totalStakingByTheUser = await stakeContract.getStakeCount(account).then((tx) => {
@@ -285,7 +330,7 @@ const fetchUserStaking = useCallback(async() =>{
         })
       console.log(totalStakingByTheUser)
     
-      for(let i = 0, j=0, k=0 ; i< 6; i++){
+      for(let i = 0, j=0, k=0 ; i< 10; i++){
         // eslint-disable-next-line no-await-in-loop
         const userStakingInfoForEachStake = await stakeContract.getStakeInfo(account, i).then((tx) => {
         tempObject.id = i
