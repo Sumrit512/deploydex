@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import InputField from "components/InputFields/InputFields";
 import toast, {Toaster} from 'react-hot-toast'
+import { Button } from "@pancakeswap/uikit";
 import { ProgressBar } from "react-loader-spinner";
 import axios from 'axios'
 import validator from 'validator';
@@ -188,10 +189,10 @@ const Buy = () => {
   </label>
 
   {/*  eslint-disable-next-line react/button-has-type */}
-  <button onClick={sendDetails}
+  <Button onClick={sendDetails}
   disabled={isDisable}
    style={{
-    'borderRadius': '8px',
+    'borderRadius': '16px',
     'backgroundColor' : isDisable? 'gray' : (hover ? '#7645D980': '#7645D9') ,
     'cursor' : isDisable? 'not-allowed' : (hover? 'pointer' : 'arrow'),
     'border': '1px solid white',
@@ -214,7 +215,7 @@ const Buy = () => {
       />
       
           ) :'Confirm' 
-  }</button>
+  }</Button>
 
             </div>
 

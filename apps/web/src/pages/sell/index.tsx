@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { ProgressBar } from "react-loader-spinner";
+import { Button } from "@pancakeswap/uikit";
 import { Toaster,toast } from "react-hot-toast";
 import { LeftWrapper } from "views/Home/components/Banners/Styled";
 
@@ -206,11 +207,11 @@ const input = {
 
 
   {/*  eslint-disable-next-line react/button-has-type */}
-  <button 
+  <Button 
   onClick={sendDetails}
 disabled={isDisable}
    style={{
-'borderRadius': '8px',
+'borderRadius': '16px',
 'backgroundColor' : isDisable? 'gray': (hover? '#7645D980' : '#7645D9') ,
 'cursor' : isDisable? 'not-allowed' : (hover?  'pointer' : 'arrow') ,
 'border': '1px solid white',
@@ -240,7 +241,7 @@ disabled={isDisable}
   }  
     
   
-  </button>
+  </Button>
 
             </div>
 
