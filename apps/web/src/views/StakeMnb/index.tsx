@@ -1,7 +1,9 @@
 import { Card, Flex, Heading, CardBody, useMatchBreakpoints } from "@pancakeswap/uikit"
 import { useWeb3React } from "@pancakeswap/wagmi"
-import React, { useState, useCallback } from 'react'
 import Page from "components/Layout/Page"
+import React, { useState, useCallback } from 'react'
+import UserSlice from './store/slices/UserSlice'
+
 import StakeCard from "./components/StakeCard"
 import StakePackage from "./components/StakePackage"
 // eslint-disable-next-line import/no-named-as-default
@@ -10,7 +12,7 @@ import { STAKE_PACKAGE } from "./components/type"
 
 
 const StakeMnbView = () => {
-  
+
     const {isDesktop} = useMatchBreakpoints()
     const [stakePackage, setStakePackage] = useState<STAKE_PACKAGE>()
     const showStake = useCallback(() => {

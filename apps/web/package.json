@@ -143,6 +143,7 @@
     "typechain": "^6.1.0",
     "vite-tsconfig-paths": "^4.0.3",
     "vitest": "^0.27.2",
-    "ethers" : "^5.6.8"
+    "ethers" : "^5.6.8",
+    "@reduxjs/toolkit": "^1.9.5"
   }
 }

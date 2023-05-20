@@ -46,7 +46,7 @@ export interface UserState {
   lastUpdateVersionTimestamp?: number
 
   userExpertMode: boolean
-
+  userPackageSelected: string
   // only allow swaps on direct pairs
   userSingleHopOnly: boolean
 
@@ -95,6 +95,7 @@ function pairKey(token0Address: string, token1Address: string) {
 }
 
 export const initialState: UserState = {
+  userPackageSelected: '',
   userExpertMode: false,
   userSingleHopOnly: false,
   userSlippageTolerance: INITIAL_ALLOWED_SLIPPAGE,

@@ -38,9 +38,7 @@ const StakePackage: React.FC<StakePackageInterface> = ({
     const {account} = useWeb3React()
     const checkUserStaking = async () => {
        
-    const goToStaking = () => {
-        router.push('/unstakeMnb')
-    }
+ 
 
     const getStakerInfo = await stakeContract.stakers(account,0).then( (tx) =>
     {
@@ -92,7 +90,13 @@ setStakePackage(packageName)
     const [onPresent2] = useModal(<CustomModal2 title={packageName} />);
  
     const goToStaking = () => {
-        router.push('/unstakeMnb')
+        let id;
+        if( packageName === 'Gold'){
+            router.push('/unstakeMnb/30')
+        }
+        else{
+            router.push('/unstakeMnb/14')
+        }
     }
 
     return(

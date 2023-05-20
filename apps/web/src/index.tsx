@@ -1,6 +1,8 @@
 import { ReactNode, useMemo } from 'react'
 import { useAccount } from 'wagmi'
+import { Provider } from 'react-redux'
 import {Toaster} from 'react-hot-toast'
+import store1 from 'views/StakeMnb/store'
 import { BLOCKED_ADDRESSES } from './config/constants'
 import ListsUpdater from './state/lists/updater'
 import MulticallUpdater from './state/multicall/updater'
@@ -11,12 +13,14 @@ import { chains } from './utils/wagmi'
 export function Updaters() {
   return (
     <>
+
     <Toaster/>
       <ListsUpdater />
       {chains.map((chain) => (
         <TransactionUpdater key={`trxUpdater#${chain.id}`} chainId={chain.id} />
       ))}
       <MulticallUpdater />
+
     </>
   )
 }

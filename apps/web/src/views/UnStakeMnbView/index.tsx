@@ -1,9 +1,16 @@
 import Page from "components/Layout/Page";
 import { Card, CardHeader, Flex, Text, useMatchBreakpoints } from "@pancakeswap/uikit";
+import React from "react";
 import StakingList from "./components/StakingList";
 
 
-const UnStakeMnbView = () => {
+
+interface UnStakeMnbViewProps{
+    id:  string | string[]
+}
+
+const UnStakeMnbView: React.FC<UnStakeMnbViewProps> = ({id}) => {
+
 
 const {isDesktop, isMobile, isTablet} = useMatchBreakpoints()
 // console.log(isDesktop, isMobile, isTablet)
@@ -27,12 +34,13 @@ const {isDesktop, isMobile, isTablet} = useMatchBreakpoints()
                     zIndex: '5',
                     margin: '20px'
                 }}>
-                
-       <StakingList/>
+                 
+ <StakingList packageId={id} />
        </div>
        </Card>
        </Flex>
         </Page>
+    
     
     )
 }
