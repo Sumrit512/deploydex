@@ -22,11 +22,11 @@ const StakeMnbView = () => {
              showStake()
     return (
         <>
-         <Page style={{
+         {/* <Page removePadding style={{
             marginBottom:`${isDesktop? '0px': '40px'}`
-         }}>
+         }}> */}
          
-            <Flex width="100%" justifyContent="center" alignItems="center" flexDirection="column" >
+            <Flex width="100%" mb={80} justifyContent="center" alignItems="center" flexDirection="column" >
                 <Flex width="70%" justifyContent="space-between" marginTop="20px" >
 
                
@@ -73,8 +73,8 @@ const StakeMnbView = () => {
       
               
             </Flex>
-            
-         </Page>
+{/*             
+         </Page> */}
         </>
     )
 }
