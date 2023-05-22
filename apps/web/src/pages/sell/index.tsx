@@ -3,14 +3,16 @@ import { ProgressBar } from "react-loader-spinner";
 import { Button, Flex, Text, Grid, Input } from "@pancakeswap/uikit";
 import { Toaster,toast } from "react-hot-toast";
 import { LeftWrapper } from "views/Home/components/Banners/Styled";
+
 import Page from "views/Page";
+import { useWeb3React } from "@pancakeswap/wagmi";
 
 
 
 const Sell = () => {
 
-
-
+const useWeb3Reac  = useWeb3React()
+const accountConnected = useWeb3Reac.account
     const [isLoading, setIsLoading] = useState(false)
     const [isDisable, setIsDisable] = useState(false)
     const [txHash, setTxHash] = useState('0')
@@ -36,69 +38,75 @@ const input = {
   mailId: "sahjdasj"
 }
     const sendDetails = async() => {
-
-      try{
-        const txHashInput = document.getElementById("txHash") as HTMLInputElement | null;
-        const accountInput = document.getElementById("account") as HTMLInputElement | null;
-       const bankInput = document.getElementById("bank") as HTMLInputElement | null;
-       const ifscInput = document.getElementById("ifsc") as HTMLInputElement | null;
-       const mailIdInput = document.getElementById("mailId") as HTMLInputElement | null;
-        
-       
-        if(
-          txHashInput.value === '' || 
-          accountInput.value === '' ||
-          bankInput.value === '' ||
-          ifscInput.value === '' ||
-          mailIdInput.value === ''
-        ) {
-          toast.error('Please fill all the field')
-        
-        }
-        else{
-          setIsLoading(true)
-          setIsDisable(true)
-          console.log(txHash, account, bank, ifsc)
-          let data = await fetch("https://dexbackend.onrender.com/txDetailsSell", {
-           method: 'POST',
-           headers: {
-            "Content-type" : "application/json"
-           } ,
-           body: JSON.stringify(input)
+      if(!accountConnected){
+        console.log(accountConnected)
+      toast.error('Please Connect to the wallet')
+      } else{
+        try{
+          const txHashInput = document.getElementById("txHash") as HTMLInputElement | null;
+          const accountInput = document.getElementById("account") as HTMLInputElement | null;
+         const bankInput = document.getElementById("bank") as HTMLInputElement | null;
+         const ifscInput = document.getElementById("ifsc") as HTMLInputElement | null;
+         const mailIdInput = document.getElementById("mailId") as HTMLInputElement | null;
+          
+         
+          if(
+            txHashInput.value === '' || 
+            accountInput.value === '' ||
+            bankInput.value === '' ||
+            ifscInput.value === '' ||
+            mailIdInput.value === ''
+          ) {
+            toast.error('Please fill all the field')
+          
+          }
+          else{
+            setIsLoading(true)
+            setIsDisable(true)
+            console.log(txHash, account, bank, ifsc)
+            let data = await fetch("https://dexbackend.onrender.com/txDetailsSell", {
+             method: 'POST',
+             headers: {
+              "Content-type" : "application/json"
+             } ,
+             body: JSON.stringify(input)
+            })
+              data = await data.json()
+              console.log(data)
+    
+            toast.success('Transaction sent!', {
+            duration: 2000,
           })
-            data = await data.json()
-            console.log(data)
-  
-          toast.success('Transaction sent!', {
-          duration: 2000,
-        })
-  
-  
-     setTxHash('')
-     setAccount('')
-     setBank('')
-     setIfsc('')
-     setMailId('')
-  
-    txHashInput.value = ''
-    accountInput.value = ''
-    bankInput.value = ''
-    ifscInput.value = ''
-    mailIdInput.value = ''
-    setIsDisable(false)
-    setIsLoading(false)
-    setHover(false)
+    
+    
+       setTxHash('')
+       setAccount('')
+       setBank('')
+       setIfsc('')
+       setMailId('')
+    
+      txHashInput.value = ''
+      accountInput.value = ''
+      bankInput.value = ''
+      ifscInput.value = ''
+      mailIdInput.value = ''
+      setIsDisable(false)
+      setIsLoading(false)
+      setHover(false)
+          }
+        
+        } catch(e) {
+       console.log(e)
+       toast.error('something went wrong! Please try again', {
+        duration: 2000
+       })
+       setIsDisable(false)
+       setIsLoading(false)
+       setHover(false)
         }
-      
-      } catch(e) {
-     console.log(e)
-     toast.error('something went wrong! Please try again', {
-      duration: 2000
-     })
-     setIsDisable(false)
-     setIsLoading(false)
-     setHover(false)
       }
+
+    
         
 
         // toast('Good Job!', {

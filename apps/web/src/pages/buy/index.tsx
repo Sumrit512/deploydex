@@ -5,10 +5,11 @@ import { Button, Flex, Input, Text, Grid } from "@pancakeswap/uikit";
 import { ProgressBar } from "react-loader-spinner";
 import axios from 'axios'
 import validator from 'validator';
+import { useWeb3React } from "@pancakeswap/wagmi";
 import Page from "components/Layout/Page";
 
 const Buy = () => {
-
+    const {account} = useWeb3React()
     const [isLoading, setIsLoading] = useState(false)
     const [isDisable, setIsDisable] = useState(false)
      const [amount, setAmount] = useState('0')
@@ -27,81 +28,90 @@ const Buy = () => {
   
 
     const sendDetails = async() => {
-      try{
-        const utrInput = document.getElementById("utr") as HTMLInputElement | null
-        const addressInput = document.getElementById("address") as HTMLInputElement | null
-        const amountInput = document.getElementById("amount") as HTMLInputElement | null
-        const mailIdInput = document.getElementById("mailId") as HTMLInputElement | null
-
-        if(
-          utrInput.value === '' ||
-          addressInput.value === '' ||
-          amountInput.value === '' ||
-          mailIdInput.value === ''
-        ) {
-          toast.error('Please fill all the fields')
-          if(validator.isEmail(mailIdInput.value))
-          {
-            toast.success('yes')
-          }
-          else{
-            toast.error('Please enter a valid email')
-          }
-          // if(Number.isFinite(Number(amountInput.value)))
-          // {
-          //   toast.success('yes')
-          // }
-          // else{
-          //   toast.error('Please enter a valid amount')
-          // }
-      //  return
-          
-        }
-        else{
-          setIsLoading(true)
-          setIsDisable(true)
-            console.log(amount, address, utr)
-    
-            const input = {
-              utr,
-              "walletAddress" : address,
-             amount, 
-             mailId
-          }
-           let data = await fetch('https://dexbackend.onrender.com/txDetails', {
-            method: 'POST',
-            headers: {
-              "Content-Type": "application/json",
-              // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: JSON.stringify(input)
-           })
-           data = await data.json()
-           console.log(data)
-            toast.success('Transaction sent!',{
-              duration: 2000
-            })
-            setUtr('')
-            setAddress('')
-            setAmount('')
-            setMailId('')
+      if(!account){
+        toast.error('Please Connect to the Wallet')
+      } else{
+        try{
+          const utrInput = document.getElementById("utr") as HTMLInputElement | null
+          const addressInput = document.getElementById("address") as HTMLInputElement | null
+          const amountInput = document.getElementById("amount") as HTMLInputElement | null
+          const mailIdInput = document.getElementById("mailId") as HTMLInputElement | null
   
-            utrInput.value = ''
-            addressInput.value = ''
-            amountInput.value = ''
-            mailIdInput.value = ''
-            setIsDisable(false)
-            setIsLoading(false)
-            setHover(false)
-        }
+          if(
+            utrInput.value === '' ||
+            addressInput.value === '' ||
+            amountInput.value === '' ||
+            mailIdInput.value === ''
+          ) {
+            toast.error('Please fill all the fields')
+            // if(validator.isEmail(mailIdInput.value))
+            // {
+            //   toast.success('yes')
+            // }
+            // else{
+            //   toast.error('Please enter a valid email')
+            // }
+            // if(Number.isFinite(Number(amountInput.value)))
+            // {
+            //   toast.success('yes')
+            // }
+            // else{
+            //   toast.error('Please enter a valid amount')
+            // }
+         return
+            
+          }
+          
+            if(validator.isEmail(mailIdInput.value)) {
+              setIsLoading(true)
+              setIsDisable(true)
+                console.log(amount, address, utr)
         
-      }catch(e){
-        console.log(e)
-        toast.error("something went wrong! Please try again")
-        setIsDisable(false)
-        setIsLoading(false)
-        setHover(false)
+                const input = {
+                  utr,
+                  "walletAddress" : address,
+                 amount, 
+                 mailId
+              }
+               let data = await fetch('https://dexbackend.onrender.com/txDetails', {
+                method: 'POST',
+                headers: {
+                  "Content-Type": "application/json",
+                  // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: JSON.stringify(input)
+               })
+               data = await data.json()
+               console.log(data)
+                toast.success('Transaction sent!',{
+                  duration: 2000
+                })
+                setUtr('')
+                setAddress('')
+                setAmount('')
+                setMailId('')
+      
+                utrInput.value = ''
+                addressInput.value = ''
+                amountInput.value = ''
+                mailIdInput.value = ''
+                setIsDisable(false)
+                setIsLoading(false)
+                setHover(false)
+            }  else{
+              toast.error('Please enter valid email or amount')
+            }
+         
+          
+        }catch(e){
+          console.log(e)
+          toast.error("something went wrong! Please try again")
+          setIsDisable(false)
+          setIsLoading(false)
+          setHover(false)
+        }
       }
+     
     
 
     }
