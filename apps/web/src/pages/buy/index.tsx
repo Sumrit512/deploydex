@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import InputField from "components/InputFields/InputFields";
 import toast, {Toaster} from 'react-hot-toast'
-import { Button } from "@pancakeswap/uikit";
+import { Button, Flex, Input, Text, Grid } from "@pancakeswap/uikit";
 import { ProgressBar } from "react-loader-spinner";
 import axios from 'axios'
 import validator from 'validator';
+import Page from "components/Layout/Page";
 
 const Buy = () => {
 
@@ -106,99 +107,118 @@ const Buy = () => {
     }
 
     return(
-        
+      <Page>
+    
+    
+    <Flex width="100%" alignItems="center">
         <div style={{
-            'display': 'flex',
-            'flexDirection': 'column',
             'padding': '20px',
             'gap' : '40px',
             'justifyContent' : 'center',
             'alignItems' : 'center',
             'marginBottom': '10%'
         }}>
-            <p> NOTE: To buy MNB tokens, first transfer the INR to the Account no. mentioned below, and after that enter the utr transaction number
+            <Text mb={4}> NOTE: To buy MNB tokens, first transfer the INR to the Account no. mentioned below, and after that enter the utr transaction number
                 and then enter your wallet address and the amount of MNB tokens you want to receive. And then click on Confirm button, after confirming the transaction
                 we will transfer the MNB tokens into your entered Wallet address.
-            </p>
-         
+            </Text>
+         <Flex >
             <div style={{
                 'border': 'black solid 1px', 
                 borderRadius: '16px',
                 'background': 'white',
-                'display': 'flex',
-                'flexDirection' : 'column',
+              width: '100%',
+              margin: '0 auto',
+              maxWidth: '450px',
+              display: 'flex',
+              flexDirection: 'column',
                     'gap': '40px',
                     'padding' : '20px'
             }}>
-      <p ><span><b>Account No. :</b></span> <span> ABC</span></p>
+              <Flex flexDirection="column" justifyContent="space-between" alignItems="center">
+             
+     <Grid gridTemplateRows="1fr 1fr 1fr" gridGap="10px">
+     <Grid gridTemplateColumns="1fr 1fr">
 
-<p><span> <b>IFSC code :</b></span> <span> ABC</span> </p>
+<Text bold mr={10}>Account No. : </Text>
 
-<p> <span><b>Bank Name :</b></span> <span> ABC</span></p>
+<Text>ABC</Text>  
 
-<label htmlFor="utr">UTR no. :
-  <input type="text" id="utr" name="utr"
+
+</Grid>
+<Grid gridTemplateColumns="1fr 1fr">
+
+<Text bold>IFSC code : </Text>
+
+<Text>ABC</Text>  
+
+
+</Grid>
+<Grid gridTemplateColumns="1fr 1fr">
+
+<Text bold>Bank Name : </Text>
+
+<Text>ABC</Text>  
+
+
+</Grid>
+     </Grid>
+
+
+              </Flex>
+        
+<Grid gridTemplateRows="1fr 1fr 1fr 1fr" gridGap="10px" >
+
+<Grid mb={3} gridGap="4px" gridTemplateColumns="80px auto" alignItems="center" justifyContent="">
+
+
+<Text bold >UTR:</Text>
+
+
+<Input  type="text" id="utr" name="utr"
   onChange={(e)=>setUtr(e.target.value)}
   placeholder="Payment Transaction Number"
-     style={{
-      'padding' : '5px',
-        'width': '20vw',
-        'marginLeft' : '10px',
-        'borderRadius' :'8px',
-        'border' : '1px solid gray'
-   }}
+
   />
-  </label>
-  <label htmlFor="address">Address :
-  <input onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address"
+</Grid>
+
+<Grid mb={3} gridTemplateColumns="80px auto" justifyContent="" alignItems="center">
+
+<Text bold mr={3}>Address: </Text>
+  <Input onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address"
   placeholder="To what address should we send MNB to?"
-     style={{
-      'padding' : '5px',
-        'width': '20vw',
-        'marginLeft' : '10px',
-        'borderRadius' :'8px',
-        'border' : '1px solid gray'
-   }}
+ 
   />
-  </label>
-  <label htmlFor="amount" >Amount : 
-    <input type='text' id="amount" name="amount" 
+ 
+</Grid>
+ <Grid mb={3} gridTemplateColumns="80px auto" justifyContent="" alignItems="center" > 
+ <Text bold mr={3}>Amount: </Text>
+    <Input type='text' id="amount" name="amount" 
     onChange={(e) => setAmount(e.target.value)}
     placeholder="How much MNB tokens?"
-    style={{
-      'padding' : '5px',
-         'width': '20vw',
-         'marginLeft' : '10px',
-         'borderRadius' :'8px',
-         'border' : '1px solid gray'
-    }}
+
     />
-  </label>
-  <label htmlFor="mailId" >Email Id : 
-    <input type='email' id="mailId" name="mailId" 
+
+ </Grid>
+<Grid mb={3} gridTemplateColumns="80px auto" justifyContent="" alignItems="center">
+<Text bold mr={3}>Email: </Text>
+    <Input type='email' id="mailId" name="mailId" 
     onChange={(e) => setMailId(e.target.value)}
     placeholder="Email Id"
-    style={{
-      'padding' : '5px',
-         'width': '20vw',
-         'marginLeft' : '10px',
-         'borderRadius' :'8px',
-         'border' : '1px solid gray'
-    }}
+
     />
-  </label>
+ 
+
+</Grid>
+
+</Grid>
+
+
 
   {/*  eslint-disable-next-line react/button-has-type */}
   <Button onClick={sendDetails}
   disabled={isDisable}
-   style={{
-    'borderRadius': '16px',
-    'backgroundColor' : isDisable? 'gray' : (hover ? '#7645D980': '#7645D9') ,
-    'cursor' : isDisable? 'not-allowed' : (hover? 'pointer' : 'arrow'),
-    'border': '1px solid white',
-    'color' : hover? 'black' : 'white',
-   
-  }}
+width="100%"
   onMouseEnter={handleMouseEnter}
   onMouseLeave={handleMouseLeave}
   >{
@@ -219,9 +239,11 @@ const Buy = () => {
 
             </div>
 
-
+            </Flex>
 
         </div>
+        </Flex> 
+        </Page>
     )
 }
 
