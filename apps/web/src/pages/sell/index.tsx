@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import { ProgressBar } from "react-loader-spinner";
-import { Button } from "@pancakeswap/uikit";
+import { Button, Flex, Text, Grid, Input } from "@pancakeswap/uikit";
 import { Toaster,toast } from "react-hot-toast";
 import { LeftWrapper } from "views/Home/components/Banners/Styled";
+import Page from "views/Page";
 
 
 
@@ -35,10 +36,11 @@ const input = {
   mailId: "sahjdasj"
 }
     const sendDetails = async() => {
+
       try{
         const txHashInput = document.getElementById("txHash") as HTMLInputElement | null;
         const accountInput = document.getElementById("account") as HTMLInputElement | null;
-      const bankInput = document.getElementById("bank") as HTMLInputElement | null;
+       const bankInput = document.getElementById("bank") as HTMLInputElement | null;
        const ifscInput = document.getElementById("ifsc") as HTMLInputElement | null;
        const mailIdInput = document.getElementById("mailId") as HTMLInputElement | null;
         
@@ -85,7 +87,7 @@ const input = {
     mailIdInput.value = ''
     setIsDisable(false)
     setIsLoading(false)
-  setHover(false)
+    setHover(false)
         }
       
       } catch(e) {
@@ -107,147 +109,146 @@ const input = {
 
     return(
         
+      <Page>
+        <Flex >
+          
         <div style={{
-            'display': 'flex',
-            'flexDirection': 'column',
+           
             'padding': '20px',
-            'gap' : '40px',
+      
+          
             'justifyContent' : 'center',
             'alignItems' : 'center',
             'marginBottom': '10%'
-
         }}>
-            <p> NOTE: To sell MNB tokens, first transfer the MNB tokens to the Wallet Address mentioned below, and after that enter the transaction hash
+            <Text mb={4}> NOTE: To sell MNB tokens, first transfer the MNB tokens to the Wallet Address mentioned below, and after that enter the transaction hash
                 and then enter your Bank details. And then click on Confirm button, after confirming the transaction
                 we will transfer the INR into your entered Bank account number.
-            </p>
-          
-            <div style={{
+            </Text>
+          <Flex >
+            
+          <div style={{
                 'border': 'black solid 1px', 
-                borderRadius: '16px',
+                'borderRadius': '16px',
                 'background': 'white',
-                'display': 'flex',
-                'flexDirection' : 'column',
-                    'gap': '40px',
+             width: '100%',
+             maxWidth: '450px',
+             margin: '0 auto',
+                  
                     'padding' : '20px'
             }}>
-      <p ><span><b>Wallet Address :</b></span> <span> ABC</span></p>
+<Grid mb={2} gridTemplateRows="1fr 1fr 1fr 1fr 1fr" gridGap="15px">
+  <Grid gridTemplateColumns="auto auto">
+ <Text bold>Wallet Address</Text>
+ <Text bold>ABC</Text>
+  </Grid>
+ 
+<Grid gridTemplateColumns="110px auto" alignItems="center">
+<Text bold>Tx Hash : </Text>
+<Input type='text' id="txHash" name="amount" 
+onChange={(e) => setTxHash(e.target.value)}
+placeholder="Transaction Hash of the Transaction done by you?"
 
-      <label htmlFor="txHash" >Tx Hash : 
-    <input type='text' id="txHash" name="amount" 
-    onChange={(e) => setTxHash(e.target.value)}
-    placeholder="Transaction Hash of the Transaction done by you?"
-    style={{
-        'padding' : '5px',
-         'width': '23vw',
-         'marginLeft' : '10px',
-         'borderRadius' :'8px',
-         'border' : '1px solid gray'
-    }}
-    />
+/>
 
-  </label>
 
-<label htmlFor="account">Account no. :
+</Grid>
 
-  <input type="text" id="account" name="utr"
-  onChange={(e)=>setAccount(e.target.value)}
-  placeholder="Your Account Number"
-     style={{
-        'padding' : '5px',
-        'width': '21vw',
-        'marginLeft' : '10px',
-        'borderRadius' :'8px',
-        'border' : '1px solid gray'
-   }}
-  />
+<Grid gridTemplateColumns="110px auto" alignItems="center"> 
+<Text bold>Account no. :</Text>
 
-  </label>
+<Input type="text" id="account" name="utr"
+onChange={(e)=>setAccount(e.target.value)}
+placeholder="Your Account Number"
+/>
 
-  <label htmlFor="bank">Bank&apos;s Name :
-  <input onChange={(e) => setBank(e.target.value)} type="text" id="bank" name="address"
-  placeholder="Bank's name"
-     style={{
-        'padding' : '5px',
-        'width': '20.5vw',
-        'marginLeft' : '10px',
-        'borderRadius' :'8px',
-        'border' : '1px solid gray'
-   }}
-  />
 
-  </label>
-  <label htmlFor="ifsc">IFSC Code :
-  <input onChange={(e) => setIfsc(e.target.value)} type="text" id="ifsc" name="address"
-  placeholder="IFSC code"
-     style={{
-        'padding' : '5px',
-        'width': '22vw',
-        'marginLeft' : '10px',
-        'borderRadius' :'8px',
-        'border' : '1px solid gray'
-   }}
-  />
+</Grid>
 
-  </label>
-  <label htmlFor="ifsc">Email Id :
-  <input onChange={(e) => setMailId(e.target.value)} type="email" id="mailId" name="mailId"
-  placeholder="Email"
-     style={{
-        'padding' : '5px',
-        'width': '75%',
-        'marginLeft' : '10px',
-        'borderRadius' :'8px',
-        'border' : '1px solid gray'
-   }}
-  />
+<Grid gridTemplateColumns="110px auto" alignItems="center"> 
+<Text bold>Bank&apos;s Name :</Text>
+<Input onChange={(e) => setBank(e.target.value)} type="text" id="bank" name="address"
+placeholder="Bank's name"
 
-  </label>
+/>
+
+
+</Grid>
+<Grid gridTemplateColumns="110px auto" alignItems="center">
+<Text bold>IFSC Code :</Text>
+<Input onChange={(e) => setIfsc(e.target.value)} type="text" id="ifsc" name="address"
+placeholder="IFSC code"
+/>
+
+</Grid>
+
+<Grid gridTemplateColumns="110px auto" alignItems="center">
+<Text bold>Email Id :</Text>
+<Input onChange={(e) => setMailId(e.target.value)} type="email" id="mailId" name="mailId"
+placeholder="Email"
+
+/>
+
+
+</Grid>
 
 
 
-  {/*  eslint-disable-next-line react/button-has-type */}
-  <Button 
-  onClick={sendDetails}
+
+{/*  eslint-disable-next-line react/button-has-type */}
+
+
+</Grid>
+<Button 
+width="100%"
+mt={2}
+onClick={sendDetails}
 disabled={isDisable}
-   style={{
+style={{
 'borderRadius': '16px',
 'backgroundColor' : isDisable? 'gray': (hover? '#7645D980' : '#7645D9') ,
 'cursor' : isDisable? 'not-allowed' : (hover?  'pointer' : 'arrow') ,
 'border': '1px solid white',
 'color' : hover? 'black' : 'white',
 
-  }}
+}}
 
-  onMouseEnter={handleMouseEnter}
+onMouseEnter={handleMouseEnter}
 
-  onMouseLeave={handleMouseLeave}
+onMouseLeave={handleMouseLeave}
 
-  >
-  {
-    isLoading?  (
+>
+{
+isLoading?  (
 
-        <ProgressBar
-          height="38"
-          width="100"
-        //   ariaLabel="progress-bar-loading"
-          wrapperStyle={{  }}
-        //   wrapperClass="progress-bar-wrapper"
-          borderColor = 'black'
-          barColor = 'white'
-        />
-            ) : 'Confirm' 
-   
-  }  
-    
-  
-  </Button>
+  <ProgressBar
+    height="38"
+    width ="100"
+  //   ariaLabel="progress-bar-loading"
+    wrapperStyle={{  }}
+  //   wrapperClass="progress-bar-wrapper"
+    borderColor = 'black'
+    barColor = 'white'
+  />
+      ) : 'Confirm' 
+
+}  
+
+
+</Button>
+     
 
             </div>
+          </Flex>
+        
 
 
 
         </div>
+        </Flex>
+  
+      </Page>
+      
     )
 
 }

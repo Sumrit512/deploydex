@@ -113,7 +113,7 @@ const Buy = () => {
     <Flex width="100%" alignItems="center">
         <div style={{
             'padding': '20px',
-            'gap' : '40px',
+        
             'justifyContent' : 'center',
             'alignItems' : 'center',
             'marginBottom': '10%'
@@ -130,12 +130,11 @@ const Buy = () => {
               width: '100%',
               margin: '0 auto',
               maxWidth: '450px',
-              display: 'flex',
-              flexDirection: 'column',
-                    'gap': '40px',
+            
+                  
                     'padding' : '20px'
             }}>
-              <Flex flexDirection="column" justifyContent="space-between" alignItems="center">
+              <Flex mb={4} flexDirection="column" justifyContent="" alignItems="center">
              
      <Grid gridTemplateRows="1fr 1fr 1fr" gridGap="10px">
      <Grid gridTemplateColumns="1fr 1fr">
@@ -167,9 +166,9 @@ const Buy = () => {
 
               </Flex>
         
-<Grid gridTemplateRows="1fr 1fr 1fr 1fr" gridGap="10px" >
+<Grid mb={2} gridTemplateRows="1fr 1fr 1fr 1fr" gridGap="15px" >
 
-<Grid mb={3} gridGap="4px" gridTemplateColumns="80px auto" alignItems="center" justifyContent="">
+<Grid  gridTemplateColumns="80px auto" alignItems="center" justifyContent="">
 
 
 <Text bold >UTR:</Text>
@@ -182,17 +181,17 @@ const Buy = () => {
   />
 </Grid>
 
-<Grid mb={3} gridTemplateColumns="80px auto" justifyContent="" alignItems="center">
+<Grid gridTemplateColumns="80px auto" justifyContent="" alignItems="center">
 
-<Text bold mr={3}>Address: </Text>
+<Text bold >Address: </Text>
   <Input onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address"
   placeholder="To what address should we send MNB to?"
  
   />
  
 </Grid>
- <Grid mb={3} gridTemplateColumns="80px auto" justifyContent="" alignItems="center" > 
- <Text bold mr={3}>Amount: </Text>
+ <Grid  gridTemplateColumns="80px auto" justifyContent="" alignItems="center" > 
+ <Text bold >Amount: </Text>
     <Input type='text' id="amount" name="amount" 
     onChange={(e) => setAmount(e.target.value)}
     placeholder="How much MNB tokens?"
@@ -200,8 +199,8 @@ const Buy = () => {
     />
 
  </Grid>
-<Grid mb={3} gridTemplateColumns="80px auto" justifyContent="" alignItems="center">
-<Text bold mr={3}>Email: </Text>
+<Grid  gridTemplateColumns="80px auto" justifyContent="" alignItems="center">
+<Text bold >Email: </Text>
     <Input type='email' id="mailId" name="mailId" 
     onChange={(e) => setMailId(e.target.value)}
     placeholder="Email Id"
@@ -219,6 +218,15 @@ const Buy = () => {
   <Button onClick={sendDetails}
   disabled={isDisable}
 width="100%"
+mt={2}
+style={{
+  'borderRadius': '16px',
+  'backgroundColor' : isDisable? 'gray': (hover? '#7645D980' : '#7645D9') ,
+  'cursor' : isDisable? 'not-allowed' : (hover?  'pointer' : 'arrow') ,
+  'border': '1px solid white',
+  'color' : hover? 'black' : 'white',
+  
+  }}
   onMouseEnter={handleMouseEnter}
   onMouseLeave={handleMouseLeave}
   >{
