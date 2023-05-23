@@ -21,7 +21,7 @@ return (
     <>
     <Container flexDirection="column">
         <Text>{title}</Text>
-        <Heading>${pre}{value}</Heading>
+        <Heading>{pre}{value}</Heading>
     </Container>
 
     </>

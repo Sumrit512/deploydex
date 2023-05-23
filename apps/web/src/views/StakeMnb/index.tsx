@@ -40,12 +40,13 @@ const StakeMnbView = () => {
               />
               <StakeCard
               title="TVL"
-              value={10}
+              value={10000}
+              pre="$"
               />
               <StakeCard
               title="Price"
               value={10}
-              pre=""
+              pre="$"
               />
                </Flex>
                <Flex width="70%" justifyContent="space-between"  marginTop="20px" style={{gap:`${isDesktop? '0px' : '10px'}`}} flexDirection={isDesktop? 'row' : 'column'}>

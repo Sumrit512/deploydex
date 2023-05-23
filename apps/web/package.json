@@ -144,6 +144,10 @@
     "vite-tsconfig-paths": "^4.0.3",
     "vitest": "^0.27.2",
     "ethers" : "^5.6.8",
-    "@reduxjs/toolkit": "^1.9.5"
+    "@reduxjs/toolkit": "^1.9.5",
+    "react-lottie": "1.2.3",
+    "lottie-react-web": "2.2.2",
+    "@types/react-lottie" : "1.2.6"
   }
 }
+ 
