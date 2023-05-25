@@ -15,7 +15,7 @@ import { TransactionResponse } from '@ethersproject/providers'
 import { ethers } from 'ethers';
 import { useTokenBalance } from '../hooks/useTokenBalance';
 import {  STAKE_TOKEN_ADDRESS } from '../config/constants/stakeContractAddress';
-import { STAKING_ADDRESS } from '../helpers/config';
+import { FLOPPY_ADDRESS, STAKING_ADDRESS } from '../helpers/config';
 import FloppyContract from '../helpers/FloppyContract';
 import FloppyStakeContract from '../helpers/FloppyStakeContract';
 import { STAKE_PACKAGE } from './type';
@@ -50,8 +50,7 @@ const [approved, setIsApporved] = useState<boolean>(true)
 const [isConfirmed, setisConfirmed] = useState<boolean>(false)
 const [warning, setWarning] = useState<boolean>(false)
 const addTransaction = useTransactionAdder()
-const tokenAddress= "0x499C627E6741331f83681D49eBB2B363f923f98a"
-const dummyTokenAddress = "0x499C627E6741331f83681D49eBB2B363f923f98a"
+const dummyTokenAddress = FLOPPY_ADDRESS
 const tokenContract = useContract(dummyTokenAddress, tokenAbi, true)
 
 const [balance, setBalance] = useState<number>(0)
@@ -66,7 +65,7 @@ const spender = STAKING_ADDRESS;
 const token1 = useTokenBalance()
 const [isConnected, setIsConnected] = useState(false)
 const [userStakedBalance, setUserStakedBalance] = useState<number>(0)
-const pendingApproval = useHasPendingApproval(tokenAddress, spender)
+const pendingApproval = useHasPendingApproval(FLOPPY_ADDRESS, spender)
 const [twoWeekPoolRemain, setTwoWeekPoolRemain] = useState('0')
 const [oneMonthPoolRemain, setOneMonthPoolRemain] = useState('0')
 // const approveTrans = () => {
@@ -111,11 +110,20 @@ const [oneMonthPoolRemain, setOneMonthPoolRemain] = useState('0')
 // }
 
 const trial = async ()=> {
-  const b = await tokenContract.balanceOf(account).then((tx) => {
-      console.log(ethers.utils.formatEther(tx._hex))
+  // const b = await tokenContract.balanceOf(account).then((tx) => {
+  //     console.log(ethers.utils.formatEther(tx._hex))
+  // }).catch((e) => {
+  //   console.log(e)
+  // })
+
+  const estimatedGas = await stakeContract.estimateGas.unstakeToken(0).then((tx) =>{
+console.log(ethers.utils.formatUnits(tx._hex, '18'))
   }).catch((e) => {
-    console.log(e)
-  })
+    // general fallback for tokens who restrict approval amounts
+console.log(e)
+    
+    })
+  
 }
 
 useEffect(() => {
@@ -534,7 +542,10 @@ toast.success('Token Staked', {
              { 
               !isTokenApproved &&
 
-                 <Button width="100%" disabled={approved} onClick={async () => approveTokenOriginal()} variant="subtle" marginTop="20px" >
+                 <Button width="100%" disabled={approved} onClick={async () => 
+                 approveTokenOriginal()
+                // trial()
+                 } variant="subtle" marginTop="20px" >
                           
                           {
 isLoading? (

@@ -146,51 +146,51 @@ const waitForMe = async (ms) => {
 const unstakeToken = async(id : string) => {
     setDisableStakeButton(true)
     // onPresent1()
-const totttt = await stakeContract.getStakedToken().then((tx) => {
-console.log(ethers.utils.formatUnits(tx._hex, '0'))
-})
+// const totttt = await stakeContract.getStakedToken().then((tx) => {
+// console.log(ethers.utils.formatUnits(tx._hex, '0'))
+// })
 
 
-//     const estimatedGas = await stakeContract.estimateGas.unstakeToken(Number(id)).catch(() => {
-//         // general fallback for tokens who restrict approval amounts
+    const estimatedGas = await stakeContract.estimateGas.unstakeToken(Number(id)).catch(() => {
+        // general fallback for tokens who restrict approval amounts
 
-//         return stakeContract.estimateGas.unstakeToken(Number(id)).catch(() => {
-//           console.error('estimate gas failure')
-//           toast.error(`${t('Unexpected error. Could not estimate gas for the approve.')}`)
-//         //   toastError(t('Error'), t('Unexpected error. Could not estimate gas for the approve.'))
-//           return null
-//         })
-//       })
+        return stakeContract.estimateGas.unstakeToken(Number(id)).catch(() => {
+          console.error('estimate gas failure')
+          toast.error(`${t('Unexpected error. Could not estimate gas for the approve.')}`)
+        //   toastError(t('Error'), t('Unexpected error. Could not estimate gas for the approve.'))
+          return null
+        })
+      })
 
-// callWithGasPrice(
-//     stakeContract,
-//     'unstakeToken',
-//     [Number(id)],
-//     {
-//       gasLimit: calculateGasMargin(estimatedGas),
-//     },
-//   )
-//     .then( async (response: TransactionResponse) => {
-//         console.log(response)
-//         await waitForMe(10000)
-//         toast.success('Token Unstaked')
-//     //   addTransaction(response, {
-//     //     summary: `Approve MNB`,
-//     //     translatableSummary: { text: 'Approve MNB' },
-//     //     approval: { tokenAddress, spender  },
-//     //     type: 'approve',
-//     //   })
-//     })
-//     .catch((error: any) => {
-//       setDisableStakeButton(false)
-//       console.error('Failed to approve token', error)
-//       toast.error(`${error.message}`)
-//       if (error?.code !== 4001) {
-//         toast.error(`${error.message}`)
-//         // toastError(t('Error'), error.message)
-//       }
-//       throw error
-//     })
+callWithGasPrice(
+    stakeContract,
+    'unstakeToken',
+    [Number(id)],
+    {
+      gasLimit: calculateGasMargin(estimatedGas),
+    },
+  )
+    .then( async (response: TransactionResponse) => {
+        console.log(response)
+        await waitForMe(10000)
+        toast.success('Token Unstaked')
+    //   addTransaction(response, {
+    //     summary: `Approve MNB`,
+    //     translatableSummary: { text: 'Approve MNB' },
+    //     approval: { tokenAddress, spender  },
+    //     type: 'approve',
+    //   })
+    })
+    .catch((error: any) => {
+      setDisableStakeButton(false)
+      console.error('Failed to approve token', error)
+      toast.error(`${error.message}`)
+      if (error?.code !== 4001) {
+        toast.error(`${error.message}`)
+        // toastError(t('Error'), error.message)
+      }
+      throw error
+    })
 // console.log(unstakeUsersToken)
 
 
