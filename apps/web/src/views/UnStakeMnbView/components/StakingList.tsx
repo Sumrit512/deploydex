@@ -5,7 +5,6 @@ import { TransactionResponse } from '@ethersproject/providers'
 import { calculateGasMargin } from 'utils';
 import CardHeading from "views/Farms/components/FarmCard/CardHeading";
 import React, { useCallback, useEffect, useState } from "react";
-import { STAKE_CONTRACT_ADDRESS } from "views/StakeMnb/config/constants/stakeContractAddress";
 import abi from 'config/abi/stakingContractDummy.json'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice';
 import styled from "styled-components";
@@ -13,6 +12,7 @@ import { ethers } from "ethers";
 import { es } from "date-fns/locale";
 import { useTranslation } from '@pancakeswap/localization'
 import { useWeb3React } from "@pancakeswap/wagmi";
+import { STAKING_ADDRESS} from '../../StakeMnb/helpers/config'
 import WalletAnimation from "./WalletAnimation";
 import Timer from "./Timer";
 
@@ -85,7 +85,7 @@ const StakingList: React.FC<StakingListProps> = ({
     
     
       const {t} = useTranslation()
-    const stakeContractAddress = STAKE_CONTRACT_ADDRESS;
+    const stakeContractAddress = STAKING_ADDRESS;
 const stakeContract = useContract(stakeContractAddress, abi, true )
 const {account}  = useWeb3React()
 const userStakingDetailsObject = {}
@@ -146,46 +146,51 @@ const waitForMe = async (ms) => {
 const unstakeToken = async(id : string) => {
     setDisableStakeButton(true)
     // onPresent1()
-    const estimatedGas = await stakeContract.estimateGas.unstakeToken(Number(id)).catch(() => {
-        // general fallback for tokens who restrict approval amounts
+const totttt = await stakeContract.getStakedToken().then((tx) => {
+console.log(ethers.utils.formatUnits(tx._hex, '0'))
+})
 
-        return stakeContract.estimateGas.unstakeToken(Number(id)).catch(() => {
-          console.error('estimate gas failure')
-          toast.error(`${t('Unexpected error. Could not estimate gas for the approve.')}`)
-        //   toastError(t('Error'), t('Unexpected error. Could not estimate gas for the approve.'))
-          return null
-        })
-      })
 
-callWithGasPrice(
-    stakeContract,
-    'unstakeToken',
-    [Number(id)],
-    {
-      gasLimit: calculateGasMargin(estimatedGas),
-    },
-  )
-    .then( async (response: TransactionResponse) => {
-        console.log(response)
-        await waitForMe(10000)
-        toast.success('Token Unstaked')
-    //   addTransaction(response, {
-    //     summary: `Approve MNB`,
-    //     translatableSummary: { text: 'Approve MNB' },
-    //     approval: { tokenAddress, spender  },
-    //     type: 'approve',
-    //   })
-    })
-    .catch((error: any) => {
-      setDisableStakeButton(false)
-      console.error('Failed to approve token', error)
-      toast.error(`${error.message}`)
-      if (error?.code !== 4001) {
-        toast.error(`${error.message}`)
-        // toastError(t('Error'), error.message)
-      }
-      throw error
-    })
+//     const estimatedGas = await stakeContract.estimateGas.unstakeToken(Number(id)).catch(() => {
+//         // general fallback for tokens who restrict approval amounts
+
+//         return stakeContract.estimateGas.unstakeToken(Number(id)).catch(() => {
+//           console.error('estimate gas failure')
+//           toast.error(`${t('Unexpected error. Could not estimate gas for the approve.')}`)
+//         //   toastError(t('Error'), t('Unexpected error. Could not estimate gas for the approve.'))
+//           return null
+//         })
+//       })
+
+// callWithGasPrice(
+//     stakeContract,
+//     'unstakeToken',
+//     [Number(id)],
+//     {
+//       gasLimit: calculateGasMargin(estimatedGas),
+//     },
+//   )
+//     .then( async (response: TransactionResponse) => {
+//         console.log(response)
+//         await waitForMe(10000)
+//         toast.success('Token Unstaked')
+//     //   addTransaction(response, {
+//     //     summary: `Approve MNB`,
+//     //     translatableSummary: { text: 'Approve MNB' },
+//     //     approval: { tokenAddress, spender  },
+//     //     type: 'approve',
+//     //   })
+//     })
+//     .catch((error: any) => {
+//       setDisableStakeButton(false)
+//       console.error('Failed to approve token', error)
+//       toast.error(`${error.message}`)
+//       if (error?.code !== 4001) {
+//         toast.error(`${error.message}`)
+//         // toastError(t('Error'), error.message)
+//       }
+//       throw error
+//     })
 // console.log(unstakeUsersToken)
 
 

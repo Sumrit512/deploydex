@@ -3,6 +3,7 @@ import { useWeb3LibraryContext, useWeb3React } from '@pancakeswap/wagmi';
 import React, { useEffect, useState } from 'react'
 import { useTransactionAdder, useHasPendingApproval } from 'state/transactions/hooks';
 import { calculateGasMargin } from 'utils';
+import tokenAbi from 'config/abi/floppy.json'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice';
 import { Vortex } from 'react-loader-spinner';
 import { useTranslation } from '@pancakeswap/localization'
@@ -13,7 +14,8 @@ import { useContract, useTokenContract } from 'hooks/useContract';
 import { TransactionResponse } from '@ethersproject/providers'
 import { ethers } from 'ethers';
 import { useTokenBalance } from '../hooks/useTokenBalance';
-import { STAKE_CONTRACT_ADDRESS, STAKE_TOKEN_ADDRESS } from '../config/constants/stakeContractAddress';
+import {  STAKE_TOKEN_ADDRESS } from '../config/constants/stakeContractAddress';
+import { STAKING_ADDRESS } from '../helpers/config';
 import FloppyContract from '../helpers/FloppyContract';
 import FloppyStakeContract from '../helpers/FloppyStakeContract';
 import { STAKE_PACKAGE } from './type';
@@ -48,22 +50,25 @@ const [approved, setIsApporved] = useState<boolean>(true)
 const [isConfirmed, setisConfirmed] = useState<boolean>(false)
 const [warning, setWarning] = useState<boolean>(false)
 const addTransaction = useTransactionAdder()
-const tokenAddress= "0xa00a26A0873542d459721A0a5Ee18D2791D891AA"
-const dummyTokenAddress = STAKE_TOKEN_ADDRESS
-const tokenContract = useTokenContract(dummyTokenAddress, true)
+const tokenAddress= "0x499C627E6741331f83681D49eBB2B363f923f98a"
+const dummyTokenAddress = "0x499C627E6741331f83681D49eBB2B363f923f98a"
+const tokenContract = useContract(dummyTokenAddress, tokenAbi, true)
 
 const [balance, setBalance] = useState<number>(0)
 const [isTokenApproved, setIsTokenApproved] = useState(false)
 const [isTokenStaked, setIsTokenStaked] = useState(true)
 const { callWithGasPrice } = useCallWithGasPrice()
-const stakeContractAddress = STAKE_CONTRACT_ADDRESS;
+const stakeContractAddress = STAKING_ADDRESS;
 const stakeContract = useContract(stakeContractAddress, abi, true) 
 const {t} = useTranslation()
 const { toastError } = useToast()
-const spender = STAKE_CONTRACT_ADDRESS;
+const spender = STAKING_ADDRESS;
 const token1 = useTokenBalance()
+const [isConnected, setIsConnected] = useState(false)
 const [userStakedBalance, setUserStakedBalance] = useState<number>(0)
 const pendingApproval = useHasPendingApproval(tokenAddress, spender)
+const [twoWeekPoolRemain, setTwoWeekPoolRemain] = useState('0')
+const [oneMonthPoolRemain, setOneMonthPoolRemain] = useState('0')
 // const approveTrans = () => {
 //     const estimatedGas = await tokenContract.estimateGas.approve(spender, MaxUint256).catch(() => {
 //         // general fallback for tokens who restrict approval amounts
@@ -105,14 +110,50 @@ const pendingApproval = useHasPendingApproval(tokenAddress, spender)
   
 // }
 
+const trial = async ()=> {
+  const b = await tokenContract.balanceOf(account).then((tx) => {
+      console.log(ethers.utils.formatEther(tx._hex))
+  }).catch((e) => {
+    console.log(e)
+  })
+}
+
 useEffect(() => {
+  trial()
+  console.log('token')
+console.log(tokenContract)
+if(account) {
+  setIsConnected(true)
+}
     const updateBalance = async () => {
-        const userTokenBalance: any = await tokenContract.balanceOf(account)
+    const twoWeekPoolRemainCall = await stakeContract.twoWeekPoolRemain().then((tx) => {
+      // console.log(tx)
+      setTwoWeekPoolRemain(Number(ethers.utils.formatUnits(tx._hex, '18')).toFixed(0))
+    }).catch((e) => {
+      console.log(e)
+    })
+    const oneMonthPoolRemainCall = await stakeContract.oneMonthPoolRemain().then((tx) => {
+      // console.log(tx)
+      setOneMonthPoolRemain(Number(ethers.utils.formatUnits(tx._hex, '18')).toFixed(0))
+    }).catch((e) => {
+      console.log(e)
+    })
+        const userTokenBalance: any = await tokenContract.balanceOf(account).then((tx) => {
+         console.log(tx)
+         setBalance(Number(Number(ethers.utils.formatEther(tx._hex)).toFixed(0)))
+         return tx; 
+        }).catch((e) => {
+          console.log(e)
+        })
         // console.log(ethers.utils.formatEther(userTokenBalance._hex))
-        setBalance(Number(Number(ethers.utils.formatEther(userTokenBalance._hex)).toFixed(0)))
-        const userStakedTokenBalance: any = await stakeContract.totalStakeByAddress(account)
+        
+        const userStakedTokenBalance: any = await stakeContract.totalStakeByAddress(account).then((tx) => {
+          setUserStakedBalance(Number(Number(ethers.utils.formatEther(tx)).toFixed(0)))
+        }).catch((e) => {
+          console.log(e)
+        })
        
-        setUserStakedBalance(Number(Number(ethers.utils.formatEther(userStakedTokenBalance)).toFixed(0)))
+        
         
     }
   updateBalance()
@@ -126,11 +167,16 @@ if(Number(value) !== maxTokenCanBeStaked){
 toast.error('Staked token amount must be 2000', {duration: 2000})
 setIsLoading(false)
 } else{
-
+  let formattedAllowance;
     
-    const allowance = await tokenContract.allowance(account, stakeContractAddress)
-    const formattedAllowance = Number(Number(ethers.utils.formatEther(allowance._hex)).toFixed(0))
-console.log(formattedAllowance)
+    const allowance = await tokenContract.allowance(account, stakeContractAddress).then((tx) => {
+      formattedAllowance = Number(Number(ethers.utils.formatEther(tx._hex)).toFixed(0))
+      return tx
+    }).catch((e) =>{
+      console.log(e)
+    })
+ 
+// console.log(formattedAllowance)
          if(formattedAllowance >= Number(value)){
             toast.success('Token Already Approved', {
                 duration: 2000
@@ -152,7 +198,7 @@ console.log(formattedAllowance)
                   setIsLoading(false)
                 })
               })
-              console.log( ethers.utils.formatEther(estimatedGas._hex))
+              // console.log( ethers.utils.formatEther(estimatedGas._hex))
     
               
              callWithGasPrice(
@@ -164,7 +210,7 @@ console.log(formattedAllowance)
                 },
               )
                 .then(async (response: TransactionResponse) => {
-                    console.log(response)
+                    // console.log(response)
                   
                 //   addTransaction(response, {
                 //     summary: `Approve MNB`,
@@ -221,7 +267,7 @@ console.log(formattedAllowance)
 
 const confirmTokenStakedummy = async() => {
     setIsLoading(true)
-    console.log("it's here")
+    // console.log("it's here")
 
     setisConfirmed(true)
 
@@ -233,7 +279,7 @@ const confirmTokenStakedummy = async() => {
     } else{
 
         const checkAllowance = await tokenContract.allowance(account, stakeContractAddress)
-        console.log( Number(Number(ethers.utils.formatEther(checkAllowance._hex)).toFixed(0)))
+        // console.log( Number(Number(ethers.utils.formatEther(checkAllowance._hex)).toFixed(0)))
         const formattedAllowance = Number(Number(ethers.utils.formatEther(checkAllowance._hex)).toFixed(0))
         if(formattedAllowance < maxTokenCanBeStaked){
             toast.error(`Approved token quantity is less than ${maxTokenCanBeStaked}`, {
@@ -260,7 +306,7 @@ const confirmTokenStakedummy = async() => {
         
         
            
-           console.log(getStakeoneMonthStakeGas)
+          //  console.log(getStakeoneMonthStakeGas)
         
         
            
@@ -274,7 +320,7 @@ const confirmTokenStakedummy = async() => {
             },
           )
             .then(async (response: any) => {
-                 console.log(response)
+                //  console.log(response)
               
                 await waitForMe(5000)
             
@@ -308,7 +354,7 @@ const confirmTokenStakedummy = async() => {
             })
         
         
-           console.log(txResult)
+          //  console.log(txResult)
         }
 
     }
@@ -318,7 +364,7 @@ const confirmTokenStakedummy = async() => {
 }
 const confirmTwoWeekTokenStakedummy = async() => {
     setIsLoading(true)
-    console.log("it's here")
+    // console.log("it's here")
 
     setisConfirmed(true)
 
@@ -330,7 +376,7 @@ const confirmTwoWeekTokenStakedummy = async() => {
     } else{
 
         const checkAllowance = await tokenContract.allowance(account, stakeContractAddress)
-        console.log( Number(Number(ethers.utils.formatEther(checkAllowance._hex)).toFixed(0)))
+        // console.log( Number(Number(ethers.utils.formatEther(checkAllowance._hex)).toFixed(0)))
         const formattedAllowance = Number(Number(ethers.utils.formatEther(checkAllowance._hex)).toFixed(0))
         if(formattedAllowance < maxTokenCanBeStaked){
             toast.error(`Approved token quantity is less than ${maxTokenCanBeStaked}`, {
@@ -357,7 +403,7 @@ const confirmTwoWeekTokenStakedummy = async() => {
         
         
            
-           console.log(getStaketwoWeekStakeGas)
+          //  console.log(getStaketwoWeekStakeGas)
         
         
            
@@ -371,7 +417,7 @@ const confirmTwoWeekTokenStakedummy = async() => {
             },
           )
             .then(async (response: any) => {
-                 console.log(response)
+                //  console.log(response)
                  toast.success("Token Staked", {
                     duration: 2000
                 })
@@ -403,7 +449,7 @@ setIsLoading(false)
             })
             
         
-           console.log(txResult)
+          //  console.log(txResult)
         }
 
     }
@@ -414,7 +460,7 @@ setIsLoading(false)
 
 const approveToken = async() => {
   
-    console.log('token approve')
+    // console.log('token approve')
     setIsTokenApproved(true)
     toast.success('Token Approved', {
         duration: 1500
@@ -422,20 +468,20 @@ const approveToken = async() => {
     setIsTokenStaked(false)
 
 }
-console.log({pSelected, account})
-const handleStake = () => {
+// console.log({pSelected, account})
+// const handleStake = () => {
 
 
-if(account) {
-console.log(account)
-} else{
-console.log('hi')
-}
-}
+// if(account) {
+// console.log(account)
+// } else{
+// console.log('hi')
+// }
+// }
 
 
 const stakeToken = async () => {
-console.log('token staked')
+// console.log('token staked')
 setisConfirmed(true)
 toast.success('Token Staked', {
     duration: 1500
@@ -448,7 +494,7 @@ toast.success('Token Staked', {
         <>
           <Heading> <Flex justifyContent="flex-end" mt={2} flexDirection="column" alignItems="flex-start" marginBottom="20px" >
                 <Flex justifyContent="flex-end" flexDirection="column" alignItems="flex-start" marginBottom="5px">
-                <Text pb="2px" bold>Available Pool Limit : &emsp; ${availableAmount}</Text>
+                <Text pb="2px" bold>Available Pool Limit : &emsp; {pSelected === 'Gold' ? (oneMonthPoolRemain) : (twoWeekPoolRemain)}</Text>
                 <Text pb="2px" bold>Maximum Stake Token :  &emsp; {maxTokenCanBeStaked} </Text>
                 <Text pb="2px" bold>MNB token Balance : &emsp; {balance}    </Text>
                 <Text pb="2px" bold>MNB token Staked :  &emsp; {userStakedBalance} </Text>

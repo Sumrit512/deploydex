@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Flex, Heading, Text } from '@pancakeswap/uikit';
 
+
 const Container = styled(Flex)`
 
 `
@@ -17,6 +18,9 @@ const StakeCard: React.FC<StakeCardProps> = ({
     value,
     pre
 }) =>{
+
+
+
 return (
     <>
     <Container flexDirection="column">

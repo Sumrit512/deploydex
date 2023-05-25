@@ -5,7 +5,7 @@ import abi from 'config/abi/stakingContractDummy.json'
 import styled from "styled-components";
 import { ethers } from "ethers";
 import { useWeb3React } from "@pancakeswap/wagmi";
-import { STAKE_CONTRACT_ADDRESS } from "../config/constants/stakeContractAddress";
+import { STAKING_ADDRESS } from "../helpers/config";
 
 interface StakingListProps{
     pSelected?: string;
@@ -29,7 +29,7 @@ const StakingList: React.FC<StakingListProps> = ({
     pSelected
 }) => {
 
-    const stakeContractAddress = STAKE_CONTRACT_ADDRESS;
+    const stakeContractAddress = STAKING_ADDRESS;
 const stakeContract = useContract(stakeContractAddress, abi, true )
 const {account}  = useWeb3React()
 const userStakingDetailsObject = {}
