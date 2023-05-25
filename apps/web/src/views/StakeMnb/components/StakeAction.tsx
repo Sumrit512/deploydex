@@ -116,7 +116,8 @@ const trial = async ()=> {
   //   console.log(e)
   // })
 
-  const estimatedGas = await stakeContract.estimateGas.unstakeToken(0).then((tx) =>{
+ const allowance = await tokenContract.balanceOf(account).then((tx) =>{
+  console.log('allowance')
 console.log(ethers.utils.formatUnits(tx._hex, '18'))
   }).catch((e) => {
     // general fallback for tokens who restrict approval amounts
@@ -127,7 +128,7 @@ console.log(e)
 }
 
 useEffect(() => {
-  trial()
+
   console.log('token')
 console.log(tokenContract)
 if(account) {
