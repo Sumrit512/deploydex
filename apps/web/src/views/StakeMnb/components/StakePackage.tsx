@@ -10,7 +10,7 @@ import StakeAction from "./StakeAction";
 import { STAKE_PACKAGE } from "./type"
 import UnStakeAction from "./UnStakeAction";
 
-import { STAKING_ADDRESS } from "../helpers/config";
+import { FLOPPY_ADDRESS, STAKING_ADDRESS } from "../helpers/config";
 
 
 
@@ -39,7 +39,7 @@ const StakePackage: React.FC<StakePackageInterface> = ({
     const [isStaker, setIsStaker] = useState<boolean>(false)
     const stakingContractAddress = STAKING_ADDRESS
     const stakeContract = useContract(stakingContractAddress,abi, true )
-    const dummyTokenAddress = '0x499C627E6741331f83681D49eBB2B363f923f98a'
+    const dummyTokenAddress = FLOPPY_ADDRESS
     const tokenContract = useContract(dummyTokenAddress, tokenAbi, true)
     const {account} = useWeb3React()
     const checkUserStaking = async () => {
@@ -175,7 +175,7 @@ else{
                             <Button width="100%" onClick={
                                () => {
                                  onPresent1()
-                                trial()
+                                // trial()
                             }
                             }>{isStaker?'STAKE MORE': 'STAKE NOW'}</Button>
                          {  isStaker &&  <Button width="100%" mt={2} onClick={goToStaking}>VIEW MY STAKINGS</Button>}

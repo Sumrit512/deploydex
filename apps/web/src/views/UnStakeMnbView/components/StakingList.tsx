@@ -123,7 +123,9 @@ const CustomModal: React.FC<React.PropsWithChildren<ModalProps>> = ({ title, onD
     <Modal title={title} style={{
     
     }} onDismiss={onDismiss} {...props}>
-    <div >
+    <div style={{
+        width: '300px'
+    }} >
     <WalletAnimation/>
     </div>
             
@@ -132,7 +134,9 @@ const CustomModal: React.FC<React.PropsWithChildren<ModalProps>> = ({ title, onD
 
   const [onPresent1] = useModal(<CustomModal title="Unstaking" />);
 
-
+const trialAnimate = () => {
+onPresent1()
+}
 
 
 const waitForMe = async (ms) => {
@@ -511,6 +515,7 @@ useEffect(() => {
                 currentTimestamp> Number(data.duration)? 'Claim': (<Timer targetTimestamp={Number(data.duration)}/>)
              }
                         </Button>
+                        <Button onClick={() => trialAnimate()}>Animate</Button>
                             </Flex>
                             </Flex>
                           

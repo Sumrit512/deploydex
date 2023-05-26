@@ -1,4 +1,4 @@
-import { Card, Flex, CardBody, Heading, Text, CardHeader, Button, Input, useToast } from '@pancakeswap/uikit'
+import { Card, Flex, CardBody, Heading, Text, CardHeader, Button, Input, useToast, Grid } from '@pancakeswap/uikit'
 import { useWeb3LibraryContext, useWeb3React } from '@pancakeswap/wagmi';
 import React, { useEffect, useState } from 'react'
 import { useTransactionAdder, useHasPendingApproval } from 'state/transactions/hooks';
@@ -502,11 +502,30 @@ toast.success('Token Staked', {
           
         <>
           <Heading> <Flex justifyContent="flex-end" mt={2} flexDirection="column" alignItems="flex-start" marginBottom="20px" >
+                
                 <Flex justifyContent="flex-end" flexDirection="column" alignItems="flex-start" marginBottom="5px">
-                <Text pb="2px" bold>Available Pool Limit : &emsp; {pSelected === 'Gold' ? (oneMonthPoolRemain) : (twoWeekPoolRemain)}</Text>
-                <Text pb="2px" bold>Maximum Stake Token :  &emsp; {maxTokenCanBeStaked} </Text>
-                <Text pb="2px" bold>MNB token Balance : &emsp; {balance}    </Text>
-                <Text pb="2px" bold>MNB token Staked :  &emsp; {userStakedBalance} </Text>
+                <Grid gridTemplateRows="1fr 1fr 1fr 1fr">
+                  <Grid gridTemplateColumns="1fr 0fr" gridGap="30px">
+                  <Text pb="2px" bold>Available Pool Limit :</Text>
+                  <Text> {pSelected === 'Gold' ? (oneMonthPoolRemain) : (twoWeekPoolRemain)}</Text>
+                  </Grid>
+                  <Grid gridTemplateColumns="1fr 0fr" gridGap="30px">
+                  <Text pb="2px" bold>Maximum Stake Token :  </Text>
+                  <Text> {maxTokenCanBeStaked}</Text>
+                  </Grid>
+                  <Grid gridTemplateColumns="1fr 0fr" gridGap="30px">
+
+                  <Text pb="2px" bold>MNB token Balance :    </Text>
+                  <Text> {balance} </Text>
+                  </Grid>
+                  <Grid gridTemplateColumns="1fr 0fr" gridGap="30px">
+                  <Text pb="2px" bold>MNB token Staked :</Text>
+                  <Text>{userStakedBalance}</Text>
+                  </Grid>
+               
+
+            
+                </Grid>
                 </Flex>
                 
             
