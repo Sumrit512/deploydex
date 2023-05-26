@@ -515,7 +515,7 @@ useEffect(() => {
                 currentTimestamp> Number(data.duration)? 'Claim': (<Timer targetTimestamp={Number(data.duration)}/>)
              }
                         </Button>
-                        <Button onClick={() => trialAnimate()}>Animate</Button>
+                        {/* <Button onClick={() => trialAnimate()}>Animate</Button> */}
                             </Flex>
                             </Flex>
                           
