@@ -2,6 +2,7 @@ import { Flex, useMatchBreakpoints } from "@pancakeswap/uikit"
 import styled from "styled-components"
 import {AiFillGithub} from "react-icons/ai"
 import {BsDiscord, BsTelegram, BsTwitter} from 'react-icons/bs'
+import { useRouter } from "next/router"
 
 const Footer = () => {
     const {isMobile} = useMatchBreakpoints()
@@ -29,6 +30,11 @@ text-align: center;
     cursor: pointer;
 }
 `
+const router = useRouter()
+
+const goTo = () => {
+    router.push('/about')
+}
 
 const socialHandles = () => {
     return(
@@ -60,12 +66,15 @@ const socialHandles = () => {
     return (
         <Wrapper>
             <MenuContainer >
-          <Flex flexDirection={isMobile? 'column' : 'row'} justifyContent="space-between" alignItems="center"> 
-            <InnerContainer>
+          <Flex flexDirection={isMobile? 'column' : 'row'} justifyContent="space-between" alignItems="flex-start"> 
+            <InnerContainer onClick={goTo}>
          About 
             </InnerContainer>
             <InnerContainer>
             Contact Us
+            </InnerContainer>
+            <InnerContainer>
+            Customer Support
             </InnerContainer>
             {
             isMobile ? 
