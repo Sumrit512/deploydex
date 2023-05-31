@@ -152,7 +152,8 @@
     "react-lottie": "1.2.3",
     "lottie-react-web": "2.2.2",
     "@types/react-lottie" : "1.2.6",
-    "react-icons" : "4.9.0"
+    "react-icons" : "4.9.0",
+    "react-alice-carousel" : "2.7.1"
   }
 }
  

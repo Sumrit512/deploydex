@@ -9,6 +9,7 @@ import validator from 'validator';
 import { useWeb3React } from "@pancakeswap/wagmi";
 import Page from "components/Layout/Page";
 import WalletAnimation from "views/UnStakeMnbView/components/WalletAnimation";
+import styles from "../../style/Buy.module.css";
 
 const Buy = () => {
     const {account} = useWeb3React()
@@ -124,7 +125,7 @@ const Buy = () => {
     
     
     <Flex width="100%" alignItems="center" flexDirection="column">
-        <div style={{
+        <div className={styles.changebg} style={{
             'padding': '20px',
         
             'justifyContent' : 'center',
