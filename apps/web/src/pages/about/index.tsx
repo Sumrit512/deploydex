@@ -1,4 +1,6 @@
+import Footer from 'components/Footer'
 import React from 'react'
+import Page from 'views/Page'
 
 const About = () => {
 
@@ -27,14 +29,8 @@ const About = () => {
     //         }
 
     // </style>
-        <div style={{ 'maxWidth': '800px',
-                   'margin': '0 auto',
-                  'marginTop': '50px',
-                     'fontFamily': "'Kanit', sans-serif",
-                     'padding': '20px',
-                      'paddingBottom' : '50px'
-            
-        }}>
+    <div>
+        <Page >
         <h3 style={{
              'color': '#7d54ff',
                  'fontSize': '22px',
@@ -126,6 +122,9 @@ const About = () => {
             Fees for liquidity providers are proportional to their committed capital.
             It should be noted that using web interfaces to swap via Uniexchange may introduce additional permission structures and result in different execution behavior than using the protocol directly.
         </p>
+     
+    </Page>
+    <Footer/>
     </div>
     )
 

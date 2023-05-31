@@ -103,7 +103,8 @@
     "zod": "^3.20.2",
     "react-lottie": "1.2.3",
     "lottie-react-web": "2.2.2",
-    "@types/react-lottie" : "1.2.6"
+    "@types/react-lottie" : "1.2.6",
+    "react-icons" : "4.9.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "13.1.2",
@@ -150,7 +151,8 @@
     "@reduxjs/toolkit": "^1.9.5",
     "react-lottie": "1.2.3",
     "lottie-react-web": "2.2.2",
-    "@types/react-lottie" : "1.2.6"
+    "@types/react-lottie" : "1.2.6",
+    "react-icons" : "4.9.0"
   }
 }
  

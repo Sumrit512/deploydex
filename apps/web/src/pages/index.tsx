@@ -8,6 +8,7 @@ import { getCakeContract } from 'utils/contractHelpers'
 import { getBlocksFromTimestamps } from 'utils/getBlocksFromTimestamps'
 import { bitQueryServerClient, infoServerClient } from 'utils/graphql'
 import Swap from 'views/Swap'
+import Footer from '../components/Footer'
 import Home from '../views/Home'
 import { SwapFeaturesProvider } from '../views/Swap/SwapFeaturesContext'
 
@@ -25,9 +26,9 @@ const IndexPage = ({ totalTx30Days, addressCount30Days, tvl }) => {
       {/* <Home /> */}
       <SwapFeaturesProvider>
       <Swap />
-   
+
     </SwapFeaturesProvider>
-  
+   
     </SWRConfig>
   )
 }

@@ -6,7 +6,7 @@ import { AppBody } from 'components/App'
 import { useCallback, useContext } from 'react'
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
 import { currencyId } from 'utils/currencyId'
-
+import Footer from 'components/Footer'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
 import { useCurrency } from '../../hooks/Tokens'
@@ -19,6 +19,7 @@ import useWarningImport from './hooks/useWarningImport'
 import { SmartSwapForm } from './SmartSwap'
 import { StyledInputCurrencyWrapper, StyledSwapContainer } from './styles'
 import { SwapFeaturesContext } from './SwapFeaturesContext'
+
 
 const queryClient = new QueryClient()
 
@@ -62,6 +63,7 @@ export default function Swap() {
   )
 
   return (
+    <>
     <Page removePadding={isChartExpanded} hideFooterOnDesktop={isChartExpanded}>
       <Flex width={['328px', '100%']} marginBottom="100px" height="100%" justifyContent="center" position="relative" alignItems="flex-start">
         {isDesktop && isChartSupported && (
@@ -124,6 +126,9 @@ export default function Swap() {
           </StyledSwapContainer>
         </Flex>
       </Flex>
+   
     </Page>
+    <Footer/>
+    </>
   )
 }

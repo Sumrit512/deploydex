@@ -4,9 +4,11 @@ import toast, {Toaster} from 'react-hot-toast'
 import { Button, Flex, Input, Text, Grid } from "@pancakeswap/uikit";
 import { ProgressBar } from "react-loader-spinner";
 import axios from 'axios'
+import Footer from "components/Footer";
 import validator from 'validator';
 import { useWeb3React } from "@pancakeswap/wagmi";
 import Page from "components/Layout/Page";
+import WalletAnimation from "views/UnStakeMnbView/components/WalletAnimation";
 
 const Buy = () => {
     const {account} = useWeb3React()
@@ -117,16 +119,17 @@ const Buy = () => {
     }
 
     return(
+      <>
       <Page>
     
     
-    <Flex width="100%" alignItems="center">
+    <Flex width="100%" alignItems="center" flexDirection="column">
         <div style={{
             'padding': '20px',
         
             'justifyContent' : 'center',
             'alignItems' : 'center',
-            'marginBottom': '10%'
+            
         }}>
             <Text mb={4}> NOTE: To buy MNB tokens, first transfer the INR to the Account no. mentioned below, and after that enter the utr transaction number
                 and then enter your wallet address and the amount of MNB tokens you want to receive. And then click on Confirm button, after confirming the transaction
@@ -260,8 +263,12 @@ style={{
             </Flex>
 
         </div>
+  
         </Flex> 
+    
         </Page>
+        <Footer/>
+        </>
     )
 }
 

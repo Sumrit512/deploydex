@@ -471,7 +471,6 @@ useEffect(() => {
                 const year = date.getFullYear();
                 
                 const formattedDate = `${day < 10 ? `0${  day}` : day}/${month < 10 ? `0${  month}` : month}/${year}`;
-                // console.log(formattedDate);
                let buttonDisable = false
                if(Number(data.amount) <= 0){
                 return null
@@ -485,13 +484,7 @@ useEffect(() => {
                     console.log('package is silver')
                     return null
                 }
-                // console.log('user',userPackageSelected)
-                // console.log(data.packageSelected)
-              
-                // if(pSelected !== data.packageSelected){
-                //     return null
-                // }
-                // console.log(pSelected)
+
              
              return (
               
@@ -518,9 +511,6 @@ useEffect(() => {
                         {/* <Button onClick={() => trialAnimate()}>Animate</Button> */}
                             </Flex>
                             </Flex>
-                          
-            
-            
                         </CardHeader>
                        
                       

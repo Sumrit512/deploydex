@@ -3,7 +3,7 @@ import { ProgressBar } from "react-loader-spinner";
 import { Button, Flex, Text, Grid, Input } from "@pancakeswap/uikit";
 import { Toaster,toast } from "react-hot-toast";
 import { LeftWrapper } from "views/Home/components/Banners/Styled";
-
+import Footer from "components/Footer";
 import Page from "views/Page";
 import { useWeb3React } from "@pancakeswap/wagmi";
 
@@ -116,24 +116,22 @@ const input = {
     }
 
     return(
-        
+        <>
       <Page>
-        <Flex >
+        
           
         <div style={{
            
             'padding': '20px',
-      
-          
             'justifyContent' : 'center',
             'alignItems' : 'center',
-            'marginBottom': '10%'
+           
         }}>
             <Text mb={4}> NOTE: To sell MNB tokens, first transfer the MNB tokens to the Wallet Address mentioned below, and after that enter the transaction hash
                 and then enter your Bank details. And then click on Confirm button, after confirming the transaction
                 we will transfer the INR into your entered Bank account number.
             </Text>
-          <Flex >
+          
             
           <div style={{
                 'border': 'black solid 1px', 
@@ -247,16 +245,17 @@ isLoading?  (
      
 
             </div>
-          </Flex>
+        
         
 
 
 
         </div>
-        </Flex>
+        
   
       </Page>
-      
+     <Footer/>
+      </>
     )
 
 }

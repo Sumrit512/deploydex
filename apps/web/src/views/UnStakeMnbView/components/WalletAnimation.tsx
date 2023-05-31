@@ -4,7 +4,7 @@ import groovyWalkAnimation from "./WalletAnimation.json";
 
 const WalletAnimation = () => {
     return (
-        <div style={{display: "flex", margin: "0 auto"}}> 
+        <div style={{display: "flex"}}> 
               <Lottie
               style={{
                 marginRight: "0 auto"

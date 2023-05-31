@@ -3,6 +3,7 @@ import Page from "components/Layout/Page"
 import React, { useState, useCallback, useEffect } from 'react'
 import { useWeb3React } from '@pancakeswap/wagmi';
 import { useContract } from 'hooks/useContract';
+import Footer from "components/Footer";
 import { ethers } from "ethers";
 import abi from 'config/abi/stakingContractDummy.json'
 import StakeCard from "./components/StakeCard"
@@ -11,6 +12,7 @@ import StakePackage from "./components/StakePackage"
 import StakeAction from "./components/StakeAction"
 import { STAKE_PACKAGE } from "./components/type"
 import { STAKING_ADDRESS } from "./helpers/config"
+
 
 
 
@@ -82,7 +84,8 @@ console.log(stakeContract)
          {/* <Page removePadding style={{
             marginBottom:`${isDesktop? '0px': '40px'}`
          }}> */}
-         
+         <>
+         <Page>
             <Flex width="100%" mb={80} justifyContent="center" alignItems="center" flexDirection="column" >
                 <Flex width="70%" justifyContent="space-between" marginTop="20px" >
 
@@ -130,6 +133,9 @@ console.log(stakeContract)
       
               
             </Flex>
+            </Page>
+            <Footer/>
+            </>
 {/*             
          </Page> */}
         </>
