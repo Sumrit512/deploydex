@@ -66,7 +66,7 @@ const socialHandles = () => {
     return (
         <Wrapper>
             <MenuContainer >
-          <Flex flexDirection={isMobile? 'column' : 'row'} justifyContent="space-between" alignItems="flex-start"> 
+          <Flex flexDirection={isMobile? 'column' : 'row'} justifyContent="space-between" alignItems={isMobile? 'flex-start' : 'center'}> 
             <InnerContainer onClick={goTo}>
          About 
             </InnerContainer>
