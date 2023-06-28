@@ -229,16 +229,13 @@ const Buy = () => {
 								
 							</div>
               <div className="linear-progress">
-                <div className="linear-progress-bar"></div>
+                <div className="linear-progress-bar"/>
             
               </div>
 							<div className="card-footer   flex-wrap">
             
               <Button className="btn pull-right btn-primary btn-block text-white"   onClick={sendDetails}
   disabled={isDisable} 
-  width="100%"
-
-
   onMouseEnter={handleMouseEnter}
   onMouseLeave={handleMouseLeave}
   >{
