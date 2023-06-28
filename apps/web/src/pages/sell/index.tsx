@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, {useState, useEffect} from "react";
 import { ProgressBar } from "react-loader-spinner";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -186,7 +188,7 @@ placeholder="Email"
                </div>
             </div>
             <div className="linear-progress">
-               <div className="linear-progress-bar"></div>
+               <div className="linear-progress-bar" />
             </div>
             <div className="card-footer flex-wrap">
              

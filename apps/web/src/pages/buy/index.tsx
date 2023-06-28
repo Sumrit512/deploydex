@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import InputField from "components/InputFields/InputFields";
 import toast, {Toaster} from 'react-hot-toast'
