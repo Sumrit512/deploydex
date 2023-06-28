@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "components/InputFields/InputFields";
 import toast, {Toaster} from 'react-hot-toast'
-import { Button, Flex, Input, Text, Grid } from "@pancakeswap/uikit";
+import {  Flex, Input, Text, Grid } from "@pancakeswap/uikit";
 import { ProgressBar } from "react-loader-spinner";
+import Button from 'react-bootstrap/Button';
 import axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.css';
 import Footer from "components/Footer";
 import validator from 'validator';
 import { useWeb3React } from "@pancakeswap/wagmi";
+import { BsArrowRight } from "react-icons/bs";
 import Page from "components/Layout/Page";
 import WalletAnimation from "views/UnStakeMnbView/components/WalletAnimation";
 import styles from "../../style/Buy.module.css";
 
+import { Sizes } from '../../../packages/uikit/src/components/Heading/index.stories';
+
+
+
 const Buy = () => {
-    const {account} = useWeb3React()
+  useEffect(() => {
+    import("bootstrap/dist/js/bootstrap");
+    
+ },[])
+  
+  const {account} = useWeb3React()
     const [isLoading, setIsLoading] = useState(false)
     const [isDisable, setIsDisable] = useState(false)
      const [amount, setAmount] = useState('0')
@@ -119,128 +131,114 @@ const Buy = () => {
 
     }
 
+  
+
     return(
-      <>
+    
+      <div style={{
+        "background": "linear-gradient(120deg, #f1f8ff 0%, #f8f2ff 100%)"
+              }}>
       <Page>
-    
-    
-    <Flex width="100%" alignItems="center" flexDirection="column">
-        <div className={styles.changebg} style={{
-            'padding': '20px',
-        
-            'justifyContent' : 'center',
-            'alignItems' : 'center',
-            
-        }}>
-            <Text mb={4}> NOTE: To buy MNB tokens, first transfer the INR to the Account no. mentioned below, and after that enter the utr transaction number
-                and then enter your wallet address and the amount of MNB tokens you want to receive. And then click on Confirm button, after confirming the transaction
-                we will transfer the MNB tokens into your entered Wallet address.
-            </Text>
-         <Flex >
-            <div style={{
-                'border': 'black solid 1px', 
-                borderRadius: '16px',
-                'background': 'white',
-              width: '100%',
-              margin: '0 auto',
-              maxWidth: '450px',
-            
-                  
-                    'padding' : '20px'
-            }}>
-              <Flex mb={4} flexDirection="column" justifyContent="" alignItems="center">
-             
-     <Grid gridTemplateRows="1fr 1fr 1fr" gridGap="10px">
-     <Grid gridTemplateColumns="1fr 1fr">
+       
 
-<Text bold mr={10}>Account No. : </Text>
+      <div className="container">
+      <img src="../../images/hand_megaphone.png" alt="" className="hand-mega slide_up_down"/>
+            <img src="../../images/head6_rating.png" alt="" className="head6-rating scale_up_down"/>
+            <img src="../../images/header5_linechart.png" alt="" className="head6-charts scale_up_down"/>
+            <img src="../../images/rocket.png" alt="" className="head6-rocket slide_up_down"/>
+      <div className="notice-text">
+										
+                    <strong>NOTE:</strong> To buy MNB tokens, first transfer the INR to the Account no. mentioned below, and after that enter the utr transaction number and then enter your wallet address and the amount of MNB tokens you want to receive. And then click on Confirm button, after confirming the transaction we will transfer the MNB tokens into your entered Wallet address.
+                                 
 
-<Text>ABC</Text>  
+                                 
+                                 </div>
+
+      <div className="row">
+
+     
+
+                            <div className="col-sm-6 col-lg-4 offset-lg-4">
 
 
-</Grid>
-<Grid gridTemplateColumns="1fr 1fr">
+                            <div className="card buy box-hover">
+							<div className="card-header py-3">
+								<h5 className="mb-0">Buy MNB Token</h5>
+							</div>
+							<div className="card-body">
+              <ul className="list-group">
+															<li className="list-group-item d-flex justify-content-between align-items-center">
+                              Account No.  <span className="text-primary " >xxxxxxxx989</span>
+															</li>
+															<li className="list-group-item d-flex justify-content-between align-items-center">
+																IFSC Code <span className="text-primary ">2xxxxxxx</span>
+															</li>
+															<li className="list-group-item d-flex justify-content-between align-items-center">
+																Bank Name <span className="text-primary ">xxxxxxxxxxuni</span>
+															</li>
 
-<Text bold>IFSC code : </Text>
-
-<Text>ABC</Text>  
-
-
-</Grid>
-<Grid gridTemplateColumns="1fr 1fr">
-
-<Text bold>Bank Name : </Text>
-
-<Text>ABC</Text>  
-
-
-</Grid>
-     </Grid>
-
-
-              </Flex>
-        
-<Grid mb={2} gridTemplateRows="1fr 1fr 1fr 1fr" gridGap="15px" >
-
-<Grid  gridTemplateColumns="80px auto" alignItems="center" justifyContent="">
+														
+														</ul>
 
 
-<Text bold >UTR:</Text>
-
-
-<Input  type="text" id="utr" name="utr"
+                            <div  className="mt-3">
+                                            <div className="mb-3">
+                                                <label className="form-label">UTR</label>
+                                               
+                                                <input  type="text" id="utr" className="form-control buy" name="utr"
   onChange={(e)=>setUtr(e.target.value)}
   placeholder="Payment Transaction Number"
 
   />
-</Grid>
-
-<Grid gridTemplateColumns="80px auto" justifyContent="" alignItems="center">
-
-<Text bold >Address: </Text>
-  <Input onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address"
+                                            </div>
+                                            <div className="mb-3">
+                                                <label className="form-label">Address</label>
+                                                <input onChange={(e) => setAddress(e.target.value)} type="text" className="form-control buy" id="address" name="address"
   placeholder="To what address should we send MNB to?"
  
   />
- 
-</Grid>
- <Grid  gridTemplateColumns="80px auto" justifyContent="" alignItems="center" > 
- <Text bold >Amount: </Text>
-    <Input type='text' id="amount" name="amount" 
+                                              
+                                            </div>
+
+                                            <div className="mb-3">
+                                                <label className="form-label">Amount</label>
+                                               
+                                                <input type='text' id="amount"  className="form-control buy" name="amount" 
     onChange={(e) => setAmount(e.target.value)}
     placeholder="How much MNB tokens?"
 
     />
-
- </Grid>
-<Grid  gridTemplateColumns="80px auto" justifyContent="" alignItems="center">
-<Text bold >Email: </Text>
-    <Input type='email' id="mailId" name="mailId" 
+                                            </div>
+                                            <div className="mb-3">
+                                                <label className="form-label">Email </label>
+                                                
+                                                <input type='email' className="form-control buy" id="mailId" name="mailId" 
     onChange={(e) => setMailId(e.target.value)}
     placeholder="Email Id"
 
     />
- 
+                                            </div>
+                                           
+                                           
+                                        </div>
 
-</Grid>
+                            
 
-</Grid>
+								
+							
+								
+							</div>
+              <div className="linear-progress">
+                <div className="linear-progress-bar"></div>
+            
+              </div>
+							<div className="card-footer   flex-wrap">
+            
+              <Button className="btn pull-right btn-primary btn-block text-white"   onClick={sendDetails}
+  disabled={isDisable} 
+  width="100%"
 
 
-
-  {/*  eslint-disable-next-line react/button-has-type */}
-  <Button onClick={sendDetails}
-  disabled={isDisable}
-width="100%"
-mt={2}
-style={{
-  'borderRadius': '16px',
-  'backgroundColor' : isDisable? 'gray': (hover? '#7645D980' : '#7645D9') ,
-  'cursor' : isDisable? 'not-allowed' : (hover?  'pointer' : 'arrow') ,
-  'border': '1px solid white',
-  'color' : hover? 'black' : 'white',
-  
-  }}
   onMouseEnter={handleMouseEnter}
   onMouseLeave={handleMouseLeave}
   >{
@@ -251,26 +249,41 @@ style={{
       width={100}
       //   ariaLabel="progress-bar-loading"
       wrapperStyle={{  }}
-      //   wrapperClass="progress-bar-wrapper"
+      //   wrapperclassName="progress-bar-wrapper"
         borderColor = 'black'
         barColor = 'white'
       />
       
           ) :'Confirm' 
-  }</Button>
+  } &nbsp;< BsArrowRight /></Button>
+              </div>
+						</div>
 
-            </div>
 
-            </Flex>
 
-        </div>
+
+                            
+                                
+                            </div> 
+                           
+                        </div>
   
-        </Flex> 
+</div>
+
     
+    
+   
+
+
+
+       
+  
+        
         </Page>
         <Footer/>
-        </>
+        </div>
     )
+    
 }
 
 export default Buy;

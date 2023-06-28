@@ -122,7 +122,8 @@ export function useApproveCallback(
         }
         throw error
       })
-  }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction, callWithGasPrice, t, toastError])
+  }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction, callWithGasPrice, t, toastError]
+  )
 
   return [approvalState, approve]
 }
