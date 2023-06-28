@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import Footer from 'components/Footer'
 import 'bootstrap/dist/css/bootstrap.css';
 import {  Flex, Text, Grid, Input } from "@pancakeswap/uikit";
@@ -200,7 +201,7 @@ const About = () => {
        
         </div>
 
-        <div className="row pd-80"></div>
+        <div className="row pd-80" />
 
 
         
