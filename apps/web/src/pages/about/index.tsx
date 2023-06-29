@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import Footer from 'components/Footer'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -5,6 +7,7 @@ import {  Flex, Text, Grid, Input } from "@pancakeswap/uikit";
 import React, { useEffect } from 'react'
 import AliceCarousel from "react-alice-carousel";
 import Page from 'views/Page'
+import {useRouter} from 'next/navigation'
 
 const About = () => {
     useEffect(() => {
@@ -12,6 +15,8 @@ const About = () => {
         
      },[])
 
+
+     const router = useRouter()
     return (
     //     <style>
 
@@ -60,8 +65,8 @@ const About = () => {
 
             <div className="trial_box">
             <div className="banner-btns d-flex flex-wrap">
-                                <a data-blast="bgColor" href="explore.html" className="about-btn btn btn-outline-primary btn-lg "><span>Explore</span> </a>
-                                <a href="signin.html" className="btn about-btn btn-primary btn-lg m-r-2  "><span>Create</span> </a>
+                                <div onClick={() => router.push('/swap')} data-blast="bgColor"  className="about-btn btn btn-outline-primary btn-lg "><span>Swap</span> </div>
+                                <div  onClick={() => router.push('/liquidity')} className="btn about-btn btn-primary btn-lg m-r-2  "><span>Add Liquidity</span> </div>
 
                             </div>
 
