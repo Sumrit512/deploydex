@@ -32,6 +32,12 @@ const About = () => {
     // </style>
     <div>
         <Page >
+        <AliceCarousel autoPlay autoPlayInterval={500}>
+        <img src="" className="sliderimg" alt="logo" />
+        <img src="" className="sliderimg" alt="asd" />
+        <img src= "" className="sliderimg" alt="logo3" />
+        <img src= "" className="sliderimg" alt="logo7" />
+      </AliceCarousel>
         <h3 style={{
              'color': '#7d54ff',
                  'fontSize': '22px',

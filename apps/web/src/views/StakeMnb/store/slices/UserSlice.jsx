@@ -10,6 +10,6 @@ const userSlice = createSlice({
     },
 })
 
-console.log('hi')
+
 
 export default userSlice.reducer;
