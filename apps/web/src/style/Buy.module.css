@@ -1,3 +1,30 @@
-.changebg{
-   
+.formcontrol{
+    background: #eff6ff;
+border-radius: 8px;
+border: 1px solid #dde8f5;
+font-size: 13px;
+box-shadow: none !important;
+height: 44px;
+line-height: 44px !important;
+padding: 7px 13px;
+
+
+
+}
+
+
+.form-control.buy {
+	height: 46px !important;
+	font-size: 14px !important;
+}
+
+.card-header {
+	
+	background: #f8fafc;
+	border: 0;
+}
+
+.list-group li {
+	font-size: 13px;
+	line-height: 21px;
 }

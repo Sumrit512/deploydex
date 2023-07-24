@@ -11,6 +11,7 @@ import Swap from 'views/Swap'
 import Footer from '../components/Footer'
 import Home from '../views/Home'
 import { SwapFeaturesProvider } from '../views/Swap/SwapFeaturesContext'
+import About from './about'
 
 const IndexPage = ({ totalTx30Days, addressCount30Days, tvl }) => {
   return (
@@ -25,7 +26,7 @@ const IndexPage = ({ totalTx30Days, addressCount30Days, tvl }) => {
     >
       {/* <Home /> */}
       <SwapFeaturesProvider>
-      <Swap />
+      <About/>
 
     </SwapFeaturesProvider>
    

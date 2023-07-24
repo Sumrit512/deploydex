@@ -1,15 +1,24 @@
-import React, {useState} from "react";
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, {useState, useEffect} from "react";
 import { ProgressBar } from "react-loader-spinner";
-import { Button, Flex, Text, Grid, Input } from "@pancakeswap/uikit";
+import 'bootstrap/dist/css/bootstrap.css';
+import {  Flex, Text, Grid, Input } from "@pancakeswap/uikit";
+import Button from 'react-bootstrap/Button';
 import { Toaster,toast } from "react-hot-toast";
 import { LeftWrapper } from "views/Home/components/Banners/Styled";
 import Footer from "components/Footer";
 import Page from "views/Page";
 import { useWeb3React } from "@pancakeswap/wagmi";
+import { BsArrowRight } from "react-icons/bs";
 
 
 
 const Sell = () => {
+  useEffect(() => {
+    import("bootstrap/dist/js/bootstrap");
+    
+ },[])
 
 
 const useWeb3Reac  = useWeb3React()
@@ -117,113 +126,87 @@ const input = {
     }
 
     return(
-        <>
+        <div >
       <Page>
-        
-          
-        <div style={{
-           
-            'padding': '20px',
-            'justifyContent' : 'center',
-            'alignItems' : 'center',
-           
-        }}>
-            <Text mb={4}> NOTE: To sell MNB tokens, first transfer the MNB tokens to the Wallet Address mentioned below, and after that enter the transaction hash
+
+      <div className="container" >
+            <img src="../../images/hand_megaphone.png" alt="" className="hand-mega slide_up_down"/>
+            <img src="../../images/head6_rating.png" alt="" className="head6-rating scale_up_down"/>
+            <img src="../../images/header5_linechart.png" alt="" className="head6-charts scale_up_down"/>
+            <img src="../../images/rocket.png" alt="" className="head6-rocket slide_up_down"/>
+      <div className="notice-text">
+										
+       <strong>NOTE:</strong> To sell MNB tokens, first transfer the MNB tokens to the Wallet Address mentioned below, and after that enter the transaction hash
                 and then enter your Bank details. And then click on Confirm button, after confirming the transaction
                 we will transfer the INR into your entered Bank account number.
-            </Text>
-          
-            
-          <div style={{
-                'border': 'black solid 1px', 
-                'borderRadius': '16px',
-                'background': 'white',
-             width: '100%',
-             maxWidth: '450px',
-             margin: '0 auto',
-                  
-                    'padding' : '20px'
-            }}>
-<Grid mb={2} gridTemplateRows="1fr 1fr 1fr 1fr 1fr" gridGap="15px">
-  <Grid gridTemplateColumns="auto auto">
- <Text bold>Wallet Address</Text>
- <Text bold>ABC</Text>
-  </Grid>
- 
-<Grid gridTemplateColumns="110px auto" alignItems="center">
-<Text bold>Tx Hash : </Text>
-<Input type='text' id="txHash" name="amount" 
+										</div>
+   <div className="row">
+      <div className="col-sm-6 col-lg-4 offset-lg-4 mbuni">
+         <div className="card buy box-hover">
+            <div className="card-header py-3">
+               <h5 className="mb-0">Sell MNB Token</h5>
+            </div>
+            <div className="card-body">
+               <ul className="list-group">
+                  <li className="list-group-item d-flex justify-content-between align-items-center">Wallet Address  <span className="text-primary ">xxxxxxxx5gvgdfgdfgf</span></li>
+               </ul>
+               <div className="mt-3">
+                  <div className="mb-3"><label className="form-label">Tx Hash </label>
+                  <input type='text' id="txHash" name="amount" className="form-control buy" 
 onChange={(e) => setTxHash(e.target.value)}
 placeholder="Transaction Hash of the Transaction done by you?"
 
 />
 
-
-</Grid>
-
-<Grid gridTemplateColumns="110px auto" alignItems="center"> 
-<Text bold>Account no. :</Text>
-
-<Input type="text" id="account" name="utr"
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">
+                      Account no. :
+                      </label>
+                      <input type="text" className="form-control buy" id="account" name="utr"
 onChange={(e)=>setAccount(e.target.value)}
 placeholder="Your Account Number"
 />
-
-
-</Grid>
-
-<Grid gridTemplateColumns="110px auto" alignItems="center"> 
-<Text bold>Bank&apos;s Name :</Text>
-<Input onChange={(e) => setBank(e.target.value)} type="text" id="bank" name="address"
+                     </div> 
+                  <div className="mb-3"><label className="form-label">Bank's Name :</label>
+                  
+                  <input  className="form-control buy" onChange={(e) => setBank(e.target.value)} type="text" id="bank" name="address"
 placeholder="Bank's name"
 
 />
-
-
-</Grid>
-<Grid gridTemplateColumns="110px auto" alignItems="center">
-<Text bold>IFSC Code :</Text>
-<Input onChange={(e) => setIfsc(e.target.value)} type="text" id="ifsc" name="address"
+                  </div>
+                  <div className="mb-3"><label className="form-label">IFSC Code : </label>
+                  <input className="form-control buy" onChange={(e) => setIfsc(e.target.value)} type="text" id="ifsc" name="address"
 placeholder="IFSC code"
 />
-
-</Grid>
-
-<Grid gridTemplateColumns="110px auto" alignItems="center">
-<Text bold>Email Id :</Text>
-<Input onChange={(e) => setMailId(e.target.value)} type="email" id="mailId" name="mailId"
+                  </div>
+                  <div className="mb-3"><label className="form-label">Email Id : </label>
+                  <input className="form-control buy" onChange={(e) => setMailId(e.target.value)} type="email" id="mailId" name="mailId"
 placeholder="Email"
 
-/>
+/></div>
+               
+               </div>
+            </div>
+            <div className="linear-progress">
+               <div className="linear-progress-bar" />
+            </div>
+            <div className="card-footer flex-wrap">
+             
+               <Button 
 
 
-</Grid>
-
-
-
-
-{/*  eslint-disable-next-line react/button-has-type */}
-
-
-</Grid>
-<Button 
-width="100%"
-mt={2}
 onClick={sendDetails}
-disabled={isDisable}
-style={{
-'borderRadius': '16px',
-'backgroundColor' : isDisable? 'gray': (hover? '#7645D980' : '#7645D9') ,
-'cursor' : isDisable? 'not-allowed' : (hover?  'pointer' : 'arrow') ,
-'border': '1px solid white',
-'color' : hover? 'black' : 'white',
 
-}}
+disabled={isDisable}
+
+
 
 onMouseEnter={handleMouseEnter}
 
 onMouseLeave={handleMouseLeave}
 
+className="btn pull-right btn-primary btn-block text-white btn btn-primary"
 >
 {
 isLoading?  (
@@ -233,30 +216,28 @@ isLoading?  (
     width ="100"
   //   ariaLabel="progress-bar-loading"
     wrapperStyle={{  }}
-  //   wrapperClass="progress-bar-wrapper"
+  //   wrapperclassName="progress-bar-wrapper"
     borderColor = 'black'
     barColor = 'white'
   />
       ) : 'Confirm' 
 
-}  
+} &nbsp;< BsArrowRight /> 
 
 
 </Button>
-     
+
 
             </div>
-        
-        
+         </div>
+      </div>
+   </div>
+</div>
 
-
-
-        </div>
-        
   
       </Page>
      <Footer/>
-      </>
+      </div>
     )
 
 }
