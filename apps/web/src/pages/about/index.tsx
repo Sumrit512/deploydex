@@ -44,15 +44,6 @@ const About = () => {
     // </style>
     <div>
         <Page >
-<<<<<<< HEAD
-        <AliceCarousel autoPlay autoPlayInterval={500}>
-        <img src="" className="sliderimg" alt="logo" />
-        <img src="" className="sliderimg" alt="asd" />
-        <img src= "" className="sliderimg" alt="logo3" />
-        <img src= "" className="sliderimg" alt="logo7" />
-      </AliceCarousel>
-        <h3 style={{
-=======
        
         <div className="container ">
       
@@ -61,7 +52,6 @@ const About = () => {
           
             <div className="banner_text">
             <h3 style={{
->>>>>>> 31f8a9844f53c708ac1cee7ef15bf8367df28550
              'color': '#7d54ff',
                  'fontSize': '14px',
               'padding': '10px'
