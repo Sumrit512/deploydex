@@ -20,7 +20,6 @@ const Sell = () => {
     
  },[])
 
-
 const useWeb3Reac  = useWeb3React()
 const accountConnected = useWeb3Reac.account
     const [isLoading, setIsLoading] = useState(false)
@@ -161,12 +160,13 @@ placeholder="Transaction Hash of the Transaction done by you?"
                   </div>
                   <div className="mb-3">
                     <label className="form-label">
-                      MNB Token Amount:
+                      MNB token amount:
                       </label>
-                      <input type="text" className="form-control buy" id="account" name="utr"
-
-placeholder="No. of MNB"
+                      <input type="number" className="form-control buy" id="quantity" name="utr"
+onChange={(e)=>setAccount(e.target.value)}
+placeholder="No. of MNB token"
 />
+                     </div> 
                   <div className="mb-3">
                     <label className="form-label">
                       Account no. :
