@@ -9,12 +9,16 @@ import { Toaster,toast } from "react-hot-toast";
 import { LeftWrapper } from "views/Home/components/Banners/Styled";
 import Footer from "components/Footer";
 import Page from "views/Page";
+import {AiOutlineCopy} from "react-icons/ai"
 import { useWeb3React } from "@pancakeswap/wagmi";
 import { BsArrowRight } from "react-icons/bs";
 
 
 
 const Sell = () => {
+
+  const accountAddress = "0x70a0F7A104b27C3eaf9c8F771ef6476AFaFC5757"
+
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
     
@@ -124,6 +128,12 @@ const input = {
           
     }
 
+    const handleCopyToClipboard = async () => {
+      console.log('copied')
+      await navigator.clipboard.writeText(accountAddress)
+      toast.success("Address Copied")
+    }
+
     return(
         <div >
       <Page>
@@ -147,7 +157,9 @@ const input = {
             </div>
             <div className="card-body">
                <ul className="list-group">
-                  <li className="list-group-item d-flex justify-content-between align-items-center">Wallet Address  <span className="text-primary ">0x70a0F7A104b27C3eaf9c8F771ef6476AFaFC5757</span></li>
+                  <li className="list-group-item d-flex justify-content-between align-items-center">Wallet Address  <span className="text-primary ">{`${accountAddress.substring(0,6)}...${accountAddress.substring(accountAddress.length-4, accountAddress.length)}`} <AiOutlineCopy
+                  onClick={handleCopyToClipboard}
+                  /></span></li>
                </ul>
                <div className="mt-3">
                   <div className="mb-3"><label className="form-label">Tx Hash </label>
