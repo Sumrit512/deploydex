@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
       max-width: 100%;
     }
 
+    .hoverme:hover {
+      cursor: pointer;
+    }
+
 
 
     .card-header, .card-footer  {
@@ -330,9 +334,14 @@ margin-top: 114px;
 
     
   }
+  
 
 
-  }
+
+
+ 
+
+  
 `
 
 export default GlobalStyle
