@@ -147,7 +147,7 @@ const input = {
             </div>
             <div className="card-body">
                <ul className="list-group">
-                  <li className="list-group-item d-flex justify-content-between align-items-center">Wallet Address  <span className="text-primary ">xxxxxxxx5gvgdfgdfgf</span></li>
+                  <li className="list-group-item d-flex justify-content-between align-items-center">Wallet Address  <span className="text-primary ">0x70a0F7A104b27C3eaf9c8F771ef6476AFaFC5757</span></li>
                </ul>
                <div className="mt-3">
                   <div className="mb-3"><label className="form-label">Tx Hash </label>
@@ -158,6 +158,14 @@ placeholder="Transaction Hash of the Transaction done by you?"
 />
 
                   </div>
+                  <div className="mb-3">
+                    <label className="form-label">
+                      MNB Token Amount:
+                      </label>
+                      <input type="text" className="form-control buy" id="account" name="utr"
+
+placeholder="No. of MNB"
+/>
                   <div className="mb-3">
                     <label className="form-label">
                       Account no. :

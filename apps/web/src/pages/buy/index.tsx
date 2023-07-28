@@ -169,13 +169,13 @@ const Buy = () => {
 							<div className="card-body">
               <ul className="list-group">
 															<li className="list-group-item d-flex justify-content-between align-items-center">
-                              Account No.  <span className="text-primary " >xxxxxxxx989</span>
+                              Account No.  <span className="text-primary " >628405021609</span>
 															</li>
 															<li className="list-group-item d-flex justify-content-between align-items-center">
-																IFSC Code <span className="text-primary ">2xxxxxxx</span>
+																IFSC Code <span className="text-primary ">ICIC0006284</span>
 															</li>
 															<li className="list-group-item d-flex justify-content-between align-items-center">
-																Bank Name <span className="text-primary ">xxxxxxxxxxuni</span>
+																Bank Name <span className="text-primary ">ICICI BANK</span>
 															</li>
 
 														
