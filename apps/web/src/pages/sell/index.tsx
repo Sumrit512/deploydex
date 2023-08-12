@@ -145,7 +145,7 @@ const input = {
             <img src="../../images/rocket.png" alt="" className="head6-rocket slide_up_down"/>
       <div className="notice-text">
 										
-       <strong>NOTE:</strong> To sell MNB tokens, first transfer the MNB tokens to the Wallet Address mentioned below, and after that enter the transaction hash
+       <strong>NOTE:</strong> To sell UNR tokens, first transfer the UNR tokens to the Wallet Address mentioned below, and after that enter the transaction hash
                 and then enter your Bank details. And then click on Confirm button, after confirming the transaction
                 we will transfer the INR into your entered Bank account number.
 										</div>
@@ -153,7 +153,7 @@ const input = {
       <div className="col-sm-6 col-lg-4 offset-lg-4 mbuni">
          <div className="card buy box-hover">
             <div className="card-header py-3">
-               <h5 className="mb-0">Sell MNB Token</h5>
+               <h5 className="mb-0">Sell UNR Token</h5>
             </div>
             <div className="card-body">
                <ul className="list-group">
@@ -172,11 +172,11 @@ placeholder="Transaction Hash of the Transaction done by you?"
                   </div>
                   <div className="mb-3">
                     <label className="form-label">
-                      MNB token amount:
+                      UNR token amount:
                       </label>
                       <input type="number" className="form-control buy" id="quantity" name="utr"
 onChange={(e)=>setAccount(e.target.value)}
-placeholder="No. of MNB token"
+placeholder="No. of UNR token"
 />
                      </div> 
                   <div className="mb-3">

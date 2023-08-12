@@ -149,7 +149,7 @@ const Buy = () => {
             <img src="../../images/rocket.png" alt="" className="head6-rocket slide_up_down"/>
       <div className="notice-text">
 										
-                    <strong>NOTE:</strong> To buy MNB tokens, first transfer the INR to the Account no. mentioned below, and after that enter the utr transaction number and then enter your wallet address and the amount of MNB tokens you want to receive. And then click on Confirm button, after confirming the transaction we will transfer the MNB tokens into your entered Wallet address.
+                    <strong>NOTE:</strong> To buy UNR tokens, first transfer the INR to the Account no. mentioned below, and after that enter the utr transaction number and then enter your wallet address and the amount of UNR tokens you want to receive. And then click on Confirm button, after confirming the transaction we will transfer the UNR tokens into your entered Wallet address.
                                  
 
                                  
@@ -164,7 +164,7 @@ const Buy = () => {
 
                             <div className="card buy box-hover">
 							<div className="card-header py-3">
-								<h5 className="mb-0">Buy MNB Token</h5>
+								<h5 className="mb-0">Buy UNR Token</h5>
 							</div>
 							<div className="card-body">
               <ul className="list-group">
@@ -195,7 +195,7 @@ const Buy = () => {
                                             <div className="mb-3">
                                                 <label className="form-label">Address</label>
                                                 <input onChange={(e) => setAddress(e.target.value)} type="text" className="form-control buy" id="address" name="address"
-  placeholder="To what address should we send MNB to?"
+  placeholder="To what address should we send UNR to?"
  
   />
                                               
@@ -206,7 +206,7 @@ const Buy = () => {
                                                
                                                 <input type='text' id="amount"  className="form-control buy" name="amount" 
     onChange={(e) => setAmount(e.target.value)}
-    placeholder="How much MNB tokens?"
+    placeholder="How much UNR tokens?"
 
     />
                                             </div>
