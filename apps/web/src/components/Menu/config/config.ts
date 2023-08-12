@@ -162,7 +162,7 @@ const config: (
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: t('Sell MNB'),
+      label: t('Sell UNR'),
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
       href: '/sell',
@@ -199,7 +199,7 @@ const config: (
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: t('Buy MNB'),
+      label: t('Buy UNR'),
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
       href: '/buy',
