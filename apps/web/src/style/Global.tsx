@@ -232,11 +232,21 @@ margin-top: 114px;
     .about-btn.btn.btn-outline-primary.btn-lg {
       color: #7d54ff;
       border-color: #7d54ff;
+      background: white;
+    }
+
+    .about-btn.btn.btn-outline-primary.btn-lg:hover {
+      background: #7d54ff;
+      color: white;
     }
 
     .btn.about-btn.btn-primary.btn-lg.m-r-2 {
       background: #7d54ff;
       border-color: #7d54ff;
+    }
+    .btn.about-btn.btn-primary.btn-lg.m-r-2:hover {
+      background: white;
+      color:#7d54ff;
     }
 
     .counter {
