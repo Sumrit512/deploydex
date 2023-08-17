@@ -13,10 +13,10 @@ import { useWeb3React } from "@pancakeswap/wagmi";
 import { BsArrowRight } from "react-icons/bs";
 import Page from "components/Layout/Page";
 import WalletAnimation from "views/UnStakeMnbView/components/WalletAnimation";
+import AddToWalletButton from "components/AddToWallet/AddToWalletButton";
 import styles from "../../style/Buy.module.css";
 
 import { Sizes } from '../../../packages/uikit/src/components/Heading/index.stories';
-import AddToWalletButton from "components/AddToWallet/AddToWalletButton";
 
 
 
@@ -180,7 +180,7 @@ text-lg
 style={{
   'color' : '#7d54ff',
   'fontSize': '16px',
-  'marginTop': '5px'
+  'marginTop': '8px'
 }}
 >
 ( Add UNR token 

@@ -163,7 +163,7 @@ text-lg
 style={{
   'color' : '#7d54ff',
   'fontSize': '16px',
-  'marginTop': '5px'
+  'marginTop': '8px'
 }}
 >
 ( Add UNR token 
