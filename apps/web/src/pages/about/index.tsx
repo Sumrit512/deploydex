@@ -8,6 +8,7 @@ import React, { useEffect } from 'react'
 import AliceCarousel from "react-alice-carousel";
 import Page from 'views/Page'
 import {useRouter} from 'next/navigation'
+import AddToWalletButton from 'components/AddToWallet/AddToWalletButton';
 
 const About = () => {
     useEffect(() => {
@@ -53,9 +54,37 @@ const About = () => {
             <div className="banner_text">
             <h3 style={{
              'color': '#7d54ff',
-                 'fontSize': '14px',
+                 'fontSize': '24px',
               'padding': '10px'
-        }}>UNIEXCHANGE PROTOCOL</h3>
+        }}>UNIEXCHANGE PROTOCOL
+       
+        </h3>
+        <div className='
+d-flex
+gap-2
+text-lg
+'
+style={{
+  'color' : '#7d54ff',
+  'fontSize': '18px',
+  'padding': '10px'
+}}
+>
+( Add UNR token 
+                <AddToWalletButton
+                variant="text"
+                p="0"
+                height="auto"
+                width="fit-content"
+                tokenAddress='0xc28b342bC0D10B1926C6B4304AdB655B69e73Be7'
+                tokenSymbol='UNR'
+                tokenDecimals={18}
+                tokenLogo=''
+              />
+)
+</div>
+
+
               <h1>Be the Master of Your 
   <span> Crypto Destiny</span></h1>
              

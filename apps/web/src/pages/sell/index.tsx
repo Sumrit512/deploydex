@@ -12,6 +12,7 @@ import Page from "views/Page";
 import {AiOutlineCopy} from "react-icons/ai"
 import { useWeb3React } from "@pancakeswap/wagmi";
 import { BsArrowRight } from "react-icons/bs";
+import AddToWalletButton from "components/AddToWallet/AddToWalletButton";
 
 
 
@@ -154,6 +155,30 @@ const input = {
          <div className="card buy box-hover">
             <div className="card-header py-3">
                <h5 className="mb-0">Sell UNR Token</h5>
+               <div className='
+d-flex
+gap-2
+text-lg
+'
+style={{
+  'color' : '#7d54ff',
+  'fontSize': '16px',
+  'marginTop': '5px'
+}}
+>
+( Add UNR token 
+                <AddToWalletButton
+                variant="text"
+                p="0"
+                height="auto"
+                width="fit-content"
+                tokenAddress='0xc28b342bC0D10B1926C6B4304AdB655B69e73Be7'
+                tokenSymbol='UNR'
+                tokenDecimals={18}
+                tokenLogo=''
+              />
+)
+</div>
             </div>
             <div className="card-body">
                <ul className="list-group">
