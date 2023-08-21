@@ -91,6 +91,22 @@
       "logoURI": "https://pancakeswap.finance/images/tokens/0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63.png"
     },
     {
+      "name": "UNR",
+      "symbol": "UNR",
+      "address": "0xc28b342bC0D10B1926C6B4304AdB655B69e73Be7",
+      "chainId": 56,
+      "decimals": 18,
+      "logoURI": "https://rapidcash.live/assets/img/unr.png"
+    },
+    {
+      "name": "Rapid Cash",
+      "symbol": "XRC",
+      "address": "0x3A2450629951AE0Be8f0dF47f525CDe11A7E686f",
+      "chainId": 56,
+      "decimals": 18,
+      "logoURI": "https://rapidcash.live/assets/img/banner/3.png"
+    },
+    {
       "name": "VAI Stablecoin",
       "symbol": "VAI",
       "address": "0x4BD17003473389A42DAF6a0a729f6Fdb328BbBd7",
