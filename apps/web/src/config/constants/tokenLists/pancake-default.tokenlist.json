@@ -58,14 +58,22 @@
       "decimals": 18,
       "logoURI": "https://mnb3d.com/MNB_logo.png"
     },
-    {
-      "name": "BONKTRADE",
-      "symbol": "BTR",
-      "address": "0xB18e9930FCf32DcBfbE2D04fEB0d59a410aB8A12",
-      "chainId": 56,
-      "decimals": 18,
-      "logoURI": "https://bonktrade.com/images/coin.png"
-    },
+  {
+    "name": "BONKTRADE",
+    "symbol": "BTR",
+    "address": "0xB18e9930FCf32DcBfbE2D04fEB0d59a410aB8A12",
+    "chainId": 56,
+    "decimals": 18,
+    "logoURI": "https://bonktrade.com/images/coin.png"
+  },
+  {
+    "name": "MESMA EV AI",
+    "symbol": "MES",
+    "address": "0x8d4365B123a29cac07B0a6a351f0D3734da3cB7A",
+    "chainId": 56,
+    "decimals": 18,
+    "logoURI": "https://res.cloudinary.com/djbwk0n34/image/upload/v1694584106/z8xsfeovv2epjcsbhhnz.png"
+  },
     {
       "name": "Opensea Network",
       "symbol": "OSN",
