@@ -62,12 +62,12 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
             </Text>
           </UserMenuItem>
         ))}
-      {/* <UserMenuItem
+      <UserMenuItem
         key={`aptos-${AptosChain.id}`}
         style={{ justifyContent: 'flex-start' }}
         as="a"
         target="_blank"
-        href="https://aptos.pancakeswap.finance/swap"
+        href="https://uniexchange-tron-verison-ea6t.vercel.app/swap"
       >
         <Image
           src="https://aptos.pancakeswap.finance/images/apt.png"
@@ -77,9 +77,9 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
           alt={`chain-aptos-${AptosChain.id}`}
         />{' '}
         <Text color="text" pl="12px">
-          {AptosChain.name}
+         Tron
         </Text>
-      </UserMenuItem> */}
+      </UserMenuItem>
     </>
   )
 }
