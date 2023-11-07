@@ -2,13 +2,31 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import Footer from 'components/Footer'
+import { Trans } from '@pancakeswap/localization'
+import { AtomBox } from '@pancakeswap/ui/components/AtomBox'
 import 'bootstrap/dist/css/bootstrap.css';
-import {  Flex, Text, Grid, Input } from "@pancakeswap/uikit";
-import React, { useEffect } from 'react'
+import { Button,LinkExternal, Heading, Image,Flex, Text, Grid, Input } from "@pancakeswap/uikit";
+import React, { useCallback, useEffect, useState } from 'react'
 import AliceCarousel from "react-alice-carousel";
 import Page from 'views/Page'
 import {useRouter} from 'next/navigation'
 import AddToWalletButton from 'components/AddToWallet/AddToWalletButton';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper as SwiperClass } from 'swiper/types'
+import { Autoplay } from 'swiper'
+
+
+const StepDot = ({ active, place, onClick }: { active: boolean; place: 'left' | 'right'; onClick: () => void }) => (
+  <AtomBox padding="4px" onClick={onClick} cursor="pointer">
+    <AtomBox
+      bgc={active ? 'secondary' : 'inputSecondary'}
+      width="56px"
+      height="8px"
+      borderLeftRadius={place === 'left' ? 'card' : '0'}
+      borderRightRadius={place === 'right' ? 'card' : '0'}
+    />
+  </AtomBox>
+)
 
 const About = () => {
     useEffect(() => {
@@ -16,6 +34,46 @@ const About = () => {
         
      },[])
 
+     const [step, setStep] = useState(0)
+     const [swiper, setSwiper] = useState<SwiperClass | undefined>(undefined)
+     const IntroSteps = [
+      {
+        title: <Trans>Now your favorite Decentralized Exchange (DEX) UNIEXCHANGE is also available on tron blockchain</Trans>,
+        icon: 'https://cdn.pancakeswap.com/wallets/wallet_intro.png',
+        description: (
+          <Trans>
+            Now you can swap between your assets available on tron blockchain.
+          </Trans>
+        ),
+        docText: "Try now",
+        docLink: "https://uniexchange-tron-verison-ea6t.vercel.app/"
+      },
+      {
+        title: <Trans>The best Exchange in the word is LIVE now.</Trans>,
+        icon: 'https://cdn.pancakeswap.com/wallets/world_lock.png',
+        description: (
+          <Trans>
+            Now you can trade between different Crypto assets using cash on the world&apos;s most secured Exchange.    
+                  </Trans>
+        ),
+        docText: "Try now",
+        docLink:"https://cex-six.vercel.app/"
+      },
+    ]
+
+    const handleRealIndexChange = useCallback((swiperInstance: SwiperClass) => {
+      setStep(swiperInstance.realIndex)
+    }, [])
+
+    const handleStepClick = useCallback(
+      (stepIndex: number) => {
+        return () => {
+          setStep(stepIndex)
+          swiper?.slideTo(stepIndex)
+        }
+      },
+      [swiper],
+    )
 
      const router = useRouter()
     return (
@@ -46,7 +104,53 @@ const About = () => {
     <div>
         <Page >
        
+
         <div className="container ">
+        <AtomBox
+      display="flex"
+      width="full"
+      flexDirection="column"
+      style={{ gap: '24px' }}
+      mx="auto"
+      my="48px"
+      textAlign="center"
+      alignItems="center"
+    >
+      <Swiper
+        initialSlide={0}
+        modules={[Autoplay]}
+        slidesPerView="auto"
+        onSwiper={setSwiper}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        onRealIndexChange={handleRealIndexChange}
+        centeredSlides
+        loop
+        style={{ marginLeft: '0px', marginRight: '0px' }}
+      >
+        {IntroSteps.map((introStep) => (
+          <SwiperSlide key={introStep.icon}>
+            <Heading as="h2" color="secondary">
+              {introStep.title}
+            </Heading>
+            <Image m="auto" src={introStep.icon} width={198} height={178} />
+            <Text maxWidth="368px" m="auto" small color="textSubtle">
+              {introStep.description}
+            </Text>
+            <Button minHeight={40} variant="subtle" external as={LinkExternal} color="backgroundAlt" href={introStep.docLink}>
+       {introStep.docText}
+      </Button>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <AtomBox display="flex">
+        <StepDot place="left" active={step === 0} onClick={handleStepClick(0)} />
+        <StepDot place="right" active={step === 1} onClick={handleStepClick(1)} />
+      </AtomBox>
+    
+    </AtomBox>
       
         <div className="row pd-80">
           <div className="col-lg-5 col-md-12">
