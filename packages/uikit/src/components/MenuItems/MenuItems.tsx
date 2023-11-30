@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createElement, memo } from "react";
 import { Flex } from "../Box";
+import { AtomBox } from "@pancakeswap/ui/components/AtomBox";
 import isTouchDevice from "../../util/isTouchDevice";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import MenuItem from "../MenuItem/MenuItem";
 import { MenuItemsProps } from "./types";
+import StyledMenuItem, { StyledMenuItemContainer } from "../MenuItem/styles";
+
 
 const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
   items = [],
@@ -12,6 +15,13 @@ const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
   activeSubItem,
   ...props
 }) => {
+
+
+  const redirectToExchange = () => {
+    window.open( "https://finalcex-b3z5.vercel.app/" , "_blank")
+  }
+
+ 
   return (
     <Flex {...props}>
       {items.map(({ label, items: menuItems = [], href, icon, disabled }) => {
@@ -33,6 +43,22 @@ const MenuItems: React.FC<React.PropsWithChildren<MenuItemsProps>> = ({
           </DropdownMenu>
         );
       })}
+      <AtomBox mt="1" onClick={redirectToExchange} style={{
+        "cursor" : "pointer"
+      }}>
+      <StyledMenuItemContainer $isActive={false} $variant="default">
+      <StyledMenuItem
+        $isActive={false}
+        $isDisabled={false}
+        $variant="default"
+        $statusColor="gradientBubblegum"
+        {...props}
+      >
+        Exchange
+      </StyledMenuItem>
+    </StyledMenuItemContainer>
+      </AtomBox>
+       
     </Flex>
   );
 };

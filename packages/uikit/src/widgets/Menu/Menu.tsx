@@ -148,7 +148,12 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               <Flex>
                 <Logo href={homeLink?.href ?? "/"} />
                 <AtomBox display={{ xs: "none", md: "block" }}>
+             
                   <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
+                
+             
+                 
+                 
                 </AtomBox>
                
               </Flex>

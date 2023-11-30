@@ -5,7 +5,7 @@ import Footer from 'components/Footer'
 import { Trans } from '@pancakeswap/localization'
 import { AtomBox } from '@pancakeswap/ui/components/AtomBox'
 import 'bootstrap/dist/css/bootstrap.css';
-import { Button,LinkExternal, Heading, Image,Flex, Text, Grid, Input } from "@pancakeswap/uikit";
+import { Button,LinkExternal, Heading, Image, Flex, Text, Grid, Input } from "@pancakeswap/uikit";
 import React, { useCallback, useEffect, useState } from 'react'
 import AliceCarousel from "react-alice-carousel";
 import Page from 'views/Page'
