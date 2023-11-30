@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createElement, memo } from "react";
-import { Flex } from "../Box";
 import { AtomBox } from "@pancakeswap/ui/components/AtomBox";
+import { Flex } from "../Box";
 import isTouchDevice from "../../util/isTouchDevice";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import MenuItem from "../MenuItem/MenuItem";
